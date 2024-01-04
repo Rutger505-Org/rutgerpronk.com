@@ -3,7 +3,7 @@ import ScrollLink from "@/components/ScrollLink";
 import ArrowDownIcon from "@/components/icons/ArrowDownIcon";
 import { useTranslations } from "next-intl";
 
-export default function LandingPage() {
+export default function LandingSection() {
   const t = useTranslations("landingSection");
 
   return (
