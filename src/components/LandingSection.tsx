@@ -15,7 +15,7 @@ export default function LandingSection() {
 
       <div>
         <h2 className={"text-center text-4xl text-textPrimary"}>
-          &lt;/&gt; {t("softwareDev")}
+          {t("softwareDev")}
         </h2>
         <h1
           className={
