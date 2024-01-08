@@ -1,14 +1,14 @@
+import UnderlineScrollLink from "@/components/header/UnderlineScrollLink";
+import LocaleSwitcher from "@/components/header/LocaleSwitcher";
 import React from "react";
-import ScrollLink from "@/components/ScrollLink";
-import LocaleSwitcher from "@/components/LocaleSwitcher";
-import UnderlineScrollLink from "@/components/UnderlineScrollLink";
 import { useTranslations } from "next-intl";
+import ScrollLink from "@/components/ScrollLink";
 
-export default function Header() {
+export default function DesktopHeader() {
   const t = useTranslations("header");
 
   return (
-    <header className="fixed left-0 top-0 flex h-20 w-screen items-center justify-between bg-secondary px-spacing transition-all duration-500 md:bg-transparent md:backdrop-blur">
+    <header className="fixed left-0 top-0 hidden h-20 w-screen items-center justify-between bg-secondary px-spacing transition-all duration-500 md:flex md:bg-transparent md:backdrop-blur">
       <ScrollLink
         href={"#home"}
         to={"home"}
@@ -45,7 +45,12 @@ export default function Header() {
         >
           <p>{t("contact")}</p>
         </UnderlineScrollLink>
-        <LocaleSwitcher />
+        <LocaleSwitcher
+          className={
+            "text-header group cursor-pointer overflow-hidden text-xl text-textPrimary duration-300 group-hover:opacity-80"
+          }
+          underline={true}
+        />
       </nav>
     </header>
   );

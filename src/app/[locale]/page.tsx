@@ -1,14 +1,22 @@
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import About from "@/components/About";
 import LandingSection from "@/components/LandingSection";
-import Projects from "@/components/Projects";
-import Contact from "@/components/Contact";
+import Projects from "@/components/projects";
+import Contact from "@/components/contact";
+import MobileHeader from "@/components/header/MobileHeader";
+import { NextIntlClientProvider, useLocale, useMessages } from "next-intl";
+import DesktopHeader from "@/components/header/DesktopHeader";
 
 export default function Home() {
+  const locale = useLocale();
+  const messages = useMessages();
+
   return (
     <>
-      <Header />
+      <DesktopHeader />
+      <NextIntlClientProvider locale={locale} messages={messages}>
+        <MobileHeader />
+      </NextIntlClientProvider>
       <main className=" mx-spacing max-w-[2300px] too-big:mx-auto ">
         <LandingSection />
         <About />
