@@ -37,7 +37,7 @@ export default function Projects() {
           link={"https://github.com/Rutger505/Gamejam"}
         />
       </div>
-      <h3 className="mt-10 text-3xl text-textPrimary">
+      <h3 className="mt-16 text-3xl text-textPrimary">
         {t("experiences.title")}
       </h3>
       <ExperienceTreeBase className={"mt-10"}>
