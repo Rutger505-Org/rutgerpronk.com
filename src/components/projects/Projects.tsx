@@ -1,10 +1,10 @@
 import AutoclickerImage from "../../../public/useful-autoclicker-3.0-previeuw.webp";
 import TravelAgencyImage from "../../../public/travel-agency.webp";
 import NoTimeToDieImage from "../../../public/no-time-to-die.webp";
-import ProjectCard from "@/components/Projects/ProjectCard";
-import ExperienceTreeBase from "@/components/Projects/ExperienceTreeBase";
-import ExperienceTime from "@/components/Projects/ExperienceTime";
-import Experience from "@/components/Projects/Experience";
+import ProjectCard from "@/components/projects/ProjectCard";
+import ExperienceTreeBase from "@/components/projects/ExperienceTreeBase";
+import ExperienceTime from "@/components/projects/ExperienceTime";
+import Experience from "@/components/projects/Experience";
 import { useTranslations } from "next-intl";
 
 export default function Projects() {
