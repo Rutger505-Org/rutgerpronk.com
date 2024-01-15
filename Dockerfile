@@ -1,5 +1,5 @@
 FROM node:lts-alpine as development
-WORKDIR /src
+WORKDIR /app
 
 COPY package.json package-lock.json ./
 
@@ -12,7 +12,7 @@ EXPOSE 3000
 CMD ["npm", "run", "dev"]
 
 FROM node:lts-alpine AS dependencies
-WORKDIR /src
+WORKDIR /app
 
 COPY package.json package-lock.json ./
 
@@ -21,7 +21,7 @@ RUN npm ci
 
 FROM node:lts-alpine AS builder
 ENV NODE_ENV=production
-WORKDIR /src
+WORKDIR /app
 
 COPY . .
 COPY --from=dependencies /src/node_modules ./node_modules
@@ -33,15 +33,15 @@ FROM node:lts-alpine AS production
 
 # Does not know what this does
 ENV NODE_ENV=production
-WORKDIR /src
+WORKDIR /app
 
 # Expose the port Next.js is running on
 EXPOSE 3000
 
-COPY --chown=node --from=builder /src/next.config.js ./
-COPY --chown=node --from=builder /src/public ./public
-COPY --chown=node --from=builder /src/.next ./.next
-COPY --chown=node --from=builder /src/package.json /src/package-lock.json ./
-COPY --chown=node --from=dependencies /src/node_modules ./node_modules
+COPY --from=builder /src/next.config.js ./
+COPY --from=builder /src/public ./public
+COPY --from=builder /src/.next ./.next
+COPY --from=builder /src/package.json /src/package-lock.json ./
+COPY --from=dependencies /src/node_modules ./node_modules
 CMD ["npm", "start"]
 
