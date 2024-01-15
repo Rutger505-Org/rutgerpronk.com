@@ -8,8 +8,8 @@ const nextConfig= {
         ...config,
         watchOptions: {
             ...config.watchOptions,
-            poll: 500,
-            aggregateTimeout: 500,
+            poll: 200,
+            aggregateTimeout: 200,
         },
     }),
 }
