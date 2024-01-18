@@ -1,16 +1,34 @@
 {
+  "name": "rutgerpronk.com",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "tailwindBuild": "npx tailwind -i ./input.css -o ./src/style/main.css",
-    "tailwind": "npx tailwindcss -i ./input.css -o ./src/style/main.css --watch",
-    "browserSync": "browser-sync start --no-notify  --proxy \"localhost\" --files \"./src/**/*\"",
-    "dev": "concurrently --kill-others \"npm run browserSync\" \"npm run tailwind\"",
-    "start": "npm run browserSync",
-    "build": "npm run tailwindBuild"
+    "dev": "next dev .",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^14.0.4",
+    "next-intl": "^3.4.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-scroll": "^1.9.0",
+    "sharp": "^0.33.2"
   },
   "devDependencies": {
-    "browser-sync": "^2.29.3",
-    "concurrently": "^8.2.0",
-    "prettier-plugin-tailwindcss": "^0.4.1",
-    "tailwindcss": "^3.3.2"
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/react-scroll": "^1.8.10",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.3",
+    "eslint-config-prettier": "^9.1.0",
+    "postcss": "^8",
+    "prettier": "^3.1.1",
+    "prettier-plugin-tailwindcss": "^0.5.9",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
   }
 }

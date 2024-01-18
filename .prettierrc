@@ -1,5 +1,3 @@
 {
-  "printWidth": 170,
-  "plugins": ["tailwindcss"],
-  "singleQuote": true
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

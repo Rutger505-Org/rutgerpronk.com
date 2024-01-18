@@ -1,0 +1,75 @@
+{
+  "landingSection": {
+    "softwareDev": "'</'> Software-dev",
+    "greeting": "Hallo, ik ben <span>Rutger</span> uit Nederland"
+  },
+  "about": {
+    "title": "Wie ben ik?",
+    "text1": "Mijn naam is Rutger Pronk en ik studeer Software Developer op ROC Nijmegen. Ik zit momenteel in mijn tweede studiejaar.",
+    "text2": "Ik heb een grote passie voor programmeren en softwareontwikkeling, met een specifieke focus op het uitbreiden van mijn kennis C#/C++ en Next.js. Daarnaast leer ik Nest.js voor backend web ontwikkeling."
+  },
+  "projects": {
+    "title": "Wat kan ik doen?",
+    "text": "Ik vind het leuk om  te werken met Java, C# en websites (HTML, CSS, JavaScript, Typescript, PHP, SQL). Ik heb samengewerkt met projecten, waarbij ik mijn teamwerk en communicatie skills heb verbeterd. Ik maak gebruik van Git/GitHub voor versiebeheer en Scrum/Trello voor projectmanagement. Hier zijn enkele projecten die mijn vaardigheden laten zien.",
+    "projects": {
+      "title": "Projecten",
+      "githubLinkText": "Bezoek op Github",
+      "usefulAutoclicker": {
+        "title": "Useful Autoclicker",
+        "text": "Een GUI-project in development. Oorspronkelijk gemaakt in Java, wordt het nu herschreven in C#. Deze autoclicker-tool is een hobby project waar ik een half jaar aan heb gewerkt"
+      },
+      "travelAgency": {
+        "title": "Reisbureau",
+        "text": "Een project waarbij gebruik wordt gemaakt van HTML, CSS, Tailwind CSS, PHP, MySQL en API-integratie. Ik heb drie maanden samengewerkt met een andere ontwikkelaar om deze reisbureau-website te ontwikkelen."
+      },
+      "noTimeToDie": {
+        "title": "No Time To Die",
+        "text": "Een gamejam-project, dit is een survivalgame met rondes. dit project is in slechts 16 uur is gemaakt met Gamemaker. Ik heb samengewerkt met een team van 5 mensen om dit spel te ontwikkelen."
+      }
+    },
+    "experiences": {
+      "title": "Ervaringen",
+      "2022": {
+        "title": "2022",
+        "experience1": {
+          "title": "Start studie Software Developer",
+          "place": "ROC Nijmegen Heyendaalseweg - MBO"
+        }
+      },
+      "2023": {
+        "title": "2023",
+        "experience1": {
+          "title": "Stage bij CheapCargo",
+          "place": "CheapCargo - Nijmegen"
+        }
+      },
+      "future": {
+        "title": "Toekomst",
+        "experience1": {
+          "title": "Door studeren",
+          "place": "Andere School - HBO"
+        },
+        "experience2": {
+          "title": "Afstuderen studie Software Developer",
+          "place": "ROC Nijmegen Heyendaalseweg - MBO"
+        }
+      }
+    }
+  },
+  "contact": {
+    "title": "Praat met mij",
+    "text": "Voel je vrij om contact met me op te nemen via het formulier hier of rechtstreeks via e-mail op rutger.pronk19@gmail.com.",
+    "form": {
+      "title": "Stuur me een bericht",
+      "name": "Naam",
+      "email": "E-mail",
+      "message": "Bericht",
+      "submit": "Verstuur e-mail"
+    }
+  },
+  "header": {
+    "about": "Over mij",
+    "projects": "Mijn werk",
+    "contact": "Contact"
+  }
+}
