@@ -12,11 +12,9 @@ export default function Home() {
   const messages = useMessages();
 
   return (
-    <>
+    <NextIntlClientProvider locale={locale} messages={messages}>
       <DesktopHeader />
-      <NextIntlClientProvider locale={locale} messages={messages}>
-        <MobileHeader />
-      </NextIntlClientProvider>
+      <MobileHeader />
       <main className=" mx-spacing max-w-[2300px] too-big:mx-auto ">
         <LandingSection />
         <About />
@@ -24,6 +22,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </NextIntlClientProvider>
   );
 }
