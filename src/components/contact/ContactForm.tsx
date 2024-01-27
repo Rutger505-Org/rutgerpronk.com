@@ -2,22 +2,11 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import AnimatedButton from "@/components/AnimatedButton";
+import { useTranslations } from "next-intl";
 
-interface ContactFormProps {
-  translations: Translations;
-}
+export default function ContactForm() {
+  const t = useTranslations("contact.form");
 
-interface Translations {
-  title: string;
-  name: string;
-  email: string;
-  message: string;
-  submit: string;
-}
-
-export default function ContactForm({
-  translations,
-}: Readonly<ContactFormProps>) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [emailValid, setEmailValid] = useState(true);
@@ -77,14 +66,14 @@ export default function ContactForm({
       className="flex min-w-[80%] flex-col gap-y-6 rounded-md bg-secondary p-8 sm:min-w-[400px]"
       onSubmit={onSubmit}
     >
-      <h3 className="text-2xl text-textPrimary">{translations.title}</h3>
+      <h3 className="text-2xl text-textPrimary">{t("title")}</h3>
       <input
         name="name"
         className={`${
           !name && nameUnfocused ? "outline-red" : "focus:outline-accent"
         } outline-n w-full rounded-sm bg-primary px-3 py-2 text-textPrimary outline-none outline-1`}
         type="text"
-        placeholder={translations.name}
+        placeholder={t("name")}
         value={name}
         onChange={(e) => setName(e.target.value)}
         onBlur={onInputBlur}
@@ -96,7 +85,7 @@ export default function ContactForm({
           !emailValid && emailUnfocused ? "outline-red" : "focus:outline-accent"
         } w-full rounded-sm bg-primary px-3 py-2 text-textPrimary outline-none outline-1`}
         type="text"
-        placeholder={translations.email}
+        placeholder={t("email")}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         onBlur={onInputBlur}
@@ -106,13 +95,13 @@ export default function ContactForm({
         className={`${
           !message && messageUnfocused ? "outline-red" : "focus:outline-accent"
         } min-h-[150px] w-full rounded-sm bg-primary px-3 py-2 text-textPrimary outline-none outline-1`}
-        placeholder={translations.message}
+        placeholder={t("message")}
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         onBlur={onInputBlur}
       ></textarea>
 
-      <AnimatedButton className={"mt-3 w-fit"} text={translations.submit} />
+      <AnimatedButton className={"mt-3 w-fit"} text={t("submit")} />
       <p className="-mt-3 text-red">In construction!</p>
     </form>
   );

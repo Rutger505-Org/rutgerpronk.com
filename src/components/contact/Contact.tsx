@@ -13,15 +13,7 @@ export default function Contact() {
         }
       >
         <p className="mt-8 max-w-2xl text-xl text-textSecondary">{t("text")}</p>
-        <ContactForm
-          translations={{
-            title: t("form.title"),
-            name: t("form.name"),
-            email: t("form.email"),
-            message: t("form.message"),
-            submit: t("form.submit"),
-          }}
-        />
+        <ContactForm />
       </div>
     </section>
   );
