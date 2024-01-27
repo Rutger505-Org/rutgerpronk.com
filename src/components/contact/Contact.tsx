@@ -12,7 +12,7 @@ export default function Contact() {
           "mt-4 flex flex-wrap justify-between gap-x-7 gap-y-14 lg:flex-nowrap"
         }
       >
-        <p className="mt-8 max-w-2xl text-xl text-textSecondary">{t("text")}</p>
+        <ContactDescription />
         <ContactForm />
       </div>
     </section>
