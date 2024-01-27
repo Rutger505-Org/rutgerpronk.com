@@ -3,18 +3,23 @@
 import { FormEvent, useEffect, useState } from "react";
 import AnimatedButton from "@/components/AnimatedButton";
 import { useTranslations } from "next-intl";
+import { usePersistedState } from "@/hooks/usePersistedState";
 
 export default function ContactForm() {
   const t = useTranslations("contact.form");
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [emailValid, setEmailValid] = useState(true);
-  const [message, setMessage] = useState("");
+  const [name, setName] = usePersistedState("formName", "");
+  const [email, setEmail] = usePersistedState("formEmail", "");
+  const [message, setMessage] = usePersistedState("formMessage", "");
+  const [emailValid, setEmailValid] = useState(false);
 
   const [nameUnfocused, setNameUnfocused] = useState(false);
   const [emailUnfocused, setEmailUnfocused] = useState(false);
   const [messageUnfocused, setMessageUnfocused] = useState(false);
+
+  useEffect(() => {
+    validateEmail();
+  }, [email]);
 
   function validateForm() {
     return !!name && emailValid && !!message;
@@ -42,10 +47,6 @@ export default function ContactForm() {
         throw new Error(`Unknown input name: ${inputName}`);
     }
   }
-
-  useEffect(() => {
-    validateEmail();
-  }, [email]);
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
