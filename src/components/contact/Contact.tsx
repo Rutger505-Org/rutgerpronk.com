@@ -1,5 +1,6 @@
 import ContactForm from "@/components/contact/ContactForm";
 import { useTranslations } from "next-intl";
+import ContactDescription from "@/components/contact/ContactDescription";
 
 export default function Contact() {
   const t = useTranslations("contact");

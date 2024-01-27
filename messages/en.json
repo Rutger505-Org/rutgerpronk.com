@@ -58,7 +58,9 @@
   },
   "contact": {
     "title": "Talk to me",
-    "text": "Do not hesitate to contact me through the form here or by direct email on rutger.pronk19@gmail.com",
+    "text": "Do not hesitate to contact me through the form here or by direct email on <span>rutger.pronk19@gmail.com</span>.",
+    "clickToCopy": "Click to copy",
+    "copied": "Copied!",
     "form": {
       "title": "Send me a message",
       "name": "Name",
