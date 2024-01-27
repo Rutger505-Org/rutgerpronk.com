@@ -4,6 +4,8 @@ import MailIcon from "@/components/icons/MailIcon";
 import Link from "next/link";
 
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="flex w-full flex-wrap items-center justify-center gap-x-20 gap-y-8 bg-secondary px-14 py-10 sm:px-20 lg:flex-nowrap ">
       <div className="flex gap-x-8">
@@ -20,7 +22,7 @@ export default function Footer() {
           <MailIcon className={"h-7 text-accent"} />
         </Link>
       </div>
-      <p className={"text-textSecondary"}>© 2023 Rutger Pronk</p>
+      <p className={"text-textSecondary"}>© {year} Rutger Pronk</p>
     </footer>
   );
 }
