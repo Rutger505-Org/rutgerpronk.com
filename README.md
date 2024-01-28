@@ -1,8 +1,23 @@
-# Portofolio
+# rutgerpronk.com
 
-My personal portofolio. Visit at: <br>
-[http://rutgerpronk.com](http://rutgerpronk.com) <br>
-or <br>
-[http://rutgerpronk.nl](http://rutgerpronk.nl)
+This is my portfolio website. Its made with Next.js and TailwindCss.
 
-![image](https://github.com/Rutger505/Portofolio/assets/119070855/dd6a8c7a-805a-45a3-9b7b-44b5f6cdedcb)
+[rutgerpronk.com](https://rutgerpronk.com) <br>
+[rutgerpronk.nl](https://rutgerpronk.nl)
+
+## Installation
+
+```bash
+npm install
+```
+
+## Running
+
+```bash
+# development
+npm run dev
+
+# production
+npm run build
+npm run start
+```
