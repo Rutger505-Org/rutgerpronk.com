@@ -17,6 +17,9 @@ export default function ContactForm() {
   const [emailUnfocused, setEmailUnfocused] = useState(false);
   const [messageUnfocused, setMessageUnfocused] = useState(false);
 
+  const [formDescription, setFormDescription] = useState("");
+  const [formDescriptionStatus, setFormDescriptionStatus] = useState(false);
+
   useEffect(() => {
     validateEmail();
   }, [email]);
@@ -48,7 +51,7 @@ export default function ContactForm() {
     }
   }
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     if (!validateForm()) {
@@ -58,13 +61,42 @@ export default function ContactForm() {
       return;
     }
 
-    // TODO: Send email
-    alert("In construction!");
+    const domain =
+      process.env.ENVRIONMENT === "production"
+        ? "https://api.rutgerpronk.com"
+        : "http://api.localhost";
+
+    const respone = await fetch(`${domain}/email`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        senderName: name,
+        senderEmail: email,
+        message: message,
+      }),
+    });
+
+    setName("");
+    setEmail("");
+    setMessage("");
+    setNameUnfocused(false);
+    setEmailUnfocused(false);
+    setMessageUnfocused(false);
+
+    if (respone.ok) {
+      setFormDescription(t("success"));
+      setFormDescriptionStatus(true);
+    } else {
+      setFormDescription(t("error"));
+      setFormDescriptionStatus(false);
+    }
   }
 
   return (
     <form
-      className="flex min-w-[80%] flex-col gap-y-6 rounded-md bg-secondary p-8 sm:min-w-[400px]"
+      className="flex min-w-[80%] flex-col gap-y-6 rounded-md bg-secondary p-8 sm:w-[400px] sm:min-w-min"
       onSubmit={onSubmit}
     >
       <h3 className="text-2xl text-textPrimary">{t("title")}</h3>
@@ -103,7 +135,11 @@ export default function ContactForm() {
       ></textarea>
 
       <AnimatedButton className={"mt-3 w-fit"} text={t("submit")} />
-      <p className="-mt-3 text-red">In construction!</p>
+      <p
+        className={`-mt-3 ${formDescriptionStatus ? "text-green" : "text-red"}`}
+      >
+        {formDescription}
+      </p>
     </form>
   );
 }
