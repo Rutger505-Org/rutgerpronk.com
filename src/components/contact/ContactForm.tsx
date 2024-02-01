@@ -21,43 +21,29 @@ export default function ContactForm() {
   const [formDescriptionStatus, setFormDescriptionStatus] = useState(false);
 
   useEffect(() => {
-    validateEmail();
+    setEmailValid(validEmail());
   }, [email]);
 
-  function validateForm() {
-    return !!name && emailValid && !!message;
-  }
-
-  function validateEmail() {
+  function validEmail() {
     const regExp = /\S+@\S+\.\S+/;
-    setEmailValid(regExp.test(email));
+    return regExp.test(email);
   }
 
-  function onInputBlur(e: FormEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    const inputName = e.currentTarget.name;
-
-    switch (inputName) {
-      case "name":
-        setNameUnfocused(true);
-        break;
-      case "email":
-        setEmailUnfocused(true);
-        break;
-      case "message":
-        setMessageUnfocused(true);
-        break;
-      default:
-        throw new Error(`Unknown input name: ${inputName}`);
-    }
+  function validForm() {
+    return !!name && emailValid && !!message;
   }
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (!validateForm()) {
+    if (!validForm()) {
+      // So they can get red outline
       setNameUnfocused(true);
       setEmailUnfocused(true);
       setMessageUnfocused(true);
+
+      setFormDescriptionStatus(false);
+      setFormDescription(t("invalidForm"));
       return;
     }
 
@@ -96,12 +82,11 @@ export default function ContactForm() {
 
   return (
     <form
-      className="flex min-w-[80%] flex-col gap-y-6 rounded-md bg-secondary p-8 sm:w-[400px] sm:min-w-min"
+      className="flex min-w-[80%] flex-col gap-y-7 rounded-md bg-secondary p-8 sm:w-[400px] sm:min-w-min"
       onSubmit={onSubmit}
     >
       <h3 className="text-2xl text-textPrimary">{t("title")}</h3>
       <input
-        name="name"
         className={`${
           !name && nameUnfocused ? "outline-red" : "focus:outline-accent"
         } outline-n w-full rounded-sm bg-primary px-3 py-2 text-textPrimary outline-none outline-1`}
@@ -109,11 +94,11 @@ export default function ContactForm() {
         placeholder={t("name")}
         value={name}
         onChange={(e) => setName(e.target.value)}
-        onBlur={onInputBlur}
+        onFocus={() => setNameUnfocused(false)}
+        onBlur={() => setNameUnfocused(true)}
       />
 
       <input
-        name="email"
         className={`${
           !emailValid && emailUnfocused ? "outline-red" : "focus:outline-accent"
         } w-full rounded-sm bg-primary px-3 py-2 text-textPrimary outline-none outline-1`}
@@ -121,23 +106,22 @@ export default function ContactForm() {
         placeholder={t("email")}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        onBlur={onInputBlur}
+        onFocus={() => setEmailUnfocused(false)}
+        onBlur={() => setEmailUnfocused(true)}
       />
       <textarea
-        name="message"
         className={`${
           !message && messageUnfocused ? "outline-red" : "focus:outline-accent"
         } min-h-[150px] w-full rounded-sm bg-primary px-3 py-2 text-textPrimary outline-none outline-1`}
         placeholder={t("message")}
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        onBlur={onInputBlur}
+        onFocus={() => setMessageUnfocused(false)}
+        onBlur={() => setMessageUnfocused(true)}
       ></textarea>
 
-      <AnimatedButton className={"mt-3 w-fit"} text={t("submit")} />
-      <p
-        className={`-mt-3 ${formDescriptionStatus ? "text-green" : "text-red"}`}
-      >
+      <AnimatedButton className={"w-fit"} text={t("submit")} />
+      <p className={`${formDescriptionStatus ? "text-green" : "text-red"}`}>
         {formDescription}
       </p>
     </form>
