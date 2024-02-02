@@ -66,7 +66,10 @@
       "name": "Name",
       "email": "Email",
       "message": "Message",
-      "submit": "Send email"
+      "submit": "Send email",
+      "success": "Message sent successfully!",
+      "error": "An error occurred while sending the message. Please manually send an email.",
+      "invalidForm": "Please fill in all fields."
     }
   },
   "header": {
