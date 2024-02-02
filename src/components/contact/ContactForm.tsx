@@ -48,7 +48,7 @@ export default function ContactForm() {
     }
 
     const domain =
-      process.env.ENVRIONMENT === "production"
+      process.env.ENVIRONMENT === "production"
         ? "https://api.rutgerpronk.com"
         : "http://api.localhost";
 
