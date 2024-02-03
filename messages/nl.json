@@ -76,5 +76,9 @@
     "about": "Over mij",
     "projects": "Mijn werk",
     "contact": "Contact"
+  },
+  "metadata": {
+    "title": "Rutger Pronk - Software Developer",
+    "description": "Hallo! Mijn naam is Rutger Pronk en ik studeer Software Developer op ROC Nijmegen."
   }
 }
