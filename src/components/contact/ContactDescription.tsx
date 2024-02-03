@@ -20,8 +20,8 @@ export default function ContactDescription() {
   return (
     <p className="mt-8 max-w-2xl text-xl text-textSecondary">
       {t.rich("text", {
-        span: (children) => (
-          <span
+        button: (children) => (
+          <button
             className={
               "translate group relative inline-flex flex-col items-center"
             }
@@ -29,20 +29,21 @@ export default function ContactDescription() {
             onMouseEnter={() => setMailText(t("clickToCopy"))}
           >
             {children}
+            {/* Copy email dialog */}
             <span
               className={
-                "pointer-events-none absolute block h-fit w-fit -translate-y-8 overflow-hidden"
+                "pointer-events-none absolute block h-fit w-fit -translate-y-9 overflow-hidden"
               }
             >
               <span
                 className={
-                  " block translate-y-7 rounded-md px-2 py-1 backdrop-blur duration-150 group-hover:translate-y-0 "
+                  "block translate-y-9 rounded-md px-2 py-1 backdrop-blur duration-150 group-hover:translate-y-0 "
                 }
               >
                 {mailText}
               </span>
             </span>
-          </span>
+          </button>
         ),
       })}
     </p>

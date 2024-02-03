@@ -58,7 +58,7 @@
   },
   "contact": {
     "title": "Praat met mij",
-    "text": "Voel je vrij om contact met me op te nemen via het formulier hier of rechtstreeks via e-mail op <span>rutger.pronk19@gmail.com</span>.",
+    "text": "Voel je vrij om contact met me op te nemen via het formulier hier of rechtstreeks via e-mail op <button>rutger.pronk19@gmail.com</button>.",
     "clickToCopy": "Klik om te kopiëren",
     "copied": "Gekopieerd!",
     "form": {
