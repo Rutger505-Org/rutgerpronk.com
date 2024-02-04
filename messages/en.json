@@ -58,7 +58,7 @@
   },
   "contact": {
     "title": "Talk to me",
-    "text": "Do not hesitate to contact me through the form here or by direct email on <span>rutger.pronk19@gmail.com</span>.",
+    "text": "Do not hesitate to contact me through the form here or by direct email on <button>rutger.pronk19@gmail.com</button>.",
     "clickToCopy": "Click to copy",
     "copied": "Copied!",
     "form": {
@@ -76,5 +76,9 @@
     "about": "About me",
     "projects": "My work",
     "contact": "Contact"
+  },
+  "metadata": {
+    "title": "Rutger Pronk - Software Developer",
+    "description": "Hi there! My name is Rutger Pronk, and I am studying Software Development at ROC Nijmegen in the Netherlands."
   }
 }
