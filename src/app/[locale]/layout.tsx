@@ -12,8 +12,13 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("metadata");
   const locale = await getLocale();
   const alternateLocales = locales.filter((l) => l !== locale);
+  const baseUrl =
+    process.env.NODE_ENV === "production"
+      ? new URL("https://rutgerpronk.com")
+      : new URL("http://localhost");
 
   return {
+    metadataBase: baseUrl,
     title: t("title"),
     description: t("description"),
     keywords: [
@@ -28,10 +33,11 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: t("title"),
       description: t("description"),
+      siteName: t("title"),
       type: "website",
       locale: locale,
       alternateLocale: alternateLocales,
-      url: "https://rutgerpronk.com",
+      url: baseUrl,
     },
   };
 }
