@@ -49,8 +49,8 @@ export default function ContactForm() {
 
     const domain =
       process.env.ENVRIONMENT === "production"
-        ? "https://api.rutgerpronk.com"
-        : "http://api.localhost";
+        ? "https://rutgerpronk.com/api"
+        : "http://localhost/api";
 
     const respone = await fetch(`${domain}/email`, {
       method: "POST",
