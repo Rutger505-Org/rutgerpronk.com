@@ -68,8 +68,8 @@
       "message": "Bericht",
       "submit": "Verstuur e-mail",
       "success": "Bericht succesvol verzonden",
-      "error": "Er is iets misgegaan. Stuur me handmatig een e-mail.",
-      "invalidForm": "Vul alstublieft alle velden in."
+      "error": "Er is iets misgegaan... Stuur handmatig een e-mail.",
+      "invalidForm": "Vul alle velden in."
     }
   },
   "header": {

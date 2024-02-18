@@ -17,8 +17,8 @@ export default function ContactForm() {
   const [emailUnfocused, setEmailUnfocused] = useState(false);
   const [messageUnfocused, setMessageUnfocused] = useState(false);
 
-  const [formDescription, setFormDescription] = useState("");
-  const [formDescriptionStatus, setFormDescriptionStatus] = useState(false);
+  const [description, setDescription] = useState("");
+  const [descriptionStatus, setDescriptionStatus] = useState(false);
 
   useEffect(() => {
     setEmailValid(validEmail());
@@ -42,15 +42,15 @@ export default function ContactForm() {
       setEmailUnfocused(true);
       setMessageUnfocused(true);
 
-      setFormDescriptionStatus(false);
-      setFormDescription(t("invalidForm"));
+      setDescriptionStatus(false);
+      setDescription(t("invalidForm"));
       return;
     }
 
     const domain =
       process.env.NODE_ENV === "production"
-        ? "https://rutgerpronk.com/api"
-        : "http://localhost/api";
+        ? "https://api.rutgerpronk.com"
+        : "http://api.localhost";
 
     const respone = await fetch(`${domain}/email`, {
       method: "POST",
@@ -64,19 +64,12 @@ export default function ContactForm() {
       }),
     });
 
-    setName("");
-    setEmail("");
-    setMessage("");
-    setNameUnfocused(false);
-    setEmailUnfocused(false);
-    setMessageUnfocused(false);
-
     if (respone.ok) {
-      setFormDescription(t("success"));
-      setFormDescriptionStatus(true);
+      setDescription(t("success"));
+      setDescriptionStatus(true);
     } else {
-      setFormDescription(t("error"));
-      setFormDescriptionStatus(false);
+      setDescription(t("error"));
+      setDescriptionStatus(false);
     }
   }
 
@@ -121,8 +114,8 @@ export default function ContactForm() {
       ></textarea>
 
       <AnimatedButton className={"w-fit"} text={t("submit")} />
-      <p className={`${formDescriptionStatus ? "text-green" : "text-red"}`}>
-        {formDescription}
+      <p className={`${descriptionStatus ? "text-green" : "text-red"} `}>
+        {description}
       </p>
     </form>
   );
