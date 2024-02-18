@@ -64,13 +64,6 @@ export default function ContactForm() {
       }),
     });
 
-    setName("");
-    setEmail("");
-    setMessage("");
-    setNameUnfocused(false);
-    setEmailUnfocused(false);
-    setMessageUnfocused(false);
-
     if (respone.ok) {
       setDescription(t("success"));
       setDescriptionStatus(true);
