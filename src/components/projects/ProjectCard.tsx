@@ -19,7 +19,11 @@ export default function ProjectCard({
   const t = useTranslations("projects.projects");
 
   return (
-    <div className={"inline-flex flex-wrap gap-6 rounded-lg bg-secondary p-12"}>
+    <div
+      className={
+        "inline-flex flex-wrap gap-6 rounded-lg bg-secondary p-6 sm:p-12"
+      }
+    >
       <div className={"flex max-w-md flex-col items-start"}>
         <h4 className={"text-2xl text-textPrimary"}>{title}</h4>
         <p className={"mt-5 text-textSecondary"}>{description}</p>
@@ -30,7 +34,11 @@ export default function ProjectCard({
           <AnimatedButton text={t("githubLinkText")} />
         </Link>
       </div>
-      <Image className={"h-80 w-fit"} src={image} alt={"Image of {title}"} />
+      <Image
+        className={"max-h-80 w-fit"}
+        src={image}
+        alt={"Image of {title}"}
+      />
     </div>
   );
 }
