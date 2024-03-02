@@ -75,7 +75,7 @@ export default function ContactForm() {
 
   return (
     <form
-      className="flex min-w-[80%] flex-col gap-y-7 rounded-md bg-secondary p-8 sm:w-[400px] sm:min-w-min"
+      className="flex w-full flex-col gap-y-7 rounded-md bg-secondary p-8 xs:max-w-[380px]"
       onSubmit={onSubmit}
     >
       <h3 className="text-2xl text-textPrimary">{t("title")}</h3>

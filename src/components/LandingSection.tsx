@@ -13,13 +13,13 @@ export default function LandingSection() {
     >
       <div></div>
 
-      <div>
-        <h2 className={"text-center text-4xl text-textPrimary"}>
+      <div className={"max-w-full"}>
+        <h2 className={"text-center text-3xl text-textPrimary sm:text-4xl"}>
           {t("softwareDev")}
         </h2>
         <h1
           className={
-            "mb-10 max-w-2xl text-center text-6xl font-bold text-textPrimary"
+            "mb-10 max-w-2xl text-center text-5xl font-bold text-textPrimary sm:text-6xl"
           }
         >
           {t.rich("greeting", {

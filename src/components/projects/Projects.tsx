@@ -12,7 +12,9 @@ export default function Projects() {
 
   return (
     <section id={"projects"} className={"py-24 too-big:py-32"}>
-      <h2 className="text-5xl font-bold text-textPrimary">{t("title")}</h2>
+      <h2 className="text-4xl font-bold text-textPrimary sm:text-5xl">
+        {t("title")}
+      </h2>
       <p className="mt-7 max-w-lg text-textSecondary">{t("text")}</p>
       <h3 className="mt-10 text-3xl  text-textPrimary">
         {t("projects.title")}
