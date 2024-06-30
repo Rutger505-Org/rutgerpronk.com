@@ -1,122 +1,128 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
-import AnimatedButton from "@/components/AnimatedButton";
 import { useTranslations } from "next-intl";
-import { usePersistedState } from "@/hooks/usePersistedState";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+import { sendEmail as sendEmailAction } from "@/app/[locale]/actions";
+import { useMutation } from "react-query";
+import SubmitButton from "@/components/contact/SubmitButton";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function ContactForm() {
   const t = useTranslations("contact.form");
+  const { toast } = useToast();
 
-  const [name, setName] = usePersistedState("formName", "");
-  const [email, setEmail] = usePersistedState("formEmail", "");
-  const [message, setMessage] = usePersistedState("formMessage", "");
-  const [emailValid, setEmailValid] = useState(false);
+  const formSchema = z.object({
+    name: z.string().min(1, { message: t("validation.name") }),
+    email: z
+      .string()
+      .min(1, { message: t("validation.email") })
+      .email({ message: t("validation.emailInvalid") }),
+    message: z.string().min(1, { message: t("validation.message") }),
+  });
 
-  const [nameUnfocused, setNameUnfocused] = useState(false);
-  const [emailUnfocused, setEmailUnfocused] = useState(false);
-  const [messageUnfocused, setMessageUnfocused] = useState(false);
+  const form = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
 
-  const [description, setDescription] = useState("");
-  const [descriptionStatus, setDescriptionStatus] = useState(false);
+  const {
+    mutate: sendEmail,
+    isLoading,
+    isSuccess,
+  } = useMutation({
+    mutationFn: sendEmailAction,
+    onSuccess: () => {
+      toast({
+        title: t("toast.success"),
+      });
+      form.reset();
+    },
+    onError: () => {
+      toast({
+        title: t("toast.error"),
+        variant: "destructive",
+      });
+    },
+  });
 
-  useEffect(() => {
-    function validEmail() {
-      const regExp = /\S+@\S+\.\S+/;
-      return regExp.test(email);
-    }
-
-    setEmailValid(validEmail());
-  }, [email]);
-
-  function validForm() {
-    return !!name && emailValid && !!message;
-  }
-
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    if (!validForm()) {
-      // So they can get red outline
-      setNameUnfocused(true);
-      setEmailUnfocused(true);
-      setMessageUnfocused(true);
-
-      setDescriptionStatus(false);
-      setDescription(t("invalidForm"));
-      return;
-    }
-
-    const domain =
-      process.env.NODE_ENV === "production"
-        ? "https://api.rutgerpronk.com"
-        : "http://api.localhost";
-
-    const respone = await fetch(`${domain}/email`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        senderName: name,
-        senderEmail: email,
-        message: message,
-      }),
-    });
-
-    if (respone.ok) {
-      setDescription(t("success"));
-      setDescriptionStatus(true);
-    } else {
-      setDescription(t("error"));
-      setDescriptionStatus(false);
-    }
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    sendEmail(data);
   }
 
   return (
-    <form
-      className="flex w-full flex-col gap-y-7 rounded-md bg-secondary p-8 xs:max-w-[380px]"
-      onSubmit={onSubmit}
-    >
-      <h3 className="text-2xl text-textPrimary">{t("title")}</h3>
-      <input
-        className={`${
-          !name && nameUnfocused ? "outline-red" : "focus:outline-accent"
-        } outline-n w-full rounded-sm bg-primary px-3 py-2 text-textPrimary outline-none outline-1`}
-        type="text"
-        placeholder={t("name")}
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        onFocus={() => setNameUnfocused(false)}
-        onBlur={() => setNameUnfocused(true)}
-      />
-
-      <input
-        className={`${
-          !emailValid && emailUnfocused ? "outline-red" : "focus:outline-accent"
-        } w-full rounded-sm bg-primary px-3 py-2 text-textPrimary outline-none outline-1`}
-        type="text"
-        placeholder={t("email")}
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        onFocus={() => setEmailUnfocused(false)}
-        onBlur={() => setEmailUnfocused(true)}
-      />
-      <textarea
-        className={`${
-          !message && messageUnfocused ? "outline-red" : "focus:outline-accent"
-        } min-h-[150px] w-full rounded-sm bg-primary px-3 py-2 text-textPrimary outline-none outline-1`}
-        placeholder={t("message")}
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        onFocus={() => setMessageUnfocused(false)}
-        onBlur={() => setMessageUnfocused(true)}
-      ></textarea>
-
-      <AnimatedButton className={"w-fit"} text={t("submit")} />
-      <p className={`${descriptionStatus ? "text-green" : "text-red"} `}>
-        {description}
-      </p>
-    </form>
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex w-full flex-col gap-y-7 rounded-md bg-secondary p-8 xs:max-w-[380px]"
+      >
+        <h3 className="text-2xl text-textPrimary">{t("title")}</h3>
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <input
+                  className={
+                    "w-full rounded-sm bg-primary px-3 py-2 text-textPrimary outline-none outline-1 focus:outline-accent"
+                  }
+                  type="text"
+                  placeholder={t("name")}
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage className={"text-red"} />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <input
+                  className={`w-full rounded-sm bg-primary px-3 py-2 text-textPrimary outline-none outline-1 focus:outline-accent`}
+                  type="text"
+                  placeholder={t("email")}
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage className={"text-red"} />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <textarea
+                  className={`min-h-[150px] w-full rounded-sm bg-primary px-3 py-2 text-textPrimary outline-none outline-1 focus:outline-accent`}
+                  placeholder={t("message")}
+                  {...field}
+                ></textarea>
+              </FormControl>
+              <FormMessage className={"text-red"} />
+            </FormItem>
+          )}
+        />
+        <SubmitButton sending={isLoading} sent={isSuccess} />
+      </form>
+    </Form>
   );
 }

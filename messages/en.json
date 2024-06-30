@@ -67,9 +67,16 @@
       "email": "Email",
       "message": "Message",
       "submit": "Send email",
-      "success": "Message sent successfully!",
-      "error": "Something went wrong... Please send an email manually.",
-      "invalidForm": "Please fill in all fields."
+      "validation": {
+        "name": "Name is required",
+        "email": "Email is required",
+        "emailInvalid": "Email is invalid",
+        "message": "Message is required"
+      },
+      "toast": {
+        "success": "Message sent successfully!",
+        "error": "Something went wrong! Please try again later."
+      }
     }
   },
   "header": {
@@ -80,5 +87,9 @@
   "metadata": {
     "title": "Rutger Pronk - Software Developer",
     "description": "Hi there! My name is Rutger Pronk, and I am studying Software Development at ROC Nijmegen in the Netherlands."
+  },
+  "notFound": {
+    "title": "Page was not found",
+    "buttonText": "Go back home"
   }
 }

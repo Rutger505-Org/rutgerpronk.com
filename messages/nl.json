@@ -67,9 +67,16 @@
       "email": "E-mail",
       "message": "Bericht",
       "submit": "Verstuur e-mail",
-      "success": "Bericht succesvol verzonden",
-      "error": "Er is iets misgegaan... Stuur handmatig een e-mail.",
-      "invalidForm": "Vul alle velden in."
+      "validation": {
+        "name": "Naam is verplicht",
+        "email": "E-mail is verplicht",
+        "emailInvalid": "E-mail is ongeldig",
+        "message": "Bericht is verplicht"
+      },
+      "toast": {
+        "success": "Bericht succesvol verzonden!",
+        "error": "Er is iets misgegaan! Probeer het later opnieuw."
+      }
     }
   },
   "header": {
@@ -80,5 +87,9 @@
   "metadata": {
     "title": "Rutger Pronk - Software Developer",
     "description": "Hallo! Mijn naam is Rutger Pronk en ik studeer Software Developer op ROC Nijmegen."
+  },
+  "notFound": {
+    "title": "Pagina niet gevonden",
+    "buttonText": "Terug"
   }
 }
