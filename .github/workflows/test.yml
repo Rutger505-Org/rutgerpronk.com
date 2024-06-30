@@ -1,44 +1,11 @@
-name: Build and Test Docker Image
+name: Build and test Next.js app
 
 on:
   push:
-    branches: '*'
+    branches:
+      - '*'
 
 jobs:
-  test-development:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Install deps
-        run: npm ci
-
-      - name: Build Docker image
-        run: docker build . --tag rutgerpronk.com:${{ github.run_number }} --target development
-
-      - name: Run Docker container
-        run: docker run -d --name test-container rutgerpronk.com:${{ github.run_number }}
-
-      - name: Wait for the container to start
-        run: sleep 15
-
-      - name: Check container status
-        run: |
-          set -euo pipefail
-
-          container_status=$(docker inspect -f '{{.State.Status}}' "test-container")
-          container_logs=$(docker logs test-container)
-          if [ "$container_status" != "running" ] || [[ $(echo "$container_status" | tr '[:upper:]' '[:lower:]') == *"error"* ]]; then
-            echo "Container failed to start"
-            echo "$container_logs"
-            exit 1
-          else
-            echo "Container started successfully"
-            echo "$container_logs"
-          fi
-
   test-production:
     runs-on: ubuntu-latest
 
@@ -46,26 +13,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build Docker image
-        run: docker build . --tag rutgerpronk.com:${{ github.run_number }} --target production
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
-      - name: Run Docker container
-        run: docker run -d --name test-container rutgerpronk.com:${{ github.run_number }}
+      - name: Install dependencies
+        run: npm install
 
-      - name: Wait for the container to start
-        run: sleep 15
+      - name: Build Next.js app
+        run: npm run build
 
-      - name: Check container status
-        run: |
-          set -euo pipefail
-  
-          container_status=$(docker inspect -f '{{.State.Status}}' "test-container")
-          container_logs=$(docker logs test-container)
-          if [ "$container_status" != "running" ] || [[ $(echo "$container_status" | tr '[:upper:]' '[:lower:]') == *"error"* ]]; then
-            echo "Container failed to start"
-            echo "$container_logs"
-            exit 1
-          else
-            echo "Container started successfully"
-            echo "$container_logs"
-          fi
+      - name: Start Next.js app
+        run: nohup npm run start &
+
+      - name: Wait for Next.js to start
+        run: npx wait-on http://localhost:3000
