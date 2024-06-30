@@ -4,6 +4,7 @@ import "./globals.css";
 import React from "react";
 import { getLocale, getTranslations } from "next-intl/server";
 import { locales } from "../../../i18n.config";
+import { NextIntlClientProvider, useLocale, useMessages } from "next-intl";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -49,9 +50,15 @@ export default function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }>) {
+  const messages = useMessages();
+
   return (
     <html lang={locale}>
-      <body className={`${inter.className} bg-primary`}>{children}</body>
+      <body className={`${inter.className} bg-primary`}>
+      <NextIntlClientProvider locale={locale} messages={messages}>
+      {children}
+      </NextIntlClientProvider>
+      </body>
     </html>
   );
 }
