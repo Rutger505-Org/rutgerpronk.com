@@ -15,7 +15,12 @@ export default function Home() {
     <NextIntlClientProvider locale={locale} messages={messages}>
       <DesktopHeader />
       <MobileHeader />
-
+      <main className="mx-spacing-mobile max-w-[2300px] sm:mx-spacing too-big:mx-auto">
+        <LandingSection />
+        <About />
+        <Projects />
+        <Contact />
+      </main>
       <Footer />
     </NextIntlClientProvider>
   );
