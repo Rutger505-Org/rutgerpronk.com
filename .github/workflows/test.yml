@@ -33,11 +33,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Next.js app
+      - name: Lint
+        run: npm run lint -- --max-warnings=0
+
+      - name: Build
         run: npm run build
 
-      - name: Start Next.js app
+      - name: Start
         run: nohup npm run start &
 
-      - name: Wait for Next.js to start
+      - name: Wait for app to start
         run: npx wait-on http://localhost:3000
