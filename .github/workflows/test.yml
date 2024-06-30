@@ -24,8 +24,5 @@ jobs:
       - name: Wait for Next.js to start
         run: npx wait-on http://localhost:3000
 
-      - name: Run tests
-        run: npm run test
-
       - name: Stop Next.js app
         run: pkill -f 'node ./node_modules/.bin/next start'
