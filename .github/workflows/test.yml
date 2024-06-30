@@ -2,7 +2,8 @@ name: Build and test Next.js app
 
 on:
   push:
-    branches: '*'
+    branches:
+      - '*'
 
 jobs:
   test-production:
