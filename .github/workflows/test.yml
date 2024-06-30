@@ -1,14 +1,14 @@
-name: Build and test
+name: Build and Test
 
 on:
-  push:
+  pull_request:
     branches:
       - '*'
 
 jobs:
-  test-production:
+  build-and-start:
     runs-on: ubuntu-latest
-
+    name: Build and Start Next.js App
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
