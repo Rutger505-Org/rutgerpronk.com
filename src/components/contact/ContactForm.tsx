@@ -21,13 +21,13 @@ export default function ContactForm() {
   const [descriptionStatus, setDescriptionStatus] = useState(false);
 
   useEffect(() => {
+    function validEmail() {
+      const regExp = /\S+@\S+\.\S+/;
+      return regExp.test(email);
+    }
+
     setEmailValid(validEmail());
   }, [email]);
-
-  function validEmail() {
-    const regExp = /\S+@\S+\.\S+/;
-    return regExp.test(email);
-  }
 
   function validForm() {
     return !!name && emailValid && !!message;
