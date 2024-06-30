@@ -80,5 +80,9 @@
   "metadata": {
     "title": "Rutger Pronk - Software Developer",
     "description": "Hi there! My name is Rutger Pronk, and I am studying Software Development at ROC Nijmegen in the Netherlands."
+  },
+  "notFound": {
+    "title": "Page was not found",
+    "buttonText": "Go back home"
   }
 }
