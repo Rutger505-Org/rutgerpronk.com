@@ -6,7 +6,7 @@ on:
       - '*'
 
 jobs:
-  test-production:
+  build-and-start-app:
     runs-on: ubuntu-latest
 
     steps:
