@@ -68,7 +68,7 @@
       "message": "Message",
       "submit": "Send email",
       "success": "Message sent successfully!",
-      "sendError": "Something went wrong... Please try again later.",
+      "error": "Something went wrong... Please try again later.",
       "validation": {
         "name": "Name is required",
         "email": "Email is required",

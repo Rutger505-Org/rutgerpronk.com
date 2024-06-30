@@ -68,7 +68,7 @@
       "message": "Bericht",
       "submit": "Verstuur e-mail",
       "success": "Bericht succesvol verzonden",
-      "sendError": "Er is iets misgegaan... Probeer het later opnieuw.",
+      "error": "Er is iets misgegaan! Probeer het later opnieuw.",
       "validation": {
         "name": "Naam is verplicht",
         "email": "E-mail is verplicht",
