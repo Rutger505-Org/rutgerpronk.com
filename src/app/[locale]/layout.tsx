@@ -6,6 +6,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { locales } from "../../../i18n.config";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -61,6 +62,7 @@ export default function RootLayout({
             {children}
           </NextIntlClientProvider>
         </ReactQueryProvider>
+        <Toaster />
       </body>
     </html>
   );

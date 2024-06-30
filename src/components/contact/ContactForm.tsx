@@ -14,9 +14,11 @@ import {
 import { sendEmail as sendEmailAction } from "@/app/[locale]/actions";
 import { useMutation } from "react-query";
 import SubmitButton from "@/components/contact/SubmitButton";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function ContactForm() {
   const t = useTranslations("contact.form");
+  const { toast } = useToast();
 
   const formSchema = z.object({
     name: z.string().min(1, { message: t("validation.name") }),
@@ -39,10 +41,21 @@ export default function ContactForm() {
   const {
     mutate: sendEmail,
     isLoading,
-    isError,
     isSuccess,
   } = useMutation({
     mutationFn: sendEmailAction,
+    onSuccess: () => {
+      toast({
+        title: t("toast.success"),
+      });
+      form.reset();
+    },
+    onError: () => {
+      toast({
+        title: t("toast.error"),
+        variant: "destructive",
+      });
+    },
   });
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
@@ -109,7 +122,6 @@ export default function ContactForm() {
           )}
         />
         <SubmitButton sending={isLoading} sent={isSuccess} />
-        {isError && <p className="-mt-4 text-red">{t("error")}</p>}
       </form>
     </Form>
   );
