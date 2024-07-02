@@ -53,13 +53,19 @@ export default function Projects() {
             location={t("experiences.future.experience2.place")}
           />
         </ExperienceTime>
-        <ExperienceTime time={t("experiences.2023.title")} present>
+        <ExperienceTime time={t("experiences.2024.title")} present>
+          <Experience
+            title={t("experiences.2024.experience1.title")}
+            location={t("experiences.2024.experience1.place")}
+          />
+        </ExperienceTime>
+        <ExperienceTime time={t("experiences.2023.title")}>
           <Experience
             title={t("experiences.2023.experience1.title")}
             location={t("experiences.2023.experience1.place")}
           />
         </ExperienceTime>
-        <ExperienceTime time={"2022"}>
+        <ExperienceTime time={t("experiences.2022.title")}>
           <Experience
             title={t("experiences.2022.experience1.title")}
             location={t("experiences.2022.experience1.place")}
