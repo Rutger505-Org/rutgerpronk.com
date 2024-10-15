@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rutgerpronk-nextjs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rutgerpronk-nextjs
+  template:
+    metadata:
+      labels:
+        app: rutgerpronk-nextjs
+    spec:
+      containers:
+        - name: rutgerpronk-nextjs
+          image: rutger505/portfolio:latest
+          ports:
+            - containerPort: 3000
