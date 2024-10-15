@@ -3,16 +3,17 @@ WORKDIR /app
 
 COPY . .
 
+RUN npm install
+
 EXPOSE 3000
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev", "--", "--turbo"]
 
 FROM node:lts-alpine AS dependencies
 WORKDIR /app
 
 COPY package.json package-lock.json ./
 
-# Install dependencies
 RUN npm ci
 
 FROM node:lts-alpine AS builder
