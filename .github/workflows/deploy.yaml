@@ -21,21 +21,24 @@ jobs:
     - name: Build and push Docker image
       run: |
         docker build -t rutger505/portfolio:${{ github.ref_name  }} .
-        docker push yourusername/yourapp:${{ github.sha }}
+        docker push rutger505/portfolio:${{ github.sha }}
 
   Deploy:
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up kubectl
-      uses: azure/setup-kubectl@v1
+      uses: azure/setup-kubectl@v4
       with:
-        version: 'v1.25.0'
+        version: 'v1.30.0'
 
     - name: Deploy to Kubernetes
       run: |
-        kubectl set image deployment/your-deployment your-container=yourusername/yourapp:${{ github.sha }} --namespace=your-namespace
-        kubectl rollout status deployment/your-deployment --namespace=your-namespace
+        kubectl set image deployment/portfolio portfolio=rutger505/portfolio:${{ github.sha }}
+        kubectl rollout status deployment/portfolio
 
     env:
       KUBECONFIG: ${{ secrets.KUBECONFIG }}
