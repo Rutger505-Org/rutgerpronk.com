@@ -1,0 +1,41 @@
+name: Deploy to Kubernetes
+
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  Build Docker image:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Build and push Docker image
+      run: |
+        docker build -t rutger505/portfolio:${{ github.ref_name  }} .
+        docker push yourusername/yourapp:${{ github.sha }}
+
+  Deploy:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up kubectl
+      uses: azure/setup-kubectl@v1
+      with:
+        version: 'v1.25.0'
+
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl set image deployment/your-deployment your-container=yourusername/yourapp:${{ github.sha }} --namespace=your-namespace
+        kubectl rollout status deployment/your-deployment --namespace=your-namespace
+
+    env:
+      KUBECONFIG: ${{ secrets.KUBECONFIG }}
