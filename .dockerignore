@@ -246,3 +246,4 @@ fabric.properties
 # typescript
 next-env.d.ts
 
+Dockerfile
