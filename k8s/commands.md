@@ -1,7 +1,7 @@
 # Kubernetes commands 
 
 # Restart deployment
-kubectl rollout restart deployment/portfolio
+kubectl rollout restart deployment/portfolio-deployment
 
 ## Config
 kubectl create configmap portfolio-config --from-literal=GMAIL_USER=...  --from-literal=RECIPIENT_EMAIL=...
