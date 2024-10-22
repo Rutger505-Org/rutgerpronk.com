@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: portfolio-service
+      app: portfolio-deployment
   template:
     metadata:
       labels:
-        app: portfolio-service
+        app: portfolio-deployment
     spec:
       containers:
         - name: portfolio

@@ -4,7 +4,7 @@ metadata:
   name: portfolio-service
 spec:
   selector:
-    app: portfolio-service
+    app: portfolio-deployment
   ports:
     - protocol: TCP
       port: 80
