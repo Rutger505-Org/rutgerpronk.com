@@ -4,7 +4,7 @@
 kubectl rollout restart deployment/portfolio
 
 ## Config
-kubectl create configmap portfolio --from-literal=GMAIL_USER=...  --from-literal=RECIPIENT_EMAIL=...
+kubectl create configmap portfolio-config --from-literal=GMAIL_USER=...  --from-literal=RECIPIENT_EMAIL=...
 
 ## Secret
-kubectl create secret generic portfolio --from-literal=GMAIL_APP_PASSWORD="aaaa aaaa aaaa aaaa"
+kubectl create secret generic portfolio-secret --from-literal=GMAIL_APP_PASSWORD="aaaa aaaa aaaa aaaa"

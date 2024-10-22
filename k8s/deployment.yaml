@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: portfolio
+  name: portfolio-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: portfolio
+      app: portfolio-service
   template:
     metadata:
       labels:
-        app: portfolio
+        app: portfolio-service
     spec:
       containers:
         - name: portfolio
@@ -19,6 +19,6 @@ spec:
             - containerPort: 3000
           envFrom:
             - configMapRef:
-                name: portfolio
+                name: portfolio-config
             - secretRef:
-                name: portfolio
+                name: portfolio-secret
