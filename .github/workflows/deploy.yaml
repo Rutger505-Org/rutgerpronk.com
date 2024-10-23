@@ -76,10 +76,11 @@ jobs:
         mkdir --parents ~/.kube
         echo "${{ secrets.KUBECONFIG }}" | base64 --decode > ~/.kube/config
         
-        cat ~/.kube/config
-        
         cat k8s/*.yaml
         
-        kubectl replace -f .
+        kubectl replace -f k8s/deployment.yaml
+        kubectl replace -f k8s/service.yaml
+        kubectl replace -f k8s/ingress.yaml
+        
         
         kubectl rollout restart deployment/${DEPLOYMENT_NAME}
