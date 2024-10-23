@@ -54,9 +54,13 @@ jobs:
 
     - name: Get all k8s files
       run: |
-        
-        echo $(cd k8s && ls *.yaml)
-        echo "K8S_FILES='$(cd k8s && ls *.yaml)'" >> $GITHUB_ENV
+        {
+          echo "K8S_FILES<<EOF"
+          # List all .yaml files in the k8s directory
+          ls k8s/*.yaml
+          echo "EOF"
+        } >> "$GITHUB_ENV"
+      
 
     - name: inline-envsubst
       uses: DominicWatson/github-action-envsubst@v1
