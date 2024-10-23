@@ -76,6 +76,8 @@ jobs:
         mkdir --parents ~/.kube
         echo "${{ secrets.KUBECONFIG }}" | base64 --decode > ~/.kube/config
         
+        cat ~/.kube/config
+        
         cat k8s/*.yaml
         
         kubectl replace -f .
