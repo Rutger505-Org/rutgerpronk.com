@@ -42,10 +42,8 @@ jobs:
       with:
         version: 'v1.30.0'
 
-    - name: Install yq
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y yq
+    - name: Setup yq
+      uses: mikefarah/yq@v4.44.3
 
     - name: Deploy to Kubernetes
       run: |
