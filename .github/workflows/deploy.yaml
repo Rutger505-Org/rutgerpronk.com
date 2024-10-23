@@ -56,10 +56,10 @@ jobs:
       run: |
         {
           echo "K8S_FILES<<EOF"
-          # List all .yaml files in the k8s directory
           ls k8s/*.yaml
           echo "EOF"
         } >> "$GITHUB_ENV"
+        echo {{ env.K8S_FILES }}
       
 
     - name: inline-envsubst
@@ -75,6 +75,8 @@ jobs:
         
         mkdir --parents ~/.kube
         echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
+        
+        cat k8s/*.yaml
         
         kubectl replace -f .
         
