@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: rutger505/portfolio:1.1.1
+          image: rutger505/portfolio:${TAG_NAME}
           ports:
             - containerPort: 3000
           envFrom:
