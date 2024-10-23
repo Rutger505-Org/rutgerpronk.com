@@ -55,7 +55,7 @@ jobs:
     - name: inline-envsubst
       uses: DominicWatson/github-action-envsubst@v1
       with:
-        files: K8S_FILES
+        files: ${{ env.FILES }}
       env:
         TAG_NAME: 1.1.2 #${{ github.event.release.tag_name }}
 
