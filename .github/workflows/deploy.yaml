@@ -50,14 +50,13 @@ jobs:
     - name: Setup yq
       uses: mikefarah/yq@v4.44.3
 
-    - name: Insert veriables into deployment.yaml
+    - name: Insert tag name into deployment.yaml
       uses: danielr1996/envsubst-action@1.1.0
       env:
-        TAG_NAME: 1.1.2
+        TAG_NAME: 1.1.2 #${{ github.event.release.tag_name }}
       with:
         input: k8s/deployment.yaml
         output: k8s/deployment.yaml
-
 
     - name: Deploy to Kubernetes
       run: |
@@ -66,18 +65,6 @@ jobs:
         mkdir --parents ~/.kube
         echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
         
-
-        cat k8s/deployment.yaml
-        
-        echo passed!
-        
-        envsubst < k8s/deployment.yaml | kubectl replace -f -
-        
-        echo envsubst < k8s/service.yaml
-        envsubst < k8s/service.yaml | kubectl replace -f -
-        
-        echo envsubst < k8s/ingress.yaml
-        envsubst < k8s/ingress.yaml | kubectl replace -f -
-        
+        kubectl replace -f .
         
         kubectl rollout restart deployment/${DEPLOYMENT_NAME}
