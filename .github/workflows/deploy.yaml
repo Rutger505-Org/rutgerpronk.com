@@ -59,7 +59,7 @@ jobs:
         echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
         
         cat k8s/deployment.yaml
-        k8s/deployment.yaml < envsubst < k8s/deployment.yaml
+        envsubst < k8s/deployment.yaml > temp.yaml && mv temp.yaml k8s/deployment.yaml
         cat k8s/deployment.yaml | envsubst
         
         echo passed!
