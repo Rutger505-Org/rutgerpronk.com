@@ -58,7 +58,12 @@ jobs:
         mkdir --parents ~/.kube
         echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
         
+        cat k8s/deployment.yaml
         echo envsubst < k8s/deployment.yaml
+        cat k8s/deployment.yaml | envsubst
+        
+        echo passed!
+        
         envsubst < k8s/deployment.yaml | kubectl replace -f -
         
         echo envsubst < k8s/service.yaml
