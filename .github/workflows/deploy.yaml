@@ -47,16 +47,19 @@ jobs:
       with:
         version: 'v1.30.0'
 
-    - name: Setup yq
-      uses: mikefarah/yq@v4.44.3
+    - name: Get all k8s files
+      run: |
+        files=$(ls k8s)
+        echo "FILES=${files}" >> $GITHUB_ENV
 
-    - name: Insert tag name into deployment.yaml
-      uses: danielr1996/envsubst-action@1.1.0
+    - name: inline-envsubst
+      uses: DominicWatson/github-action-envsubst@v1
+      with:
+        files: ${{ env.FILES }}
       env:
         TAG_NAME: 1.1.2 #${{ github.event.release.tag_name }}
-      with:
-        input: k8s/deployment.yaml
-        output: k8s/deployment.yaml
+
+
 
     - name: Deploy to Kubernetes
       run: |
