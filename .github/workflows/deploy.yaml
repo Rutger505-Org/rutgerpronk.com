@@ -56,12 +56,19 @@ jobs:
       run: |
         TAG_NAME=1.1.2
         DEPLOYMENT_NAME=$(yq '.metadata.name' k8s/deployment.yaml --unwrapScalar)
+        
+        echo HI
              
         mkdir --parents ~/.kube
+        echo HI2
         echo "$KUBECONFIG" > ~/.kube/config
+        echo HI3
         $KUBECONFIG=~/.kube/config
         
+        echo HI4
+        
         kubectl config view
+        echo HI5
         
         envsubst < k8s/deployment.yaml | kubectl replace -f -
         envsubst < k8s/service.yaml | kubectl replace -f -
