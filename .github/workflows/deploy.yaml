@@ -78,6 +78,10 @@ jobs:
         
         cat k8s/*.yaml
         
+        echo $CWD
+        echo $PWD
+        echo $(ls)
+        
         kubectl replace -f k8s/deployment.yaml
         kubectl replace -f k8s/service.yaml
         kubectl replace -f k8s/ingress.yaml
