@@ -50,18 +50,23 @@ jobs:
     - name: Setup yq
       uses: mikefarah/yq@v4.44.3
 
+    - name: Insert veriables into deployment.yaml
+      uses: danielr1996/envsubst-action@1.1.0
+      env:
+        TAG_NAME: 1.1.2
+        with:
+          input: k8s/deployment.yaml
+          output: k8s/deployment.yaml
+
+
     - name: Deploy to Kubernetes
       run: |
-        TAG_NAME=1.1.2
         DEPLOYMENT_NAME=$(yq '.metadata.name' k8s/deployment.yaml --unwrapScalar)
         
         mkdir --parents ~/.kube
         echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
         
-        echo "Using TAG_NAME: ${TAG_NAME}"
 
-        cat k8s/deployment.yaml
-        envsubst -v < k8s/deployment.yaml > temp.yaml && mv temp.yaml k8s/deployment.yaml
         cat k8s/deployment.yaml
         
         echo passed!
