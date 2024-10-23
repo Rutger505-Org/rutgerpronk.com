@@ -60,8 +60,8 @@ jobs:
         mkdir --parents ~/.kube
         echo "$KUBECONFIG" > ~/.kube/config
         $KUBECONFIG=~/.kube/config
-             
-        yq '.clusters[0].cluster.server' ~/.kube/config --unwrapScalar
+        
+        kubectl config view
         
         envsubst < k8s/deployment.yaml | kubectl replace -f -
         envsubst < k8s/service.yaml | kubectl replace -f -
