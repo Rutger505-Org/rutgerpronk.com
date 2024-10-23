@@ -59,13 +59,13 @@ jobs:
           ls k8s/*.yaml
           echo "EOF"
         } >> "$GITHUB_ENV"
-        echo {{ env.K8S_FILES }}
+        echo ${{ env.K8S_FILES }}
       
 
     - name: inline-envsubst
       uses: DominicWatson/github-action-envsubst@v1
       with:
-        files: ${{ env.FILES }}
+        files: ${{ env.K8S_FILES }}
       env:
         TAG_NAME: 1.1.2 #${{ github.event.release.tag_name }}
 
