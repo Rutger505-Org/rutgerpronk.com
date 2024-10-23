@@ -59,6 +59,7 @@ jobs:
              
         mkdir --parents ~/.kube
         echo "$KUBECONFIG" > ~/.kube/config
+        $KUBECONFIG=~/.kube/config
              
         yq '.clusters[0].cluster.server' ~/.kube/config --unwrapScalar
         
