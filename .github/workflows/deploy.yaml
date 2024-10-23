@@ -58,6 +58,8 @@ jobs:
         mkdir --parents ~/.kube
         echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
         
+        echo "Using TAG_NAME: ${TAG_NAME}"
+
         cat k8s/deployment.yaml
         envsubst < k8s/deployment.yaml > temp.yaml && mv temp.yaml k8s/deployment.yaml
         cat k8s/deployment.yaml
