@@ -37,8 +37,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy to Kubernetes
     #needs: build-docker-image
-    env:
-      KUBECONFIG: ${{ secrets.KUBECONFIG }}
 
     steps:
     - name: Checkout code
@@ -61,14 +59,11 @@ jobs:
              
         mkdir --parents ~/.kube
         echo HI2
-        echo "$KUBECONFIG" > ~/.kube/config
+        echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
         echo HI3
-        $KUBECONFIG=~/.kube/config
-        
-        echo HI4
         
         kubectl config view
-        echo HI5
+        echo HI4
         
         envsubst < k8s/deployment.yaml | kubectl replace -f -
         envsubst < k8s/service.yaml | kubectl replace -f -
