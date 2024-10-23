@@ -53,8 +53,8 @@ jobs:
 #        echo "K8S_FILES=${FILES}" >> $GITHUB_ENV
     - name: Get all k8s files
       run: |
-        export FILES=$(ls k8s)
-#        echo "K8S_FILES=${FILES}" >> $GITHUB_ENV
+#        export FILES=$(ls k8s)
+        echo "K8S_FILES=deployment.yaml ingress.yaml" >> $GITHUB_ENV
 
     - name: inline-envsubst
       uses: DominicWatson/github-action-envsubst@v1
