@@ -47,10 +47,14 @@ jobs:
       with:
         version: 'v1.30.0'
 
+#    - name: Get all k8s files
+#      run: |
+#        export FILES=$(ls k8s)
+#        echo "K8S_FILES=${FILES}" >> $GITHUB_ENV
     - name: Get all k8s files
       run: |
         export FILES=$(ls k8s)
-        echo "K8S_FILES=${FILES}" >> $GITHUB_ENV
+#        echo "K8S_FILES=${FILES}" >> $GITHUB_ENV
 
     - name: inline-envsubst
       uses: DominicWatson/github-action-envsubst@v1
