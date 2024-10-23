@@ -54,9 +54,9 @@ jobs:
       uses: danielr1996/envsubst-action@1.1.0
       env:
         TAG_NAME: 1.1.2
-        with:
-          input: k8s/deployment.yaml
-          output: k8s/deployment.yaml
+      with:
+        input: k8s/deployment.yaml
+        output: k8s/deployment.yaml
 
 
     - name: Deploy to Kubernetes
