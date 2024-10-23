@@ -55,18 +55,16 @@ jobs:
         TAG_NAME=1.1.2
         DEPLOYMENT_NAME=$(yq '.metadata.name' k8s/deployment.yaml --unwrapScalar)
         
-        echo HI
-             
         mkdir --parents ~/.kube
-        echo HI2
         echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
-        echo HI3
         
-        kubectl config view
-        echo HI4
-        
+        echo envsubst < k8s/deployment.yaml
         envsubst < k8s/deployment.yaml | kubectl replace -f -
+        
+        echo envsubst < k8s/service.yaml
         envsubst < k8s/service.yaml | kubectl replace -f -
+        
+        echo envsubst < k8s/ingress.yaml
         envsubst < k8s/ingress.yaml | kubectl replace -f -
         
         
