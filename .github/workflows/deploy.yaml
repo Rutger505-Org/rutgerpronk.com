@@ -36,7 +36,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy to Kubernetes
-#    needs: build-docker-image
+    #needs: build-docker-image
     env:
       KUBECONFIG: ${{ secrets.KUBECONFIG }}
 
@@ -54,7 +54,7 @@ jobs:
 
     - name: Deploy to Kubernetes
       run: |
-#        TAG_NAME=${{ github.event.release.tag_name }}
+        #TAG_NAME=${{ github.event.release.tag_name }}
         TAG_NAME=1.1.2
         DEPLOYMENT_NAME=$(yq '.metadata.name' k8s/deployment.yaml --unwrapScalar)
              
