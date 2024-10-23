@@ -74,7 +74,7 @@ jobs:
         DEPLOYMENT_NAME=$(yq '.metadata.name' k8s/deployment.yaml --unwrapScalar)
         
         mkdir --parents ~/.kube
-        echo "${{ secrets.KUBECONFIG }}" > ~/.kube/config
+        echo "${{ secrets.KUBECONFIG }}" | base64 --decode > ~/.kube/config
         
         cat k8s/*.yaml
         
