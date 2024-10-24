@@ -19,7 +19,6 @@ jobs:
       configmap_name: portfolio-config
       configmap_literals: "GMAIL_USER=rutger.pronk19@gmail.com,RECIPIENT_EMAIL=rutger.pronk11@gmail.com"
       secret_name: portfolio-secret
-      secret_literals: ""
     secrets:
       kube_config: ${{ secrets.KUBECONFIG }}
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
