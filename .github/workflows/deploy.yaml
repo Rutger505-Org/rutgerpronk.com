@@ -14,7 +14,8 @@ jobs:
     uses: rutger505/deploy-to-kubernetes/.github/workflows/deploy.yaml@add-deploy-file
     with:
       dockerhub_username: ${{ vars.DOCKERHUB_USERNAME }}
-      image_name: rutger505/portfolio:${{ github.event.release.tag_name }}
+#      image_name: rutger505/portfolio:${{ github.event.release.tag_name }}
+      image_name: rutger505/portfolio:1.1.2
       deployment_name: portfolio-deployment
       configmap_name: portfolio-config
       configmap_literals: "GMAIL_USER=rutger.pronk19@gmail.com,RECIPIENT_EMAIL=rutger.pronk11@gmail.com"
