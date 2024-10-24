@@ -3,6 +3,7 @@ name: Call Deploy Workflow
 #on:
 #  release:
 #    types: [published]
+
 on:
   push:
     branches:
