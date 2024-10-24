@@ -7,7 +7,7 @@ name: Call Deploy Workflow
 on:
   push:
     branches:
-      - *
+      - migrate-to-k8s
 
 jobs:
   deploy:
