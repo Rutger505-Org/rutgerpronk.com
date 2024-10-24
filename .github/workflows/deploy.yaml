@@ -22,4 +22,4 @@ jobs:
     secrets:
       kube_config: ${{ secrets.KUBECONFIG }}
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
-      secret_literals: GMAIL_APP_PASSWORD='{{ secrets.GMAIL_APP_PASSWORD }}'
+      secret_literals: GMAIL_APP_PASSWORD='${{ secrets.GMAIL_APP_PASSWORD }}'
