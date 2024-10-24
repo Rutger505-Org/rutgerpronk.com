@@ -12,11 +12,14 @@ jobs:
   deploy:
     uses: rutger505/deploy-to-kubernetes/.github/workflows/deploy.yaml@add-deploy-file
     with:
-      dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
-      dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
+      dockerhub_username: ${{ vars.DOCKERHUB_USERNAME }}
       image_name: rutger505/portfolio:${{ github.event.release.tag_name }}
       deployment_name: portfolio-deployment
       configmap_name: portfolio-config
       configmap_literals: "GMAIL_USER=rutger.pronk19@gmail.com,RECIPIENT_EMAIL=rutger.pronk11@gmail.com"
       secret_name: portfolio-secret
-      secret_literals: "GMAIL_APP_PASSWORD='ngrk bgzi iebw veat'"
+      secret_literals: ""
+    secrets:
+      kube_config: ${{ secrets.KUBECONFIG }}
+      dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
+      secret_literals: GMAIL_APP_PASSWORD='{{ secrets.GMAIL_APP_PASSWORD }}'
