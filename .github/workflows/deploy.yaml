@@ -1,84 +1,18 @@
-#file: noinspection YAMLSchemaValidation
-name: Deploy to Kubernetes
-
-#on:
-#  release:
-#    types:
-#      - created
+name: Call Deploy Workflow
 
 on:
-  push:
-    branches:
-      - '*'
-
+  release:
+    types: [published]
 
 jobs:
-#  build-docker-image:
-#    runs-on: ubuntu-latest
-#    name: Build and push Docker image
-#
-#    steps:
-#    - name: Checkout code
-#      uses: actions/checkout@v3
-#
-#    - name: Log in to Docker Hub
-#      uses: docker/login-action@v2
-#      with:
-#        username: ${{ secrets.DOCKERHUB_USERNAME }}
-#        password: ${{ secrets.DOCKERHUB_TOKEN }}
-#
-#    - name: Build and push Docker image
-#      run: |
-#        TAG_NAME=${{ github.event.release.tag_name }}
-#        docker build -t rutger505/portfolio:${TAG_NAME} .
-#        docker push rutger505/portfolio:${TAG_NAME}
-
   deploy:
-    runs-on: ubuntu-latest
-    name: Deploy to Kubernetes
-    #needs: build-docker-image
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Set up kubectl
-      uses: azure/setup-kubectl@v4
-      with:
-        version: 'v1.30.0'
-
-    - name: Get all k8s files
-      run: |
-        {
-          echo "K8S_FILES<<EOF"
-          ls k8s/*.yaml
-          echo "EOF"
-        } >> "$GITHUB_ENV"
-        echo ${{ env.K8S_FILES }}
-      
-    - name: inline-envsubst
-      uses: DominicWatson/github-action-envsubst@v1
-      with:
-        files: ${{ env.K8S_FILES }}
-      env:
-        TAG_NAME: 1.1.2 #${{ github.event.release.tag_name }}
-
-    - name: Deploy to Kubernetes
-      run: |
-        DEPLOYMENT_NAME=$(yq '.metadata.name' k8s/deployment.yaml --unwrapScalar)
-        
-        mkdir --parents ~/.kube
-        echo "${{ secrets.KUBECONFIG }}" | base64 --decode > ~/.kube/config
-        
-        kubectl create configmap portfolio-config \
-          --from-literal=GMAIL_USER=rutger.pronk19@gmail.com \
-          --from-literal=RECIPIENT_EMAIL=rutger.pronk11@gmail.com \
-          --dry-run=client -o yaml | kubectl apply -f -
-        
-        kubectl create secret generic portfolio-secret \
-            --from-literal=GMAIL_APP_PASSWORD='ngrk bgzi iebw veat' \
-            --dry-run=client -o yaml | kubectl apply -f -
-        
-        kubectl apply -f k8s/
-        
-        kubectl rollout restart deployment/${DEPLOYMENT_NAME}
+    uses: rutger505/deploy-to-kubernetes/.github/workflows/deploy.yaml@add-deploy-file
+    with:
+      dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
+      dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
+      image_name: rutger505/portfolio:${{ github.event.release.tag_name }}
+      deployment_name: portfolio-deployment
+      configmap_name: portfolio-config
+      configmap_literals: "GMAIL_USER=rutger.pronk19@gmail.com,RECIPIENT_EMAIL=rutger.pronk11@gmail.com"
+      secret_name: portfolio-secret
+      secret_literals: "GMAIL_APP_PASSWORD='ngrk bgzi iebw veat'"
