@@ -16,7 +16,7 @@ jobs:
       deployment_name: portfolio-deployment
 
       configmap_name: portfolio-config
-      configmap_literals: GMAIL_USER=rutger.pronk19@gmail.com,RECIPIENT_EMAIL=rutger.pronk11@gmail.com,TEST_WITH_SPACES=This is a test,TEST_WITH_SPACES_AND_SINGLE_QUOTES='This is a test',TEST_WITH_SPACES_AND_DOUBLE_QUOTES="This is a test"
+      configmap_literals: GMAIL_USER=rutger.pronk19@gmail.com,RECIPIENT_EMAIL=rutger.pronk11@gmail.com,TEST_WITH_SPACES_AND_SINGLE_QUOTES='This is a test',TEST_WITH_SPACES_AND_DOUBLE_QUOTES="This is a test"
 
       secret_name: portfolio-secret
 
