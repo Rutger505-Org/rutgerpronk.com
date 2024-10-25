@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    uses: rutger505/deploy-to-kubernetes/.github/workflows/deploy.yaml@1.0.1
+    uses: rutger505/deploy-to-kubernetes/.github/workflows/deploy.yaml@1.1.0
     with:
       dockerhub_username: ${{ vars.DOCKERHUB_USERNAME }}
 
@@ -16,11 +16,11 @@ jobs:
       deployment_name: portfolio-deployment
 
       configmap_name: portfolio-config
-      configmap_literals: "GMAIL_USER=rutger.pronk19@gmail.com,RECIPIENT_EMAIL=rutger.pronk11@gmail.com"
+      configmap_literals: GMAIL_USER=rutger.pronk19@gmail.com,RECIPIENT_EMAIL=rutger.pronk11@gmail.com
 
       secret_name: portfolio-secret
 
-      kubernetes_files_replace_literals: "TAG_NAME=${{ github.ref_name }}"
+      kubernetes_files_replace_literals: TAG_NAME=${{ github.ref_name }}
     secrets:
       kube_config: ${{ secrets.KUBECONFIG }}
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
