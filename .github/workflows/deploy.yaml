@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - migrate-to-k8s
+
 jobs:
   deploy:
     uses: rutger505/deploy-to-kubernetes/.github/workflows/deploy.yaml@fix-environment-variables-with-spaces
