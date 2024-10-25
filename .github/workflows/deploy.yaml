@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    uses: rutger505/deploy-to-kubernetes/.github/workflows/deploy.yaml@main
+    uses: rutger505/deploy-to-kubernetes/.github/workflows/deploy.yaml@1.0.0
     with:
       dockerhub_username: ${{ vars.DOCKERHUB_USERNAME }}
 
