@@ -2,8 +2,8 @@ name: Deploy to Kubernetes
 
 on:
   push:
-    branches:
-      - migrate-to-k8s
+    tags:
+      - '*'
 
 jobs:
   deploy:
