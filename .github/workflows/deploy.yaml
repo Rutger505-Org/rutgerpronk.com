@@ -64,6 +64,7 @@ jobs:
           done
         env:
           TAG_NAME: ${{ github.ref_name }}
+          INGRESS_HOST: ${{ vars.INGRESS_HOST }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
 
       - name: Deploy to Kubernetes
