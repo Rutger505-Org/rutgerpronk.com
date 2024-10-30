@@ -73,7 +73,7 @@ jobs:
 
       - name: Create namespace if not exists
         run: |
-          if ! kubectl get namespace $NAMESPACE; then
+          if ! kubectl get namespace $NAMESPACE &> /dev/null; then
             echo "Namespace $NAMESPACE does not exist, creating it"
             kubectl create namespace $NAMESPACE
           else
