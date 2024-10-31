@@ -21,10 +21,10 @@ jobs:
           script: |
             console.log(context)
             github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,  // Use repo instead of name
               issue_number: context.issue.number,
-              body: message
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 Thanks for reporting!'
             });
 
       - name: Stop
