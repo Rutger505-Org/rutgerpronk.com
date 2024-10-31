@@ -1,4 +1,4 @@
-FROM node:22-alpine AS dependencies
+FROM node:20-alpine AS dependencies
 ENV NODE_ENV=production
 WORKDIR /app
 
@@ -7,7 +7,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 
-FROM node:22-alpine AS builder
+FROM node:20-alpine AS builder
 ENV NODE_ENV=production
 WORKDIR /app
 
@@ -20,7 +20,7 @@ COPY . .
 RUN npm run build
 
 
-FROM node:22-alpine AS production
+FROM node:20-alpine AS production
 ENV NODE_ENV=production
 WORKDIR /app
 
