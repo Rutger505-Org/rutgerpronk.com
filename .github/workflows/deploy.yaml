@@ -41,8 +41,8 @@ jobs:
         with:
           push: true
           tags: rutger505/portfolio:${{ env.TAG_NAME }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=registry,ref=rutger505/portfolio:cache
+          cache-to: type=registry,ref=rutger505/portfolio:cache,mode=max
 
   deploy-to-kubernetes:
     name: Deploy to Kubernetes
