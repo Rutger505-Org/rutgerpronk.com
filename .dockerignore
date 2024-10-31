@@ -18,6 +18,7 @@ tests
 README.md
 *.md
 *.txt
+act
 
 # Build
 .next
