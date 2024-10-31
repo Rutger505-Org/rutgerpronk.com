@@ -19,39 +19,13 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            try {
-              const url = `https://demo url`;
-              const message = `🚀 Preview deployment is available at: ${url}`;
-            
-              // Log the context for debugging
-              console.log('Context:', {
-                issue: context.issue,
-                repo: context.repo,
-                url: url
-              });
-            
-              // Make sure we have all required values
-              if (!context.repo.owner || !context.repo.repo || !context.issue.number) {
-                throw new Error('Missing required context values');
-              }
-            
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,  // Use repo instead of name
-                issue_number: context.issue.number,
-                body: message
-              });
-            
-              console.log('Successfully posted comment');
-            } catch (error) {
-              console.error('Error details:', {
-                message: error.message,
-                status: error.status,
-                response: error.response?.data
-              });
-              core.setFailed(`Failed to post comment: ${error.message}`);
-            }
-          debug: true
+            console.log(context)
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,  // Use repo instead of name
+              issue_number: context.issue.number,
+              body: message
+            });
 
       - name: Stop
         run: exit 1
