@@ -41,19 +41,11 @@ jobs:
       - name: Delete namespace
         run: |
           echo "Deleting namespace: $NAMESPACE"
-          if kubectl get namespace $NAMESPACE &> /dev/null; then
-            # List resources before deletion for logging
-            echo "Resources to be deleted:"
-            kubectl get all -n $NAMESPACE
-          
-            # Delete namespace with timeout
-            timeout 300 kubectl delete namespace $NAMESPACE --wait=true || {
-              echo "❌ Namespace deletion timed out after 5 minutes"
-              exit 1
-            }
-            echo "✅ Namespace $NAMESPACE and all its resources have been deleted"
+          if kubectl get namespace "$NAMESPACE" 2>/dev/null; then
+            kubectl delete namespace "$NAMESPACE" --timeout=5m
+            echo "✅ Namespace $NAMESPACE deleted successfully"
           else
-            echo "⚠️ Namespace $NAMESPACE does not exist"
+            echo "⚠️ Namespace $NAMESPACE not found"
           fi
 
       - name: Comment cleanup status
