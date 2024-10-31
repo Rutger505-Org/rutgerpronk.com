@@ -45,10 +45,6 @@ jobs:
     #    needs:
     #      - build-docker-image
 
-    env:
-      ENVIRONMENT: ${{ vars.ENVIRONMENT }}
-      NAMESPACE: portfolio-${{ vars.ENVIRONMENT }}
-
     steps:
       - name: Define tag name
         run: |
@@ -71,6 +67,11 @@ jobs:
             echo "ENVIRONMENT=$ENVIRONMENT" >> $GITHUB_ENV
           fi
           echo "Setting ENVIRONMENT to $ENVIRONMENT"
+
+      - name: Define namespace
+        run: |
+          echo "NAMESPACE=tic-tac-toe-$ENVIRONMENT" >> $GITHUB_ENV
+           
 
       - uses: actions/checkout@v4
 
