@@ -67,15 +67,17 @@ jobs:
       - name: Define namespace
         run: |
           echo "NAMESPACE=portfolio-$ENVIRONMENT" >> $GITHUB_ENV
+          echo "Setting NAMESPACE to portfolio-$ENVIRONMENT"
 
       - name: Define ingress host
         run: |
           if [ "$ENVIRONMENT" = "production" ]; then
             INGRESS_HOST=rutgerpronk.com
           else
-            INGRESS_HOST=$ENVIRONMENT.rutgerpronk.com
+            INGRESS_HOST=$GITHUB_SHA.rutgerpronk.com
           fi
           echo "INGRESS_HOST=$INGRESS_HOST" >> $GITHUB_ENV
+          echo "Setting INGRESS_HOST to $INGRESS_HOST"
 
       - uses: actions/checkout@v4
 
