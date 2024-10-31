@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: portfolio-config
-  namespace: portfolio-$ENVIRONMENT
+  namespace: portfolsdio-$ENVIRONMENT
 data:
   GMAIL_USER: "$GMAIL_USER"
   RECIPIENT_EMAIL: "$RECIPIENT_EMAIL"
