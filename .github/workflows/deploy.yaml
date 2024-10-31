@@ -37,7 +37,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: rutger505/portfolio-frontend:${{ env.TAG_NAME }}
+          tags: rutger505/portfolio:${{ env.TAG_NAME }}
 
   deploy-to-kubernetes:
     name: Deploy to Kubernetes
