@@ -1,5 +1,4 @@
 FROM node:20-alpine AS dependencies
-ENV NODE_ENV=production
 WORKDIR /app
 
 COPY package.json package-lock.json ./
