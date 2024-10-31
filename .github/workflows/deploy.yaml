@@ -133,10 +133,12 @@ jobs:
 
       - name: Comment deployment URL
         if: always() && github.event_name == 'pull_request'
+        env:
+          JOB_STATUS: ${{ job.status }}
         uses: actions/github-script@v7
         with:
           script: |
-            const status = job.status;
+            const status = process.env.JOB_STATUS || 'unknown';
             const emoji = status === 'success' ? '🚀' : '⚠️';
             const url = `https://${{ env.INGRESS_HOST }}`;
             let message;
@@ -155,8 +157,8 @@ jobs:
             });
 
             for (const comment of comments) {
-              if (comment.body.includes('Preview deployment is available at:') || 
-                  comment.body.includes('Deployment ')) {
+              if (comment.body.includes('Test deployment is available at:') || 
+                  comment.body.includes(': Test deployment failed.')) {
                 await github.rest.issues.deleteComment({
                   owner: context.repo.owner,
                   repo: context.repo.repo,

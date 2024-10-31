@@ -2,7 +2,7 @@ name: Cleanup PR Environment
 
 on:
   pull_request:
-    types: [closed]
+    types: [ closed ]
 
 jobs:
   cleanup:
@@ -45,7 +45,7 @@ jobs:
             # List resources before deletion for logging
             echo "Resources to be deleted:"
             kubectl get all -n $NAMESPACE
-            
+          
             # Delete namespace with timeout
             timeout 300 kubectl delete namespace $NAMESPACE --wait=true || {
               echo "❌ Namespace deletion timed out after 5 minutes"
@@ -59,17 +59,20 @@ jobs:
       - name: Comment cleanup status
         if: always()
         uses: actions/github-script@v7
+        env:
+          GITHUB_JOB_STATUS: ${{ job.status }}
+          NAMESPACE: ${{ env.NAMESPACE }}
         with:
           script: |
             const status = process.env.GITHUB_JOB_STATUS || 'unknown';
-              const emoji = status === 'success' ? '✅' : '❌';
-              const message = `${emoji} Cleanup ${status}: Test environment \`${process.env.NAMESPACE}\` cleanup ${status === 'success' ? 'completed' : 'failed'}.`;
-              
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: context.issue.number,
-                body: message
-              });
-              
-              console.log('Successfully posted cleanup comment');
+            const emoji = status === 'success' ? '✅' : '❌';
+            const message = `${emoji} Cleanup ${status}: Test environment \`${process.env.NAMESPACE}\` cleanup ${status === 'success' ? 'completed' : 'failed'}.`;
+            
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: message
+            });
+            
+            console.log('Successfully posted cleanup comment');
