@@ -74,9 +74,11 @@ jobs:
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             ENVIRONMENT=production
             INGRESS_HOST=${{ vars.BASE_DOMAIN }}
+            CLUSTER_ISSUER_NAME=letsencrypt-production
           else
             ENVIRONMENT=pr-${{ github.event.pull_request.number }}
             INGRESS_HOST=${{ github.sha }}.${{ vars.BASE_DOMAIN }}
+            CLUSTER_ISSUER_NAME=letsencrypt-staging
           fi
           
           echo "Setting environment to $ENVIRONMENT"
@@ -84,6 +86,9 @@ jobs:
           
           echo "Setting ingress host to $INGRESS_HOST"
           echo "ingress_host=$INGRESS_HOST" >> $GITHUB_OUTPUT
+          
+          echo "Setting cluster issuer name to $CLUSTER_ISSUER_NAME"
+          echo "cluster_issuer_name=$CLUSTER_ISSUER_NAME" >> $GITHUB_OUTPUT
           
           NAMESPACE=$APP_NAME-$ENVIRONMENT
           echo "Setting namespace to $NAMESPACE"
@@ -109,6 +114,7 @@ jobs:
           NAMESPACE: ${{ steps.config.outputs.namespace }}
           TAG: ${{ needs.build-docker-image.outputs.tag }}
           INGRESS_HOST: ${{ steps.config.outputs.ingress_host }}
+          CLUSTER_ISSUER_NAME: ${{ steps.config.outputs.cluster_issuer_name }}
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
