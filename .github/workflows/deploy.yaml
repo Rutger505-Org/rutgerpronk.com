@@ -86,7 +86,7 @@ jobs:
           echo "ingress_host=$INGRESS_HOST" >> $GITHUB_OUTPUT
           
           NAMESPACE=$APP_NAME-$ENVIRONMENT
-          echo "Setting namespace to NAMESPACE"
+          echo "Setting namespace to $NAMESPACE"
           echo "namespace=$NAMESPACE" >> $GITHUB_OUTPUT
 
       - name: Install envsubst
