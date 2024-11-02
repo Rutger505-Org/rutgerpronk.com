@@ -8,6 +8,10 @@ on:
     branches:
       - '*'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   DOCKER_IMAGE: rutger505/portfolio
   APP_NAME: portfolio
@@ -81,7 +85,6 @@ jobs:
           NAMESPACE=$APP_NAME-$ENVIRONMENT
           echo "Setting namespace to NAMESPACE"
           echo "namespace=$NAMESPACE" >> $GITHUB_OUTPUT
-          
 
       - name: Install envsubst
         run: sudo apt-get update && sudo apt-get install -y gettext-base
