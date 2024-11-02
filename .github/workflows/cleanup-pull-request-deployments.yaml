@@ -88,6 +88,7 @@ jobs:
         with:
           environment: ${{ steps.config.outputs.environment }}
           token: ${{ steps.get-token.outputs.token }}
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Comment cleanup failure
         if: failure()
