@@ -69,7 +69,7 @@ jobs:
           script: |
             const status = '${{ job.status }}';
             const emoji = status === 'success' ? '✅' : '❌';
-            const message = `${emoji} Cleanup ${status}: Test deployment \`${{ steps.config.outputs.namespace }}\` cleanup ${status === 'success' ? 'completed' : 'failed'}.`;
+            const message = `${emoji} Cleanup ${status}: Test deployment cleanup ${status === 'success' ? 'completed' : 'failed'}.`;
             
             // Find and delete previous deployment comments
             const { data: comments } = await github.rest.issues.listComments({
