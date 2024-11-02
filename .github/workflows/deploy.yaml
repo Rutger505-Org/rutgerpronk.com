@@ -113,7 +113,7 @@ jobs:
           namespace: ${{ steps.config.outputs.namespace }}
           manifests: |
             k8s/namespace.yaml
-            k8s/*.yaml
+            k8s/
 
       - name: Comment PR deployment URL
         if: github.event_name == 'pull_request'
