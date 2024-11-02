@@ -69,46 +69,6 @@ jobs:
             echo "⚠️ Namespace $NAMESPACE not found"
           fi
 
-      - name: Get GitHub App token
-        uses: actions/create-github-app-token@v1
-        id: get-token
-        with:
-          app-id: ${{ secrets.GH_APP_ID }}
-          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
-
-
-      - name: Get PR number
-        if: success()
-        id: get-pr-number
-        run: echo ${{ steps.config.outputs.environment }}
-
-      - name: Delete Deployment Environment
-        if: success()
-        uses: strumwolf/delete-deployment-environment@v3
-        with:
-          environment: ${{ steps.config.outputs.environment }}
-          token: ${{ steps.get-token.outputs.token }}
-          ref: ${{ github.event.pull_request.head.ref }}
-
-      - name: Comment cleanup failure
-        if: failure()
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const environment = '${{ steps.config.outputs.environment }}';
-            const message = environment
-              ? `❌ Failed to cleanup ${environment} environment.`
-              : '❌ Failed to cleanup PR environment.';
-
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: message
-            });
-
-            console.log('Successfully posted cleanup comment');
-
       - name: Comment cleanup status
         if: always()
         uses: actions/github-script@v7
