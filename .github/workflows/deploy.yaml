@@ -16,13 +16,12 @@ jobs:
     steps:
       - name: Define tag name
         run: |
-          if [[ ${{ github.ref }} == 'refs/tags/'* ]]; then
-            TAG_NAME=${{ github.ref_name }}
-            echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+          if [ "$GITHUB_REF" = "refs/tags/"* ]; then
+            TAG_NAME=$GITHUB_REF_NAME
           else
-            TAG_NAME=${{ github.sha }}
-            echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+            TAG_NAME=$GITHUB_SHA
           fi
+          echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
           echo "Setting TAG_NAME to $TAG_NAME"
 
       - uses: actions/checkout@v4
