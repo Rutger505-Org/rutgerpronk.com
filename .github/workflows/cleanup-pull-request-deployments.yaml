@@ -4,31 +4,43 @@ on:
   pull_request:
     types: [ closed ]
 
+env:
+  APP_NAME: portfolio
+
 jobs:
   cleanup:
     name: Delete PR Environment
     runs-on: ubuntu-latest
 
     steps:
-      - name: Define environment name
+      - name: Generate cleanup config
+        id: config
         run: |
-          ENVIRONMENT=pull-request-${{ github.event.pull_request.number }}
-          echo "ENVIRONMENT=$ENVIRONMENT" >> $GITHUB_ENV
-          echo "NAMESPACE=portfolio-$ENVIRONMENT" >> $GITHUB_ENV
+          ENVIRONMENT=pr-${{ github.event.pull_request.number }}
+          NAMESPACE=${{ env.APP_NAME }}-$ENVIRONMENT
+          
+          echo "Setting environment to $ENVIRONMENT"
+          echo "environment=$ENVIRONMENT" >> $GITHUB_OUTPUT
+          
+          echo "Setting namespace to $NAMESPACE"
+          echo "namespace=portfolio-$ENVIRONMENT" >> $GITHUB_OUTPUT
 
       - name: Safety check
         run: |
+          NAMESPACE=${{ steps.config.outputs.namespace }}
+          
           if [[ "$NAMESPACE" == *"production"* ]]; then
             echo "❌ Refusing to delete namespace containing 'production'"
             exit 1
           fi
           
-          if [[ "$NAMESPACE" != portfolio-pull-request-* ]]; then
+          if [[ "$NAMESPACE" != ${{ env.APP_NAME }}-pr-* ]]; then
             echo "❌ Namespace doesn't match expected pattern for PR environments"
             exit 1
           fi
 
-      - uses: azure/setup-kubectl@v4
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v4
         with:
           version: 'v1.31.0'
 
@@ -40,6 +52,8 @@ jobs:
 
       - name: Delete namespace
         run: |
+          NAMESPACE=${{ steps.config.outputs.namespace }}
+          
           echo "Deleting namespace: $NAMESPACE"
           if kubectl get namespace "$NAMESPACE" 2>/dev/null; then
             kubectl delete namespace "$NAMESPACE" --timeout=5m
@@ -58,7 +72,7 @@ jobs:
           script: |
             const status = process.env.GITHUB_JOB_STATUS || 'unknown';
             const emoji = status === 'success' ? '✅' : '❌';
-            const message = `${emoji} Cleanup ${status}: Test environment \`${process.env.NAMESPACE}\` cleanup ${status === 'success' ? 'completed' : 'failed'}.`;
+            const message = `${emoji} Cleanup ${status}: Test deployment \`${process.env.NAMESPACE}\` cleanup ${status === 'success' ? 'completed' : 'failed'}.`;
             
             // Find and delete previous deployment comments
             const { data: comments } = await github.rest.issues.listComments({
@@ -69,7 +83,7 @@ jobs:
 
             for (const comment of comments) {
               if (comment.body.includes('Cleanup') &&
-                  comment.body.includes('Test environment')) {
+                  comment.body.includes('Test deployment')) {
                 await github.rest.issues.deleteComment({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
