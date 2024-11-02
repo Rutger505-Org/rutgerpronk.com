@@ -90,7 +90,7 @@ jobs:
           echo "namespace=$NAMESPACE" >> $GITHUB_OUTPUT
 
       - name: Install envsubst
-        run: sudo apt-get update && sudo apt-get install -y gettext-base
+        run: sudo apt-get update && sudo apt-get install -y gettext-base && exit 1
 
       - name: Set up kubectl
         uses: azure/setup-kubectl@v4
