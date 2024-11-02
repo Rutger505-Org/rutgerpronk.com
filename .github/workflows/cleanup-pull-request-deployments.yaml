@@ -74,18 +74,17 @@ jobs:
         with:
           script: |
             const environment = '${{ steps.config.outputs.environment }}';
-            
+
             const status = '${{ job.status }}';
-            const succes = status === 'success';
-            
-            const statusLabel = succes ? 'succeeded' : 'failed';
-            const emoji = succes ? '✅' : '❌';
-            
+            const success = status === 'success';
+
+            const statusLabel = success ? 'succeeded' : 'failed';
+            const emoji = success ? '✅' : '❌';
+
             const message = environment
-                ? `${emoji} Cleanup of \`${environment}\` environment ${statusLabel}`
-                : `${emoji} Cleanup of PR environment ${statusLabel}`;
-            
-            // Find and delete previous deployment comments
+              ? `${emoji} Environment \`${environment}\` cleanup ${statusLabel}`
+              : `${emoji} Pull request environment cleanup ${statusLabel}`;
+
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -93,8 +92,8 @@ jobs:
             });
 
             for (const comment of comments) {
-              if (comment.body.includes('Cleanup of') &&
-                  comment.body.includes('environment')) {
+              if (comment.body.toLowerCase().includes('environment') && 
+                  comment.body.includes('cleanup')) {
                 await github.rest.issues.deleteComment({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
@@ -102,12 +101,12 @@ jobs:
                 });
               }
             }
-            
+
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
               body: message
             });
-            
+
             console.log('Successfully posted cleanup comment');
