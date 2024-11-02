@@ -17,7 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pr-${{ github.event.pull_request.number }}
-      url: ${{ github.event.pull_request.html_url }}
 
     steps:
       - name: Generate cleanup config
@@ -74,9 +73,17 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
+            const environment = '${{ steps.config.outputs.environment }}';
+            
             const status = '${{ job.status }}';
-            const emoji = status === 'success' ? '✅' : '❌';
-            const message = `${emoji} Cleanup ${status}: Test deployment cleanup ${status === 'success' ? 'completed' : 'failed'}.`;
+            const succes = status === 'success';
+            
+            const statusLabel = succes ? 'succeeded' : 'failed';
+            const emoji = succes ? '✅' : '❌';
+            
+            const message = environment
+                ? `${emoji} Cleanup of \`${environment}\` environment ${statusLabel}`
+                : `${emoji} Cleanup of PR environment ${statusLabel}`;
             
             // Find and delete previous deployment comments
             const { data: comments } = await github.rest.issues.listComments({
@@ -86,8 +93,8 @@ jobs:
             });
 
             for (const comment of comments) {
-              if (comment.body.includes('Cleanup') &&
-                  comment.body.includes('Test deployment')) {
+              if (comment.body.includes('Cleanup of') &&
+                  comment.body.includes('environment')) {
                 await github.rest.issues.deleteComment({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
