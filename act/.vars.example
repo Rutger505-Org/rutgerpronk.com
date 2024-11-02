@@ -1,2 +1,3 @@
 # Gmail email of the sender
 GMAIL_USER=
+RECIPIENT_EMAIL
