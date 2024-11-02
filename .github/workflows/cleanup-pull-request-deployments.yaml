@@ -68,13 +68,21 @@ jobs:
           else
             echo "⚠️ Namespace $NAMESPACE not found"
           fi
-          
+
+      - name: 🎟 Get GitHub App token
+        # Points to a recent commit instead of `main` to avoid supply chain attacks. (The latest tag is very old.)
+        uses: navikt/github-app-token-generator@a8ae52448279d468cfbca5cd899f2457f0b1f643
+        id: get-token
+        with:
+          app-id: ${{ secrets.GH_APP_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+
       - name: Delete Deployment Environment
         if: success()
         uses: strumwolf/delete-deployment-environment@v3
         with:
           environment: pr-${{ github.event.pull_request.number }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ steps.get-token.outputs.token }}
 
       - name: Comment cleanup failure
         if: failure()
