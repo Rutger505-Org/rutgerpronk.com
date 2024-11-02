@@ -115,15 +115,6 @@ jobs:
           INGRESS_HOST: ${{ env.INGRESS_HOST }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
 
-      - name: Create namespace if not exists
-        run: |
-          if ! kubectl get namespace $NAMESPACE &> /dev/null; then
-            echo "Namespace $NAMESPACE does not exist, creating it"
-            kubectl create namespace $NAMESPACE
-          else
-            echo "Namespace $NAMESPACE already exists"
-          fi
-
       - name: Deploy to Kubernetes
         uses: Azure/k8s-deploy@v5
         with:
