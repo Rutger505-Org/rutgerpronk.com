@@ -76,11 +76,17 @@ jobs:
           app-id: ${{ secrets.GH_APP_ID }}
           private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
 
+
+      - name: Get PR number
+        if: success()
+        id: get-pr-number
+        run: echo ${{ steps.config.outputs.environment }}
+
       - name: Delete Deployment Environment
         if: success()
         uses: strumwolf/delete-deployment-environment@v3
         with:
-          environment: pr-${{ github.event.pull_request.number }}
+          environment: ${{ steps.config.outputs.environment }}
           token: ${{ steps.get-token.outputs.token }}
 
       - name: Comment cleanup failure
