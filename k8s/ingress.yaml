@@ -5,6 +5,10 @@ metadata:
   namespace: portfolio-$ENVIRONMENT
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - $INGRESS_HOST
+      secretName: portfolio-tls
   rules:
     - host: $INGRESS_HOST
       http:

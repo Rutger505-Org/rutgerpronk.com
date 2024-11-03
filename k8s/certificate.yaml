@@ -4,7 +4,7 @@ metadata:
   name: portfolio-certificate
   namespace: portfolio-$ENVIRONMENT
 spec:
-  secretName: example-tls
+  secretName: portfolio-tls
   duration: 2160h # 90 days, maximum allowed by Let's Encrypt
   renewBefore: 360h # 15 days
   dnsNames:
