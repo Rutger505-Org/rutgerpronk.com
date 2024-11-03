@@ -54,3 +54,6 @@ Thumbs.db
 *.tar.gz
 *.tsbuildinfo
 .cache
+
+# Deployment
+k8s
