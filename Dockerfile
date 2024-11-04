@@ -1,44 +1,36 @@
-FROM node:lts-alpine AS development
-WORKDIR /app
-
-COPY . .
-
-RUN npm install
-
-EXPOSE 3000
-
-CMD ["npm", "run", "dev", "--", "--turbo"]
-
-FROM node:lts-alpine AS dependencies
+FROM node:20-alpine AS dependencies
 WORKDIR /app
 
 COPY package.json package-lock.json ./
 
 RUN npm ci
 
-FROM node:lts-alpine AS builder
+
+FROM node:20-alpine AS builder
 ENV NODE_ENV=production
 WORKDIR /app
 
-COPY . .
 COPY --from=dependencies /app/node_modules ./node_modules
+
+COPY package.json package-lock.json ./
+
+COPY . .
 
 RUN npm run build
 
 
-FROM node:lts-alpine AS production
-
+FROM node:20-alpine AS production
 ENV NODE_ENV=production
-
 WORKDIR /app
+
+COPY --from=dependencies /app/node_modules ./node_modules
+
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/next.config.js ./
+
+COPY package.json package-lock.json ./
 
 EXPOSE 3000
 
-COPY --from=builder /app/next.config.js ./
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/package.json /app/package-lock.json ./
-COPY --from=dependencies /app/node_modules ./node_modules
-
 CMD ["npm", "start"]
-

@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: portfolio-deployment
+  namespace: portfolio-$ENVIRONMENT
 spec:
   replicas: 1
   selector:
@@ -14,7 +15,7 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: rutger505/portfolio:${TAG_NAME}
+          image: rutger505/portfolio:${TAG}
           ports:
             - containerPort: 3000
           envFrom:

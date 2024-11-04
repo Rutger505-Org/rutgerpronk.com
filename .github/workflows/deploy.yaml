@@ -1,27 +1,136 @@
-name: Deploy to Kubernetes
+name: Deploy
 
 on:
   push:
     tags:
       - '*'
+  pull_request:
+    branches:
+      - '*'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DOCKER_IMAGE: rutger505/portfolio
+  APP_NAME: portfolio
 
 jobs:
-  deploy:
-    uses: rutger505/deploy-to-kubernetes/.github/workflows/deploy.yaml@1.1.0
-    with:
-      dockerhub_username: ${{ vars.DOCKERHUB_USERNAME }}
+  build-docker-image:
+    name: Build Docker image
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
 
-      image_name: rutger505/portfolio:${{ github.ref_name }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      deployment_name: portfolio-deployment
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      configmap_name: portfolio-config
-      configmap_literals: GMAIL_USER=rutger.pronk19@gmail.com,RECIPIENT_EMAIL=rutger.pronk11@gmail.com
+      - name: Generate tag
+        id: tag
+        run: |
+          if [ "$GITHUB_REF" = "refs/tags/"* ]; then
+            TAG=$GITHUB_REF_NAME
+          else
+            TAG=$GITHUB_SHA
+          fi
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "Setting TAG to $TAG"
 
-      secret_name: portfolio-secret
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      kubernetes_files_replace_literals: TAG_NAME=${{ github.ref_name }}
-    secrets:
-      kube_config: ${{ secrets.KUBECONFIG }}
-      dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
-      secret_literals: GMAIL_APP_PASSWORD='${{ secrets.GMAIL_APP_PASSWORD }}'
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: ${{ env.DOCKER_IMAGE }}:${{ steps.tag.outputs.tag }}
+          cache-from: type=registry,ref=${{ env.DOCKER_IMAGE }}:cache
+          cache-to: type=registry,ref=${{ env.DOCKER_IMAGE }}:cache,mode=max
+
+  deploy-to-kubernetes:
+    name: Deploy to Kubernetes
+    runs-on: ubuntu-latest
+    needs: build-docker-image
+    environment:
+      name: ${{ startsWith(github.ref, 'refs/tags/') && 'production' || format('pr-{0}', github.event.pull_request.number) }}
+      url: https://${{ steps.config.outputs.ingress_host }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate deployment config
+        id: config
+        run: |
+          # Set environment and hosts
+          if [[ $GITHUB_REF == refs/tags/* ]]; then
+            ENVIRONMENT=production
+            INGRESS_HOST=${{ vars.BASE_DOMAIN }}
+            CLUSTER_ISSUER_NAME=letsencrypt-production
+          else
+            ENVIRONMENT=pr-${{ github.event.pull_request.number }}
+            INGRESS_HOST=${{ github.sha }}.${{ vars.BASE_DOMAIN }}
+            CLUSTER_ISSUER_NAME=letsencrypt-staging
+          fi
+          
+          echo "Setting environment to $ENVIRONMENT"
+          echo "environment=$ENVIRONMENT" >> $GITHUB_OUTPUT
+          
+          echo "Setting ingress host to $INGRESS_HOST"
+          echo "ingress_host=$INGRESS_HOST" >> $GITHUB_OUTPUT
+          
+          echo "Setting cluster issuer name to $CLUSTER_ISSUER_NAME"
+          echo "cluster_issuer_name=$CLUSTER_ISSUER_NAME" >> $GITHUB_OUTPUT
+          
+          NAMESPACE=$APP_NAME-$ENVIRONMENT
+          echo "Setting namespace to $NAMESPACE"
+          echo "namespace=$NAMESPACE" >> $GITHUB_OUTPUT
+
+      - name: Install envsubst
+        run: sudo apt-get update && sudo apt-get install -y gettext-base
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v4
+        with:
+          version: 'v1.31.0'
+
+      - name: Set up Kubernetes context
+        uses: azure/k8s-set-context@v4
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBECONFIG }}
+
+      - name: Insert environment variables into Kubernetes files
+        env:
+          ENVIRONMENT: ${{ steps.config.outputs.environment }}
+          NAMESPACE: ${{ steps.config.outputs.namespace }}
+          TAG: ${{ needs.build-docker-image.outputs.tag }}
+          INGRESS_HOST: ${{ steps.config.outputs.ingress_host }}
+          CLUSTER_ISSUER_NAME: ${{ steps.config.outputs.cluster_issuer_name }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+        run: |
+          FILES=$(ls k8s/*.yaml | tr '\n' ' ')
+          
+          for FILE in $FILES; do
+            echo "Processing $FILE"
+            envsubst < $FILE > /tmp/envsubst || exit 1
+            mv /tmp/envsubst $FILE || exit 1
+          done
+
+      - name: Deploy to Kubernetes
+        uses: Azure/k8s-deploy@v5
+        with:
+          namespace: ${{ steps.config.outputs.namespace }}
+          manifests: |
+            k8s/namespace.yaml
+            k8s/
