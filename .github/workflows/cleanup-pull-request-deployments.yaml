@@ -29,7 +29,7 @@ jobs:
           echo "environment=$ENVIRONMENT" >> $GITHUB_OUTPUT
           
           echo "Setting namespace to $NAMESPACE"
-          echo "namespace=portfolio-$ENVIRONMENT" >> $GITHUB_OUTPUT
+          echo "namespace=$NAMESPACE" >> $GITHUB_OUTPUT
 
       - name: Safety check
         run: |
