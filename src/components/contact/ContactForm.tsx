@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { sendEmail as sendEmailAction } from "@/app/[locale]/actions";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import SubmitButton from "@/components/contact/SubmitButton";
 import { useToast } from "@/components/ui/use-toast";
 

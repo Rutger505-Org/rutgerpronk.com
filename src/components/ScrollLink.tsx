@@ -1,13 +1,13 @@
 "use client";
 
-import Link from "next/link";
-import { scroller } from "react-scroll";
+import { motion } from "framer-motion";
+import { ReactNode, MouseEvent } from "react";
 
 interface ScrollLinkProps {
   href: string;
   to: string;
   className?: string;
-  children?: any;
+  children?: ReactNode;
 }
 
 export default function ScrollLink({
@@ -16,21 +16,31 @@ export default function ScrollLink({
   className,
   children,
 }: Readonly<ScrollLinkProps>) {
-  function scrollToId() {
+  function scrollToId(e: MouseEvent<HTMLAnchorElement>) {
+    e.preventDefault();
+
     const targetElement = document.getElementById(to);
     if (!targetElement) {
       throw new Error(`ScrollLink: Element with id ${to} not found`);
     }
 
-    scroller.scrollTo(to, {
-      duration: 700,
-      smooth: "easeInOutCubic",
+    targetElement.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
     });
+
+    window.history.pushState(null, "", `#${to}`);
   }
 
   return (
-    <Link href={href} className={className} onClick={scrollToId}>
+    <motion.a
+      href={href}
+      className={className}
+      onClick={scrollToId}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+    >
       {children}
-    </Link>
+    </motion.a>
   );
 }
