@@ -15,7 +15,9 @@ export default function LandingSection() {
 
       <div className={"max-w-full"}>
         <h2 className={"text-center text-3xl text-textPrimary sm:text-4xl"}>
-          {t("softwareDev")}
+          {t.rich("softwareDev", {
+            symbol: "</>",
+          })}
         </h2>
         <h1
           className={
