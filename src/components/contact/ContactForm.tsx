@@ -40,7 +40,7 @@ export default function ContactForm() {
 
   const {
     mutate: sendEmail,
-    isLoading,
+    isPending,
     isSuccess,
   } = useMutation({
     mutationFn: sendEmailAction,
@@ -121,7 +121,7 @@ export default function ContactForm() {
             </FormItem>
           )}
         />
-        <SubmitButton sending={isLoading} sent={isSuccess} />
+        <SubmitButton sending={isPending} sent={isSuccess} />
       </form>
     </Form>
   );
