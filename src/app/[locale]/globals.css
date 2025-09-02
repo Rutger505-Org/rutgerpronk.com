@@ -74,3 +74,10 @@
 .transition-stack-reverse {
     transform: rotate(180deg);
 }
+
+.landing-parallax {
+    position: relative;
+    z-index: 10;
+    transform: translateY(var(--scroll-offset, 0px));
+    transition: transform 0.1s linear;
+}

@@ -1,15 +1,22 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import ScrollLink from "@/components/ScrollLink";
 import ArrowDownIcon from "@/components/icons/ArrowDownIcon";
 import { useTranslations } from "next-intl";
+import { useParallax } from "@/hooks/useParralax";
 
 export default function LandingSection() {
   const t = useTranslations("landingSection");
+
+  const ref = useRef<HTMLDivElement>(null);
+  useParallax(ref, 0.3);
 
   return (
     <section
       id={"home"}
       className={"flex min-h-screen flex-col items-center justify-between"}
+      ref={ref}
     >
       <div></div>
 
