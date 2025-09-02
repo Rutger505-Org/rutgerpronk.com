@@ -1,8 +1,7 @@
 "use client";
 
-import { Canvas } from "@react-three/fiber";
-import { useScroll, ScrollControls } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { ScrollControls, useScroll } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
 

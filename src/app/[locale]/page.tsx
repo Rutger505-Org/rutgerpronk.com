@@ -13,7 +13,6 @@ export default function Home() {
       <DesktopHeader />
       <MobileHeader />
 
-      {/* Three.js background layer */}
       <ThreeBackground />
 
       <main>
