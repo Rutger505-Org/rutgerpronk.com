@@ -1,6 +1,6 @@
 {
   "landingSection": {
-    "softwareDev": "'</'> Software-dev",
+    "softwareDev": "{symbol} Software-dev",
     "greeting": "Hallo, ik ben <span>Rutger</span> uit Nederland"
   },
   "about": {
