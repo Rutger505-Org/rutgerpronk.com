@@ -35,7 +35,7 @@ export default function ProjectCard({
         </Link>
       </div>
       <Image
-        className={"max-h-80 w-fit"}
+        className={"max-h-80 w-auto"}
         src={image}
         alt={"Image of {title}"}
       />
