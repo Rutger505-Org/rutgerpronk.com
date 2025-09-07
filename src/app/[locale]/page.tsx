@@ -16,15 +16,15 @@ export default function Home() {
           <LandingSection />
         </div>
 
-        <div className={"transition-stack"}></div>
+        <div className="bg-[#1c1b26]">
+          <div className={"transition-stack"}></div>
 
-        <div className=" bg-[#1c1b26] ">
           <div className="mx-spacing-mobile max-w-[2300px] sm:mx-spacing too-big:mx-auto">
             <About />
           </div>
-        </div>
 
-        <div className={"transition-stack transition-stack-reverse"}></div>
+          <div className={"transition-stack transition-stack-reverse"}></div>
+        </div>
 
         <div className="mx-spacing-mobile max-w-[2300px] sm:mx-spacing too-big:mx-auto">
           <Projects />
