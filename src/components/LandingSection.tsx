@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import ScrollLink from "@/components/ScrollLink";
-import ArrowDownIcon from "@/components/icons/ArrowDownIcon";
+import ScrollDownHint from "@/components/ScrollDownHint";
 import { useTranslations } from "next-intl";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -43,9 +42,7 @@ export default function LandingSection() {
         </h1>
       </motion.div>
 
-      <ScrollLink href={"#about"} to={"about"} className={"mb-6"}>
-        <ArrowDownIcon className={"h-8 animate-bounce text-accent"} />
-      </ScrollLink>
+      <ScrollDownHint />
     </section>
   );
 }
