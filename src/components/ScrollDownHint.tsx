@@ -9,13 +9,11 @@ export default function ScrollDownHint() {
   const [isAtTop, setIsAtTop] = useState(true);
   const [ready, setReady] = useState(false);
 
-  // show only after 3 seconds on the page
   useEffect(() => {
     const timer = setTimeout(() => setReady(true), 3000);
     return () => clearTimeout(timer);
   }, []);
 
-  // track scroll position, consider top within 50px
   useEffect(() => {
     const onScroll = () => {
       setIsAtTop(window.scrollY <= 100);
