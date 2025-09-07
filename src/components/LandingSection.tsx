@@ -15,9 +15,7 @@ export default function LandingSection() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "500%"]);
-
-  console.log(scrollYProgress, textY);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "300%"]);
 
   return (
     <section
@@ -26,17 +24,13 @@ export default function LandingSection() {
       className={"flex min-h-screen flex-col items-center justify-between"}
     >
       <div></div>
-      <div className={"max-w-full"}>
-        <motion.h2
-          style={{ y: textY }}
-          className={"text-center text-3xl text-textPrimary sm:text-4xl"}
-        >
+      <motion.div style={{ y: textY }} className={"max-w-full"}>
+        <h2 className={"text-center text-3xl text-textPrimary sm:text-4xl"}>
           {t.rich("softwareDev", {
             symbol: "</>",
           })}
-        </motion.h2>
-        <motion.h1
-          style={{ y: textY }}
+        </h2>
+        <h1
           className={
             "mb-10 max-w-2xl text-center text-5xl font-bold text-textPrimary sm:text-6xl"
           }
@@ -46,8 +40,8 @@ export default function LandingSection() {
               <span className={"text-accent"}>{children}</span>
             ),
           })}
-        </motion.h1>
-      </div>
+        </h1>
+      </motion.div>
 
       <ScrollLink href={"#about"} to={"about"} className={"mb-6"}>
         <ArrowDownIcon className={"h-8 animate-bounce text-accent"} />
