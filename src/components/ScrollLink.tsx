@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ReactNode, MouseEvent } from "react";
+import { Link } from "@/i18n/navigation";
 
 interface ScrollLinkProps {
   href: string;
@@ -33,14 +33,8 @@ export default function ScrollLink({
   }
 
   return (
-    <motion.a
-      href={href}
-      className={className}
-      onClick={scrollToId}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
+    <Link href={href} className={className} onClick={scrollToId}>
       {children}
-    </motion.a>
+    </Link>
   );
 }
