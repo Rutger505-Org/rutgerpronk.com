@@ -16,7 +16,7 @@ export default function Home() {
           <LandingSection />
         </div>
 
-        <div className="relative z-10 bg-content">
+        <div className="relative z-10 bg-[#1c1b26]">
           <div className={"transition-stack"}></div>
 
           <div className="mx-spacing-mobile max-w-[2300px] sm:mx-spacing too-big:mx-auto">

@@ -29,15 +29,15 @@ const config: Config = {
           DEFAULT: "#0E0E21",
           foreground: "hsl(var(--secondary-foreground))",
         },
-        content: {
-          DEFAULT: "#1A1A2E",
+        landing: {
+          DEFAULT: "#000e28",
         },
         accent: {
           DEFAULT: "#FF365A",
           foreground: "hsl(var(--accent-foreground))",
         },
         textPrimary: "#EDEDED",
-        textSecondary: "#DDD9F0",
+        textSecondary: "#CAC8DC",
         transparent: "transparent",
         red: "#FF0000",
         green: "#00FF00",
