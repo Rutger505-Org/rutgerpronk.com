@@ -22,22 +22,22 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#0A0E27",
+          DEFAULT: "#121125",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "#151B3B",
+          DEFAULT: "#0E0E21",
           foreground: "hsl(var(--secondary-foreground))",
         },
         content: {
-          DEFAULT: "#1A2332",
+          DEFAULT: "#1A1A2E",
         },
         accent: {
-          DEFAULT: "#4F46E5",
+          DEFAULT: "#FF365A",
           foreground: "hsl(var(--accent-foreground))",
         },
-        textPrimary: "#F8FAFC",
-        textSecondary: "#E0E7FF",
+        textPrimary: "#EDEDED",
+        textSecondary: "#DDD9F0",
         transparent: "transparent",
         red: "#FF0000",
         green: "#00FF00",
