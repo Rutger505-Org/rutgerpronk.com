@@ -3,10 +3,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
-import { locales } from "../../../i18n.config";
 import { NextIntlClientProvider } from "next-intl";
 import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
 import { Toaster } from "@/components/ui/toaster";
+import { routing } from "@/i18n/routing";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const t = await getTranslations("metadata");
   const locale = await getLocale();
-  const alternateLocales = locales.filter((l) => l !== locale);
+  const alternateLocales = routing.locales.filter((l) => l !== locale);
   const baseUrl =
     process.env.NODE_ENV === "production"
       ? new URL("https://rutgerpronk.com")
@@ -53,16 +53,11 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
-
-  const messages = await getMessages();
-
   return (
     <html lang={locale}>
       <body className={`${inter.className} bg-primary`}>
         <ReactQueryProvider>
-          <NextIntlClientProvider locale={locale} messages={messages}>
-            {children}
-          </NextIntlClientProvider>
+          <NextIntlClientProvider>{children}</NextIntlClientProvider>
         </ReactQueryProvider>
         <Toaster />
       </body>
