@@ -34,7 +34,7 @@ const config: Config = {
           foreground: "hsl(var(--accent-foreground))",
         },
         textPrimary: "#EDEDED",
-        textSecondary: "#CAC8DC",
+        textSecondary: "#DDD9F0",
         transparent: "transparent",
         red: "#FF0000",
         green: "#00FF00",

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import ScrollLink from "@/components/ScrollLink";
 import ArrowDownIcon from "@/components/icons/ArrowDownIcon";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -25,6 +24,13 @@ export default function ScrollDownHint() {
 
   const show = isAtTop && ready;
 
+  const handleScrollDown = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className={"w-14"}>
       <AnimatePresence>
@@ -36,11 +42,15 @@ export default function ScrollDownHint() {
             transition={{ duration: 0.35 }}
             className="absolute bottom-0 mb-6"
           >
-            <ScrollLink href={"#about"} to={"about"}>
+            <motion.button
+              onClick={handleScrollDown}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <ArrowDownIcon
                 className={"h-14 w-14 animate-bounce text-accent"}
               />
-            </ScrollLink>
+            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>
