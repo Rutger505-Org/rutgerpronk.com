@@ -8,7 +8,7 @@ export default function DesktopHeader() {
   const t = useTranslations("header");
 
   return (
-    <header className="fixed left-0 top-0 hidden h-20 w-screen items-center justify-between bg-secondary px-spacing transition-all duration-500 md:flex md:bg-transparent md:backdrop-blur">
+    <header className="fixed left-0 top-0 z-20 hidden h-20 w-screen items-center justify-between bg-secondary px-spacing transition-all duration-500 md:flex md:bg-transparent md:backdrop-blur">
       <ScrollLink
         href={"#home"}
         to={"home"}
