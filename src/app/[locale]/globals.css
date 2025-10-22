@@ -61,3 +61,20 @@
   @apply rounded-full;
   background: #000000;
 }
+
+.transition-stack {
+  width: 100%;
+  height: 200px;
+  margin: 200px 0 0 0;
+  transform: translateY(-50%);
+  z-index: 10;
+  position: relative;
+  background-image: url("/transition-stack.svg");
+  background-repeat: repeat-x;
+  background-size: contain;
+}
+
+.transition-stack-reverse {
+  transform: rotate(180deg) translateY(-50%);
+  margin: 0 0 200px 0;
+}

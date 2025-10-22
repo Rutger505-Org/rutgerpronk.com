@@ -11,11 +11,28 @@ export default function Home() {
     <>
       <DesktopHeader />
       <MobileHeader />
-      <main className="mx-spacing-mobile max-w-[2300px] sm:mx-spacing too-big:mx-auto">
-        <LandingSection />
-        <About />
-        <Projects />
-        <Contact />
+      <main>
+        <div className="mx-spacing-mobile max-w-[2300px] sm:mx-spacing too-big:mx-auto">
+          <LandingSection />
+        </div>
+
+        <div className="relative z-10 bg-[#1c1b26]">
+          <div className={"transition-stack"}></div>
+
+          <div className="mx-spacing-mobile max-w-[2300px] sm:mx-spacing too-big:mx-auto">
+            <About />
+          </div>
+
+          <div className={"transition-stack transition-stack-reverse"}></div>
+        </div>
+
+        <div className="mx-spacing-mobile max-w-[2300px] sm:mx-spacing too-big:mx-auto">
+          <Projects />
+        </div>
+
+        <div className="mx-spacing-mobile max-w-[2300px] sm:mx-spacing too-big:mx-auto">
+          <Contact />
+        </div>
       </main>
       <Footer />
     </>
