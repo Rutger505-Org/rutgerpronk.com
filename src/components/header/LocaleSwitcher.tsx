@@ -16,7 +16,7 @@ export default function LocaleSwitcher({
   const otherLocale = locale == "en" ? "nl" : "en";
 
   return (
-    <Link href={otherLocale} className={`${className}`} scroll={false}>
+    <Link href={`/${otherLocale}`} className={`${className}`} scroll={false}>
       <div className={"flex items-center"}>
         <LanguageIcon className={"h-5"} />
         <p className={`ml-2`}>{otherLocale.toUpperCase()}</p>
