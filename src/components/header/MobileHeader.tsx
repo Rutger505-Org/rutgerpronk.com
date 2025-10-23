@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import ScrollLink from "@/components/ScrollLink";
 import DropdownButton from "@/components/header/DropdownButton";
 import { MobileNav } from "@/components/header/MobileNav";
+import Image from "next/image";
 
 export default function MobileHeader() {
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -18,9 +19,9 @@ export default function MobileHeader() {
         <ScrollLink
           href={"#home"}
           to={"home"}
-          className={"cursor-pointer text-3xl font-bold text-textPrimary"}
+          className={"cursor-pointer"}
         >
-          <span className={"text-accent"}>R</span>utger
+          <Image src="/logo.svg" alt="Logo" width={120} height={40} />
         </ScrollLink>
 
         <DropdownButton
