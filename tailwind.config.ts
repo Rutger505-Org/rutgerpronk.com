@@ -29,6 +29,9 @@ const config: Config = {
           DEFAULT: "#0E0E21",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        landing: {
+          DEFAULT: "#000e28",
+        },
         accent: {
           DEFAULT: "#FF365A",
           foreground: "hsl(var(--accent-foreground))",
