@@ -3,6 +3,7 @@ import LocaleSwitcher from "@/components/header/LocaleSwitcher";
 import React from "react";
 import { useTranslations } from "next-intl";
 import ScrollLink from "@/components/ScrollLink";
+import Image from "next/image";
 
 export default function DesktopHeader() {
   const t = useTranslations("header");
@@ -12,9 +13,9 @@ export default function DesktopHeader() {
       <ScrollLink
         href={"#home"}
         to={"home"}
-        className={"cursor-pointer text-3xl font-bold text-textPrimary"}
+        className={"cursor-pointer"}
       >
-        <span className={"text-accent"}>R</span>utger
+        <Image src="/logo.svg" alt="Logo" width={120} height={40} />
       </ScrollLink>
 
       <nav className="flex gap-x-7">
