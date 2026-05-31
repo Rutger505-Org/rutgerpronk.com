@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import ScrollLink from "@/components/ScrollLink";
 import ArrowDownIcon from "@/components/icons/ArrowDownIcon";
 import { AnimatePresence, motion } from "framer-motion";
+import ScrollLink from "@/components/ScrollLink";
 
 export default function ScrollDownHint() {
   const [isAtTop, setIsAtTop] = useState(true);
