@@ -7,16 +7,16 @@ This is my portfolio website. Its made with Next.js and TailwindCss.
 ## Installation
 
 ```bash
-npm install
+bun install
 ```
 
 ## Running
 
 ```bash
 # development
-npm run dev
+bun run dev
 
 # production
-npm run build
-npm run start
+bun run build
+bun run start
 ```

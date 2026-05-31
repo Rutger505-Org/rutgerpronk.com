@@ -33,6 +33,7 @@ node_modules
 .npm
 .pnp.*
 .yarn
+.bun
 
 # Environment
 .env*
