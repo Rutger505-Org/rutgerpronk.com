@@ -1,0 +1,38 @@
+[
+  {
+    "id": "a-warm-amber",
+    "label": "A · Warm Amber",
+    "accent": "#F5A623",
+    "accentSoft": "rgba(245,166,35,0.45)",
+    "bg": "#0a0f1f",
+    "bg2": "#06080f",
+    "note": "Warm gold — friendly, classic dev-portfolio. Big shift from the hot pink."
+  },
+  {
+    "id": "b-coral",
+    "label": "B · Soft Coral",
+    "accent": "#FF6B6B",
+    "accentSoft": "rgba(255,107,107,0.45)",
+    "bg": "#0c0a14",
+    "bg2": "#070510",
+    "note": "Close to the current pink but warmer & softer. Safe evolution."
+  },
+  {
+    "id": "c-electric-cyan",
+    "label": "C · Electric Cyan",
+    "accent": "#22D3EE",
+    "accentSoft": "rgba(34,211,238,0.40)",
+    "bg": "#04121a",
+    "bg2": "#020a10",
+    "note": "Cool, techy, modern. Strong contrast on dark navy."
+  },
+  {
+    "id": "d-current-ref",
+    "label": "D · Current (reference)",
+    "accent": "#FF365A",
+    "accentSoft": "rgba(255,54,90,0.45)",
+    "bg": "#000e28",
+    "bg2": "#00081a",
+    "note": "Today's color, but with the new right-aligned layout for comparison."
+  }
+]
