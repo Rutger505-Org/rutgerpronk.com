@@ -5,6 +5,15 @@ import ScrollDownHint from "@/components/ScrollDownHint";
 import { useTranslations } from "next-intl";
 import { motion, useScroll, useTransform } from "framer-motion";
 
+const SKILLS = [
+  "TypeScript",
+  "Next.js",
+  "React",
+  "Tailwind CSS",
+  "Kubernetes",
+  "Terraform",
+];
+
 export default function LandingSection() {
   const t = useTranslations("landingSection");
 
@@ -15,23 +24,42 @@ export default function LandingSection() {
     offset: ["start start", "end start"],
   });
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "300%"]);
+  const glowOpacity = useTransform(scrollYProgress, [0, 1], [0.18, 0]);
 
   return (
     <section
       ref={ref}
       id={"home"}
-      className={"flex min-h-screen flex-col items-center justify-between"}
+      className={
+        "relative flex min-h-screen flex-col items-start justify-between overflow-hidden"
+      }
     >
+      {/* Dot grid + accent glow, anchored to the top-left behind the hero. */}
+      <div className={"pointer-events-none absolute inset-0 -z-10"}>
+        <div className={"landing-dotgrid absolute inset-0"} />
+        <motion.div
+          style={{ opacity: glowOpacity }}
+          className={
+            "absolute -left-[10%] -top-[10%] h-[55vh] w-[55vh] rounded-full bg-accent blur-[120px]"
+          }
+        />
+      </div>
+
       <div></div>
+
       <motion.div style={{ y: textY }} className={"max-w-full"}>
-        <h2 className={"text-center text-3xl text-textPrimary sm:text-4xl"}>
+        <h2
+          className={
+            "font-mono text-base tracking-[0.32em] text-accent sm:text-lg"
+          }
+        >
           {t.rich("softwareDev", {
             symbol: "</>",
           })}
         </h2>
         <h1
           className={
-            "mb-10 max-w-2xl text-center text-5xl font-bold text-textPrimary sm:text-6xl"
+            "accent-glow mt-6 max-w-[15ch] text-left text-6xl font-bold leading-[0.98] tracking-tight text-textPrimary sm:text-7xl lg:text-8xl"
           }
         >
           {t.rich("greeting", {
@@ -40,6 +68,24 @@ export default function LandingSection() {
             ),
           })}
         </h1>
+        <p className={"mt-6 max-w-[46ch] text-base text-textSecondary sm:text-lg"}>
+          {t("subtitle")}
+        </p>
+        <div className={"mt-9 flex flex-wrap gap-3"}>
+          {SKILLS.map((skill, index) => (
+            <span
+              key={skill}
+              className={
+                "rounded-full border px-4 py-2 text-sm " +
+                (index === 0
+                  ? "border-accent text-accent"
+                  : "border-white/10 text-textSecondary")
+              }
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
       </motion.div>
 
       <ScrollDownHint />

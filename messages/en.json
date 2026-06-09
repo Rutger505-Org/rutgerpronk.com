@@ -1,7 +1,8 @@
 {
   "landingSection": {
     "softwareDev": "{symbol} Software-dev",
-    "greeting": "Hi, I'm <span>Rutger</span> from the Netherlands"
+    "greeting": "Hi, I'm <span>Rutger</span> from the Netherlands",
+    "subtitle": "Software-development student building web things with Next.js, TypeScript & a self-hosted Kubernetes pipeline."
   },
   "about": {
     "title": "Who am I?",
