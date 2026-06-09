@@ -59,12 +59,12 @@ export default function LandingSection() {
         </h2>
         <h1
           className={
-            "accent-glow mt-6 max-w-[15ch] text-left text-6xl font-bold leading-[0.98] tracking-tight text-textPrimary sm:text-7xl lg:text-8xl"
+            "mt-6 max-w-[15ch] text-left text-6xl font-bold leading-[0.98] tracking-tight text-textPrimary sm:text-7xl lg:text-8xl"
           }
         >
           {t.rich("greeting", {
             span: (children) => (
-              <span className={"text-accent"}>{children}</span>
+              <span className={"accent-glow text-accent"}>{children}</span>
             ),
           })}
         </h1>
