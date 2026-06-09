@@ -11,7 +11,7 @@ import { routing } from "@/i18n/routing";
 const inter = Inter({ subsets: ["latin"] });
 
 export async function generateMetadata(): Promise<Metadata> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+   
   const t = await getTranslations("metadata");
   const locale = await getLocale();
   const alternateLocales = routing.locales.filter((l) => l !== locale);
