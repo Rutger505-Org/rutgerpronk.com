@@ -1,7 +1,8 @@
 {
   "landingSection": {
     "softwareDev": "{symbol} Software-dev",
-    "greeting": "Hallo, ik ben <span>Rutger</span> uit Nederland"
+    "greeting": "Hallo, ik ben <span>Rutger</span> uit Nederland",
+    "subtitle": "Software-development student die webdingen bouwt met Next.js, TypeScript & een self-hosted Kubernetes-pipeline."
   },
   "about": {
     "title": "Wie ben ik?",
