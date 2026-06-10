@@ -24,7 +24,7 @@ export default function LandingSection() {
     offset: ["start start", "end start"],
   });
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "300%"]);
-  const glowOpacity = useTransform(scrollYProgress, [0, 1], [0.18, 0]);
+  const glowOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
     <section
@@ -39,9 +39,7 @@ export default function LandingSection() {
         <div className={"landing-dotgrid absolute inset-0"} />
         <motion.div
           style={{ opacity: glowOpacity }}
-          className={
-            "absolute -left-[10%] -top-[10%] h-[55vh] w-[55vh] rounded-full bg-accent blur-[120px]"
-          }
+          className={"landing-glow absolute inset-0"}
         />
       </div>
 

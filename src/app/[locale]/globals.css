@@ -69,6 +69,17 @@
     0 0 60px rgba(255, 54, 90, 0.22);
 }
 
+/* Soft accent glow behind the hero. A radial gradient (not a blurred circle)
+   so it always fades to transparent and never shows a hard clipped edge. */
+.landing-glow {
+  background: radial-gradient(
+    45% 55% at 24% 30%,
+    rgba(255, 54, 90, 0.22) 0%,
+    rgba(255, 54, 90, 0.08) 38%,
+    transparent 72%
+  );
+}
+
 /* Faint dot grid behind the landing hero, faded out from the top-left. */
 .landing-dotgrid {
   background-image: radial-gradient(
