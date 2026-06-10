@@ -69,18 +69,18 @@
     0 0 60px rgba(255, 54, 90, 0.22);
 }
 
-/* Soft accent glow behind the hero. A radial gradient (not a blurred circle)
-   so it always fades to transparent and never shows a hard clipped edge. */
+/* Soft accent glow centered behind the headline. Single fade to transparent
+   (two stops) so there is never a perceptible ring/edge. */
 .landing-glow {
   background: radial-gradient(
-    45% 55% at 24% 30%,
-    rgba(255, 54, 90, 0.22) 0%,
-    rgba(255, 54, 90, 0.08) 38%,
+    52% 50% at 32% 48%,
+    rgba(255, 54, 90, 0.2) 0%,
     transparent 72%
   );
 }
 
-/* Faint dot grid behind the landing hero, faded out from the top-left. */
+/* Faint dot grid behind the hero, fading gradually around the same focal
+   point as the glow so it never shows a density boundary. */
 .landing-dotgrid {
   background-image: radial-gradient(
     rgba(255, 255, 255, 0.05) 1px,
@@ -88,11 +88,11 @@
   );
   background-size: 34px 34px;
   -webkit-mask-image: radial-gradient(
-    120% 120% at 12% 12%,
-    #000 30%,
-    transparent 75%
+    90% 90% at 32% 48%,
+    #000 0%,
+    transparent 80%
   );
-  mask-image: radial-gradient(120% 120% at 12% 12%, #000 30%, transparent 75%);
+  mask-image: radial-gradient(90% 90% at 32% 48%, #000 0%, transparent 80%);
 }
 
 .transition-stack {
