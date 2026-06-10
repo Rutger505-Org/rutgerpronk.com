@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import ScrollDownHint from "@/components/ScrollDownHint";
 import { useTranslations } from "next-intl";
 import { motion, useScroll, useTransform } from "framer-motion";
+import HalftoneField from "@/components/patterns/HalftoneField";
 
 export default function LandingSection() {
   const t = useTranslations("landingSection");
@@ -20,10 +21,17 @@ export default function LandingSection() {
     <section
       ref={ref}
       id={"home"}
-      className={"flex min-h-screen flex-col items-center justify-between"}
+      className={
+        "relative flex min-h-screen flex-col items-center justify-between"
+      }
     >
+      {/* full-bleed animated pattern background */}
+      <div className="absolute left-1/2 top-0 h-full w-screen -translate-x-1/2">
+        <HalftoneField />
+      </div>
+
       <div></div>
-      <motion.div style={{ y: textY }} className={"max-w-full"}>
+      <motion.div style={{ y: textY }} className={"relative z-10 max-w-full"}>
         <h2 className={"text-center text-3xl text-textPrimary sm:text-4xl"}>
           {t.rich("softwareDev", {
             symbol: "</>",
@@ -42,7 +50,9 @@ export default function LandingSection() {
         </h1>
       </motion.div>
 
-      <ScrollDownHint />
+      <div className="relative z-10">
+        <ScrollDownHint />
+      </div>
     </section>
   );
 }
