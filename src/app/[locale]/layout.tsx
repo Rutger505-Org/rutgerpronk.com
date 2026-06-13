@@ -55,7 +55,7 @@ export default async function RootLayout({
   const { locale } = await params;
   return (
     <html lang={locale}>
-      <body className={`${inter.className} bg-landing`}>
+      <body className={`${inter.className} bg-primary`}>
         <ReactQueryProvider>
           <NextIntlClientProvider>{children}</NextIntlClientProvider>
         </ReactQueryProvider>
