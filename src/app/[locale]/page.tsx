@@ -5,6 +5,7 @@ import Projects from "@/components/projects";
 import Contact from "@/components/contact";
 import MobileHeader from "@/components/header/MobileHeader";
 import DesktopHeader from "@/components/header/DesktopHeader";
+import PatternDivider from "@/components/patterns/PatternDivider";
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 bg-primary">
-          <div className={"transition-stack"}></div>
+          <PatternDivider />
 
           <div className="mx-spacing-mobile max-w-[2300px] sm:mx-spacing too-big:mx-auto">
             <About />

@@ -2,6 +2,7 @@
 
 import React, { useRef } from "react";
 import ScrollDownHint from "@/components/ScrollDownHint";
+import WarpedLines from "@/components/patterns/WarpedLines";
 import { useTranslations } from "next-intl";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -25,6 +26,8 @@ export default function LandingSection() {
   });
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "300%"]);
   const glowOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const warpY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
+  const warpOpacity = useTransform(scrollYProgress, [0, 1], [0.45, 0]);
 
   return (
     <section
@@ -34,9 +37,15 @@ export default function LandingSection() {
         "relative flex min-h-screen flex-col items-start justify-between overflow-hidden"
       }
     >
-      {/* Dot grid + accent glow, anchored to the top-left behind the hero. */}
+      {/* Warped op-art lines + dot grid + accent glow behind the hero. */}
       <div className={"pointer-events-none absolute inset-0 -z-10"}>
         <div className={"landing-dotgrid absolute inset-0"} />
+        <motion.div
+          style={{ y: warpY, opacity: warpOpacity }}
+          className={"absolute inset-0"}
+        >
+          <WarpedLines className={"h-full w-full"} gap={26} intensity={30} />
+        </motion.div>
         <motion.div
           style={{ opacity: glowOpacity }}
           className={"landing-glow absolute inset-0"}
