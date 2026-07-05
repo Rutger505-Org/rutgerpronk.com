@@ -51,14 +51,14 @@
           "place": "CheapCargo.com - Nijmegen"
         }
       },
-      "future": {
-        "title": "Future",
+      "2026": {
+        "title": "2026",
         "experience1": {
-          "title": "Pursuing career",
-          "place": "Different School - HBO"
+          "title": "Started ICT Bachelor's degree",
+          "place": "Fontys University of Applied Sciences - Eindhoven - HBO"
         },
         "experience2": {
-          "title": "Graduate study Software Developer",
+          "title": "Graduated Software Developer",
           "place": "ROC Nijmegen Heyendaalseweg - MBO"
         }
       }
