@@ -24,9 +24,9 @@ export default function LandingSection() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "300%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "60%"]);
   const glowOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const warpY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
+  const warpY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
   const warpOpacity = useTransform(scrollYProgress, [0, 1], [0.45, 0]);
 
   return (
