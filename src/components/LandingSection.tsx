@@ -66,7 +66,11 @@ export default function LandingSection() {
             ),
           })}
         </h1>
-        <p className={"mt-6 max-w-[46ch] text-base text-textSecondary sm:text-lg"}>
+        <p
+          className={
+            "mt-6 max-w-[46ch] text-base text-textSecondary sm:text-lg"
+          }
+        >
           {t("subtitle")}
         </p>
         <div className={"mt-9 flex flex-wrap gap-3"}>
@@ -86,7 +90,9 @@ export default function LandingSection() {
         </div>
       </motion.div>
 
-      <ScrollDownHint />
+      <div className={"flex w-full flex-col items-center justify-center"}>
+        <ScrollDownHint />
+      </div>
     </section>
   );
 }
