@@ -43,17 +43,17 @@ export default function Projects() {
         {t("experiences.title")}
       </h3>
       <ExperienceTreeBase className={"mt-10"}>
-        <ExperienceTime time={t("experiences.future.title")}>
+        <ExperienceTime time={t("experiences.2026.title")} present>
           <Experience
-            title={t("experiences.future.experience1.title")}
-            location={t("experiences.future.experience1.place")}
+            title={t("experiences.2026.experience1.title")}
+            location={t("experiences.2026.experience1.place")}
           />
           <Experience
-            title={t("experiences.future.experience2.title")}
-            location={t("experiences.future.experience2.place")}
+            title={t("experiences.2026.experience2.title")}
+            location={t("experiences.2026.experience2.place")}
           />
         </ExperienceTime>
-        <ExperienceTime time={t("experiences.2024.title")} present>
+        <ExperienceTime time={t("experiences.2024.title")}>
           <Experience
             title={t("experiences.2024.experience1.title")}
             location={t("experiences.2024.experience1.place")}
