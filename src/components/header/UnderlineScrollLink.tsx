@@ -35,10 +35,13 @@ export default function UnderlineScrollLink({
 
   useEffect(() => {
     window.addEventListener("scroll", handleLinkUnderline);
-    handleLinkUnderline();
+    // Defer the initial measurement out of the effect body (and to a frame
+    // where layout is settled) so it doesn't setState synchronously on mount.
+    const raf = requestAnimationFrame(handleLinkUnderline);
 
     return () => {
       window.removeEventListener("scroll", handleLinkUnderline);
+      cancelAnimationFrame(raf);
     };
   }, []);
 
