@@ -34,11 +34,16 @@ export default function LandingSection() {
       ref={ref}
       id={"home"}
       className={
-        "relative flex min-h-screen flex-col items-start justify-between overflow-hidden"
+        "relative flex min-h-screen flex-col items-start justify-between"
       }
     >
-      {/* Warped op-art lines + dot grid + accent glow behind the hero. */}
-      <div className={"pointer-events-none absolute inset-0 -z-10"}>
+      {/* Warped op-art lines + dot grid + accent glow behind the hero.
+          Full-bleed to the viewport width so the lines reach both edges. */}
+      <div
+        className={
+          "pointer-events-none absolute inset-y-0 left-1/2 -z-10 w-screen -translate-x-1/2 overflow-hidden"
+        }
+      >
         <div className={"landing-dotgrid absolute inset-0"} />
         <motion.div
           style={{ y: warpY, opacity: warpOpacity }}
