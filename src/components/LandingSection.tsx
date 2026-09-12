@@ -8,7 +8,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const SKILLS = [
   "TypeScript",
   "Next.js",
-  "React",
   "Tailwind CSS",
   "Kubernetes",
   "Terraform",
