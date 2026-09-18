@@ -13,7 +13,6 @@ export default function Home() {
       <MobileHeader />
       <main>
         <div className="mx-spacing-mobile max-w-[2300px] sm:mx-spacing too-big:mx-auto">
-          <LandingSection />
         </div>
 
         <div className="relative z-10 bg-primary">
