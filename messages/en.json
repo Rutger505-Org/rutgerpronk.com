@@ -1,8 +1,16 @@
 {
   "landingSection": {
-    "softwareDev": "{symbol} Software-dev",
-    "greeting": "Hi, I'm <span>Rutger</span> from the Netherlands",
-    "subtitle": "Software-development student building web things with Next.js, TypeScript & a self-hosted Kubernetes pipeline."
+    "eyebrow": "Rutger Pronk",
+    "greeting": "I build and run <span>web software</span>, end to end.",
+    "subtitle": "Software-development student from the Netherlands. I write Next.js and TypeScript, and ship it on a Kubernetes cluster I run myself.",
+    "ctaProjects": "See my work",
+    "ctaContact": "Get in touch",
+    "factRoleLabel": "Role",
+    "factRoleValue": "Software developer",
+    "factLocationLabel": "Based in",
+    "factLocationValue": "Nijmegen, Netherlands",
+    "factFocusLabel": "Focus",
+    "factFocusValue": "Next.js, TypeScript, Kubernetes"
   },
   "about": {
     "title": "Who am I?",
@@ -29,7 +37,6 @@
       }
     },
     "experiences": {
-      "title": "Experiences",
       "2022": {
         "title": "2022",
         "experience1": {
@@ -61,7 +68,8 @@
           "title": "Graduated Software Developer",
           "place": "ROC Nijmegen Heyendaalseweg - MBO"
         }
-      }
+      },
+      "title": "Experiences"
     }
   },
   "contact": {
