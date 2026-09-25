@@ -23,7 +23,6 @@ export default function LandingSection() {
     offset: ["start start", "end start"],
   });
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-  const glowOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
     <section
@@ -33,15 +32,6 @@ export default function LandingSection() {
         "relative flex min-h-screen flex-col items-start justify-between overflow-hidden"
       }
     >
-      {/* Dot grid + accent glow, anchored to the top-left behind the hero. */}
-      <div className={"pointer-events-none absolute inset-0 -z-10"}>
-        <div className={"landing-dotgrid absolute inset-0"} />
-        <motion.div
-          style={{ opacity: glowOpacity }}
-          className={"landing-glow absolute inset-0"}
-        />
-      </div>
-
       <div></div>
 
       <motion.div style={{ y: textY }} className={"max-w-full"}>
@@ -61,7 +51,7 @@ export default function LandingSection() {
         >
           {t.rich("greeting", {
             span: (children) => (
-              <span className={"accent-glow text-accent"}>{children}</span>
+              <span className={"text-accent"}>{children}</span>
             ),
           })}
         </h1>
