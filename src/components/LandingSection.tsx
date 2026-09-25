@@ -1,42 +1,52 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import ScrollDownHint from "@/components/ScrollDownHint";
-import ScrollLink from "@/components/ScrollLink";
 import { useTranslations } from "next-intl";
-import ArrowOutRightIcon from "@/components/icons/ArrowOutRightIcon";
+import { motion, useScroll, useTransform } from "framer-motion";
+
+const SKILLS = [
+  "TypeScript",
+  "Next.js",
+  "Tailwind CSS",
+  "Kubernetes",
+  "Terraform",
+];
 
 export default function LandingSection() {
   const t = useTranslations("landingSection");
 
-  const facts = [
-    { label: t("factRoleLabel"), value: t("factRoleValue") },
-    { label: t("factLocationLabel"), value: t("factLocationValue") },
-    { label: t("factFocusLabel"), value: t("factFocusValue") },
-  ];
+  const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
     <section
+      ref={ref}
       id={"home"}
       className={
-        "relative flex min-h-screen flex-col justify-between pb-10 pt-32 sm:pt-40"
+        "relative flex min-h-screen flex-col items-start justify-between overflow-hidden"
       }
     >
-      <div className={"flex flex-1 flex-col justify-center"}>
-        <div className={"flex items-center gap-4"}>
-          <span className={"h-px w-10 bg-accent"} aria-hidden />
-          <span
-            className={
-              "text-sm uppercase tracking-[0.2em] text-textSecondary sm:text-base"
-            }
-          >
-            {t("eyebrow")}
-          </span>
-        </div>
+      <div></div>
 
+      <motion.div style={{ y: textY }} className={"max-w-full"}>
+        <h2
+          className={
+            "font-mono text-base tracking-[0.32em] text-accent sm:text-lg"
+          }
+        >
+          {t.rich("softwareDev", {
+            symbol: "</>",
+          })}
+        </h2>
         <h1
           className={
-            "mt-8 max-w-[18ch] text-5xl font-semibold leading-[1.05] tracking-tight text-textPrimary sm:text-6xl lg:text-7xl"
+            "mt-6 max-w-[15ch] text-left text-6xl font-bold leading-[0.98] tracking-tight text-textPrimary sm:text-7xl lg:text-8xl"
           }
         >
           {t.rich("greeting", {
@@ -45,63 +55,29 @@ export default function LandingSection() {
             ),
           })}
         </h1>
-
         <p
           className={
-            "mt-8 max-w-[52ch] text-lg leading-relaxed text-textSecondary"
+            "mt-6 max-w-[46ch] text-base text-textSecondary sm:text-lg"
           }
         >
           {t("subtitle")}
         </p>
-
-        <div className={"mt-10 flex flex-wrap items-center gap-x-8 gap-y-4"}>
-          <ScrollLink
-            href={"#projects"}
-            to={"projects"}
-            className={
-              "group inline-flex items-center border-b border-accent pb-1 text-base text-textPrimary transition-colors hover:text-accent"
-            }
-          >
-            {t("ctaProjects")}
-            <ArrowOutRightIcon
+        <div className={"mt-9 flex flex-wrap gap-3"}>
+          {SKILLS.map((skill, index) => (
+            <span
+              key={skill}
               className={
-                "ml-2 h-4 -rotate-45 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                "rounded-full border px-4 py-2 text-sm " +
+                (index === 0
+                  ? "border-accent text-accent"
+                  : "border-white/10 text-textSecondary")
               }
-            />
-          </ScrollLink>
-
-          <ScrollLink
-            href={"#contact"}
-            to={"contact"}
-            className={
-              "inline-flex items-center border-b border-transparent pb-1 text-base text-textSecondary transition-colors hover:border-textSecondary hover:text-textPrimary"
-            }
-          >
-            {t("ctaContact")}
-          </ScrollLink>
-        </div>
-
-        <dl
-          className={
-            "mt-20 grid max-w-3xl grid-cols-1 gap-y-6 border-t border-white/10 pt-8 sm:grid-cols-3 sm:gap-x-10"
-          }
-        >
-          {facts.map((fact) => (
-            <div key={fact.label}>
-              <dt
-                className={
-                  "text-xs uppercase tracking-[0.18em] text-textSecondary/70"
-                }
-              >
-                {fact.label}
-              </dt>
-              <dd className={"mt-2 text-base text-textPrimary"}>
-                {fact.value}
-              </dd>
-            </div>
+            >
+              {skill}
+            </span>
           ))}
-        </dl>
-      </div>
+        </div>
+      </motion.div>
 
       <div className={"flex w-full flex-col items-center justify-center"}>
         <ScrollDownHint />

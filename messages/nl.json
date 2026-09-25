@@ -1,16 +1,8 @@
 {
   "landingSection": {
-    "eyebrow": "Rutger Pronk",
-    "greeting": "Ik bouw en beheer <span>websoftware</span>, van begin tot eind.",
-    "subtitle": "Software-development student uit Nederland. Ik schrijf Next.js en TypeScript, en draai het op een Kubernetes-cluster dat ik zelf beheer.",
-    "ctaProjects": "Bekijk mijn werk",
-    "ctaContact": "Neem contact op",
-    "factRoleLabel": "Rol",
-    "factRoleValue": "Software developer",
-    "factLocationLabel": "Woonplaats",
-    "factLocationValue": "Nijmegen, Nederland",
-    "factFocusLabel": "Focus",
-    "factFocusValue": "Next.js, TypeScript, Kubernetes"
+    "softwareDev": "{symbol} Software-dev",
+    "greeting": "Hallo, ik ben <span>Rutger</span> uit Nederland",
+    "subtitle": "Software-development student die webdingen bouwt met Next.js, TypeScript & een self-hosted Kubernetes-pipeline."
   },
   "about": {
     "title": "Wie ben ik?",
@@ -37,6 +29,7 @@
       }
     },
     "experiences": {
+      "title": "Ervaringen",
       "2022": {
         "title": "2022",
         "experience1": {
@@ -68,8 +61,7 @@
           "title": "Afgestudeerd Software Developer",
           "place": "ROC Nijmegen Heyendaalseweg - MBO"
         }
-      },
-      "title": "Ervaringen"
+      }
     }
   },
   "contact": {
