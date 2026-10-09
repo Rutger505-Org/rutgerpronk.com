@@ -2,9 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useTranslations } from "next-intl";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import {
   Form,
   FormControl,
@@ -16,21 +14,19 @@ import { sendEmail as sendEmailAction } from "@/app/[locale]/actions";
 import SubmitButton from "@/components/contact/SubmitButton";
 import { useToast } from "@/components/ui/use-toast";
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+interface ContactFormValues {
+  name: string;
+  email: string;
+  message: string;
+}
+
 export default function ContactForm() {
   const t = useTranslations("contact.form");
   const { toast } = useToast();
 
-  const formSchema = z.object({
-    name: z.string().min(1, { message: t("validation.name") }),
-    email: z
-      .string()
-      .min(1, { message: t("validation.email") })
-      .email({ message: t("validation.emailInvalid") }),
-    message: z.string().min(1, { message: t("validation.message") }),
-  });
-
-  const form = useForm({
-    resolver: zodResolver(formSchema),
+  const form = useForm<ContactFormValues>({
     defaultValues: {
       name: "",
       email: "",
@@ -41,7 +37,7 @@ export default function ContactForm() {
   const [isPending, startTransition] = useTransition();
   const [isSuccess, setIsSuccess] = useState(false);
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
+  function onSubmit(data: ContactFormValues) {
     startTransition(async () => {
       try {
         await sendEmailAction(data);
@@ -69,6 +65,7 @@ export default function ContactForm() {
         <FormField
           control={form.control}
           name="name"
+          rules={{ required: t("validation.name") }}
           render={({ field }) => (
             <FormItem>
               <FormControl>
@@ -88,6 +85,13 @@ export default function ContactForm() {
         <FormField
           control={form.control}
           name="email"
+          rules={{
+            required: t("validation.email"),
+            pattern: {
+              value: EMAIL_PATTERN,
+              message: t("validation.emailInvalid"),
+            },
+          }}
           render={({ field }) => (
             <FormItem>
               <FormControl>
@@ -105,6 +109,7 @@ export default function ContactForm() {
         <FormField
           control={form.control}
           name="message"
+          rules={{ required: t("validation.message") }}
           render={({ field }) => (
             <FormItem>
               <FormControl>
