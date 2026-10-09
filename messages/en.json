@@ -15,17 +15,25 @@
     "projects": {
       "title": "Projects",
       "githubLinkText": "Visit on GitHub",
-      "usefulAutoclicker": {
-        "title": "Useful Autoclicker",
-        "text": "A desktop autoclicker with a graphical interface, written in Java. A long-running hobby project that I keep improving."
+      "dijkerWebsite": {
+        "title": "Dijker Website",
+        "text": "Bilingual website for the dijker, a vehicle with a one-of-a-kind spiral belt drive. Built with Next.js and deployed to a VM with Docker Compose and Caddy, with a preview environment for every pull request."
       },
-      "travelAgency": {
-        "title": "Travel Agency",
-        "text": "A project utilizing HTML, CSS, Tailwind CSS, PHP, MySQL, and API integration. I collaborated with another developer for three months to develop this travel agency website."
+      "kubernetesPlatform": {
+        "title": "Self-hosted Kubernetes Platform",
+        "text": "The K3s cluster in my homelab that runs my websites. A reusable GitHub Actions workflow deploys every app with OpenTofu: each pull request gets its own preview URL with a TLS certificate, and every merge goes straight to production."
       },
-      "noTimeToDie": {
-        "title": "No Time To Die",
-        "text": "A game jam project, this is a round-based survival game created in just 16 hours using Gamemaker. I collaborated with a team of 5 members to develop this game."
+      "relay": {
+        "title": "Relay",
+        "text": "A chat app with friends, real-time direct messages and voice calls. Voice runs on a self-hosted LiveKit server inside my Kubernetes cluster."
+      },
+      "motorizedBlinds": {
+        "title": "Motorized Blinds",
+        "text": "Rust firmware that motorizes my blinds: ESP32 modules drive the motors, and a custom nRF52840 remote controls them over radio, all in a 3D-printed case."
+      },
+      "realLifeSoundboard": {
+        "title": "Real-life Soundboard",
+        "text": "Nine physical buttons on an ESP32 that trigger sounds on an Android phone over Bluetooth LE. Rust firmware on the ESP32, and a Kotlin app that keeps working in the background."
       }
     },
     "experiences": {
@@ -45,7 +53,7 @@
         }
       },
       "2024": {
-        "title": "2024",
+        "title": "2024 - 2026",
         "experience1": {
           "title": "Part-time employee at CheapCargo",
           "place": "CheapCargo.com - Nijmegen"

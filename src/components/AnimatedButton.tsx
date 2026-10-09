@@ -1,19 +1,18 @@
 import ArrowOutRightIcon from "@/components/icons/ArrowOutRightIcon";
-import { ButtonHTMLAttributes } from "react";
 
-interface AnimatedButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface AnimatedButtonProps {
   text: string;
+  className?: string;
 }
 
+// Rendered as a span because it is always placed inside a link, and a button inside a link is invalid HTML.
 export default function AnimatedButton({
   text,
   className = "",
-  ...all
 }: Readonly<AnimatedButtonProps>) {
   return (
-    <button
+    <span
       className={`${className} group relative z-10 flex items-center overflow-hidden rounded border border-accent bg-none px-3 py-1 text-textSecondary before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-0 before:bg-accent before:duration-200 hover:text-textPrimary before:hover:w-full`}
-       {...all}
     >
       {text}
       <ArrowOutRightIcon
@@ -21,6 +20,6 @@ export default function AnimatedButton({
           "ml-2 h-4 -rotate-45 duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
         }
       />
-    </button>
+    </span>
   );
 }
