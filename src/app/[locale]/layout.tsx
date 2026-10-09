@@ -5,7 +5,6 @@ import React from "react";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
 import { Toaster } from "@/components/ui/toaster";
 import { routing } from "@/i18n/routing";
 import { localeAlternates, OPEN_GRAPH_LOCALES, SITE_URL } from "@/lib/site";
@@ -61,9 +60,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
   return (
     <html lang={locale}>
       <body className={`${inter.className} bg-primary`}>
-        <ReactQueryProvider>
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
-        </ReactQueryProvider>
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
         <Toaster />
       </body>
     </html>

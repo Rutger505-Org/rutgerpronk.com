@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useTransition } from "react";
 import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -12,7 +13,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { sendEmail as sendEmailAction } from "@/app/[locale]/actions";
-import { useMutation } from "@tanstack/react-query";
 import SubmitButton from "@/components/contact/SubmitButton";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -38,28 +38,25 @@ export default function ContactForm() {
     },
   });
 
-  const {
-    mutate: sendEmail,
-    isPending,
-    isSuccess,
-  } = useMutation({
-    mutationFn: sendEmailAction,
-    onSuccess: () => {
-      toast({
-        title: t("toast.success"),
-      });
-      form.reset();
-    },
-    onError: () => {
-      toast({
-        title: t("toast.error"),
-        variant: "destructive",
-      });
-    },
-  });
+  const [isPending, startTransition] = useTransition();
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  async function onSubmit(data: z.infer<typeof formSchema>) {
-    sendEmail(data);
+  function onSubmit(data: z.infer<typeof formSchema>) {
+    startTransition(async () => {
+      try {
+        await sendEmailAction(data);
+        setIsSuccess(true);
+        toast({
+          title: t("toast.success"),
+        });
+        form.reset();
+      } catch {
+        toast({
+          title: t("toast.error"),
+          variant: "destructive",
+        });
+      }
+    });
   }
 
   return (
