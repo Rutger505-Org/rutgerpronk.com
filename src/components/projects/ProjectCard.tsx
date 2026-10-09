@@ -40,7 +40,12 @@ export default function ProjectCard({
           <AnimatedButton text={t("githubLinkText")} />
         </Link>
       </div>
-      <Image className={"max-h-80 w-auto"} src={image} alt={title} />
+      <Image
+        className={"max-h-80 w-auto"}
+        src={image}
+        alt={title}
+        sizes="(max-width: 672px) 100vw, 42rem"
+      />
     </div>
   );
 }
