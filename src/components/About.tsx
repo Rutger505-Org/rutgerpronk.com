@@ -15,7 +15,7 @@ export default function About() {
           <Image
             className={"w-full max-w-[20rem] rounded-full sm:h-80 sm:w-80"}
             src={mePhoto}
-            alt={"A picture of me"}
+            alt={"Rutger Pronk"}
           />
         </div>
         <div className="mt-8 max-w-lg flex-shrink text-textSecondary delay-150 sm:min-w-[350px]">

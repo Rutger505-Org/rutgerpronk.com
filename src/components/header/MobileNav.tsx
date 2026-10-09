@@ -12,7 +12,7 @@ export function MobileNav({ openDropdown }: Readonly<MobileNavProps>) {
 
   return (
     <nav className="bg-secondary">
-      <ul className="flex flex-col items-center">
+      <div className="flex flex-col items-center">
         <ScrollLink href={"#about"} to={"about"} className={"group p-4"}>
           <p
             className={
@@ -46,7 +46,7 @@ export function MobileNav({ openDropdown }: Readonly<MobileNavProps>) {
           className={"p-4 text-textPrimary duration-300 hover:text-accent"}
           underline={false}
         />
-      </ul>
+      </div>
     </nav>
   );
 }

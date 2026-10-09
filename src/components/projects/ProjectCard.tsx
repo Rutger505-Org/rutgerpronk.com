@@ -30,15 +30,17 @@ export default function ProjectCard({
 
         <div className={"flex-1"} />
 
-        <Link href={link} className={"mt-5"} target={"_blank"}>
+        <Link
+          href={link}
+          className={"mt-5"}
+          target={"_blank"}
+          rel={"noopener"}
+          aria-label={`${t("githubLinkText")}: ${title}`}
+        >
           <AnimatedButton text={t("githubLinkText")} />
         </Link>
       </div>
-      <Image
-        className={"max-h-80 w-auto"}
-        src={image}
-        alt={"Image of {title}"}
-      />
+      <Image className={"max-h-80 w-auto"} src={image} alt={title} />
     </div>
   );
 }

@@ -4,8 +4,10 @@ import React, { useEffect, useState } from "react";
 import ArrowDownIcon from "@/components/icons/ArrowDownIcon";
 import { AnimatePresence, motion } from "framer-motion";
 import ScrollLink from "@/components/ScrollLink";
+import { useTranslations } from "next-intl";
 
 export default function ScrollDownHint() {
+  const t = useTranslations("header");
   const [isAtTop, setIsAtTop] = useState(true);
   const [ready, setReady] = useState(false);
 
@@ -36,7 +38,7 @@ export default function ScrollDownHint() {
             transition={{ duration: 0.35 }}
             className="absolute bottom-0 mb-6"
           >
-            <ScrollLink href={"#about"} to={"about"}>
+            <ScrollLink href={"#about"} to={"about"} ariaLabel={t("about")}>
               <ArrowDownIcon
                 className={"h-14 w-14 animate-bounce text-accent"}
               />
