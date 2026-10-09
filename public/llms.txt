@@ -1,0 +1,15 @@
+# Rutger Pronk
+
+> Personal portfolio of Rutger Pronk, a software developer from the Netherlands. Graduated as Software Developer (MBO) at ROC Nijmegen and started an ICT bachelor's degree at Fontys University of Applied Sciences in 2026. Works with TypeScript, Next.js, Tailwind CSS, Kubernetes and Terraform.
+
+The site is a single page available in English and Dutch, with sections about Rutger, his projects, his experience and a contact form.
+
+## Pages
+
+- [Portfolio (English)](https://rutgerpronk.com/en): About, projects, experience and contact
+- [Portfolio (Dutch)](https://rutgerpronk.com/nl): Dutch version of the same page
+
+## Profiles
+
+- [GitHub](https://github.com/Rutger505): Source code of personal projects
+- [LinkedIn](https://www.linkedin.com/in/rutger-pronk-585149273/): Professional profile

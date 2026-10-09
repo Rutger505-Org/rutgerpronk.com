@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useTranslations } from "next-intl";
 
 interface DropdownButtonProps {
   openDropdown: boolean;
@@ -11,13 +12,17 @@ export default function DropdownButton({
   openDropdown,
   setOpenDropdown,
 }: Readonly<DropdownButtonProps>) {
-  function onClick(e: React.MouseEvent<HTMLButtonElement>) {
+  const t = useTranslations("header");
+
+  function onClick() {
     setOpenDropdown(!openDropdown);
   }
 
   return (
     <button
       onClick={onClick}
+      aria-label={t("menu")}
+      aria-expanded={openDropdown}
       className={
         "group flex h-full w-7 cursor-pointer flex-col items-center justify-center gap-y-[6px]"
       }

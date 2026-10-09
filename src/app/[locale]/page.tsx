@@ -5,10 +5,18 @@ import Projects from "@/components/projects";
 import Contact from "@/components/contact";
 import MobileHeader from "@/components/header/MobileHeader";
 import DesktopHeader from "@/components/header/DesktopHeader";
+import PersonJsonLd from "@/components/PersonJsonLd";
+import { setRequestLocale } from "next-intl/server";
 
-export default function Home() {
+export default async function Home({
+  params,
+}: Readonly<{ params: Promise<{ locale: string }> }>) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
+      <PersonJsonLd locale={locale} />
       <DesktopHeader />
       <MobileHeader />
       <main>
@@ -17,7 +25,6 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 bg-primary">
-
           <div className="mx-spacing-mobile max-w-[2300px] sm:mx-spacing too-big:mx-auto">
             <About />
           </div>

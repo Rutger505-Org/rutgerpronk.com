@@ -4,14 +4,7 @@ import React, { useRef } from "react";
 import ScrollDownHint from "@/components/ScrollDownHint";
 import { useTranslations } from "next-intl";
 import { motion, useScroll, useTransform } from "framer-motion";
-
-const SKILLS = [
-  "TypeScript",
-  "Next.js",
-  "Tailwind CSS",
-  "Kubernetes",
-  "Terraform",
-];
+import { SKILLS } from "@/lib/site";
 
 export default function LandingSection() {
   const t = useTranslations("landingSection");
@@ -35,7 +28,7 @@ export default function LandingSection() {
       <div></div>
 
       <motion.div style={{ y: textY }} className={"max-w-full"}>
-        <h2
+        <p
           className={
             "font-mono text-base tracking-[0.32em] text-accent sm:text-lg"
           }
@@ -43,7 +36,7 @@ export default function LandingSection() {
           {t.rich("softwareDev", {
             symbol: "</>",
           })}
-        </h2>
+        </p>
         <h1
           className={
             "mt-6 max-w-[15ch] text-left text-6xl font-bold leading-[0.98] tracking-tight text-textPrimary sm:text-7xl lg:text-8xl"

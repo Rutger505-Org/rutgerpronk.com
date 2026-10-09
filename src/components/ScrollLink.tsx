@@ -7,6 +7,7 @@ interface ScrollLinkProps {
   href: string;
   to: string;
   className?: string;
+  ariaLabel?: string;
   children?: ReactNode;
 }
 
@@ -14,6 +15,7 @@ export default function ScrollLink({
   href,
   to,
   className,
+  ariaLabel,
   children,
 }: Readonly<ScrollLinkProps>) {
   function scrollToId(e: MouseEvent<HTMLAnchorElement>) {
@@ -33,7 +35,12 @@ export default function ScrollLink({
   }
 
   return (
-    <Link href={href} className={className} onClick={scrollToId}>
+    <Link
+      href={href}
+      className={className}
+      aria-label={ariaLabel}
+      onClick={scrollToId}
+    >
       {children}
     </Link>
   );

@@ -2,56 +2,62 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import React from "react";
-import { getLocale, getTranslations } from "next-intl/server";
-import { NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
 import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
 import { Toaster } from "@/components/ui/toaster";
 import { routing } from "@/i18n/routing";
+import { localeAlternates, OPEN_GRAPH_LOCALES, SITE_URL } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("metadata");
-  const locale = await getLocale();
-  const alternateLocales = routing.locales.filter((l) => l !== locale);
-  const baseUrl =
-    process.env.NODE_ENV === "production"
-      ? new URL("https://rutgerpronk.com")
-      : new URL("http://localhost");
+type LayoutProps = Readonly<{
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}>;
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: Omit<LayoutProps, "children">): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
 
   return {
-    metadataBase: baseUrl,
+    metadataBase: new URL(SITE_URL),
     title: t("title"),
     description: t("description"),
-    keywords: [
-      "Rutger Pronk",
-      "Rutger",
-      "Pronk",
-      "Software Developer",
-      "Portfolio",
-      "Next.js",
-      "TypeScript",
-    ],
+    alternates: {
+      canonical: `/${locale}`,
+      languages: localeAlternates(),
+    },
     openGraph: {
       title: t("title"),
       description: t("description"),
-      siteName: t("title"),
-      type: "website",
-      locale: locale,
-      alternateLocale: alternateLocales,
-      url: baseUrl,
+      siteName: "Rutger Pronk",
+      type: "profile",
+      firstName: "Rutger",
+      lastName: "Pronk",
+      locale: OPEN_GRAPH_LOCALES[locale],
+      alternateLocale: routing.locales
+        .filter((l) => l !== locale)
+        .map((l) => OPEN_GRAPH_LOCALES[l]),
+      url: `/${locale}`,
     },
   };
 }
 
-export default async function RootLayout({
-  children,
-  params,
-}: Readonly<{
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-}>) {
+export default async function RootLayout({ children, params }: LayoutProps) {
   const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+  setRequestLocale(locale);
+
   return (
     <html lang={locale}>
       <body className={`${inter.className} bg-primary`}>

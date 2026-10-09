@@ -14,7 +14,7 @@ export default function MobileHeader() {
         openDropdown && "max-h-[316px]"
       } fixed left-0 top-0 z-20 max-h-20 w-screen items-center overflow-hidden bg-secondary transition-all duration-500 ease-in-out md:hidden`}
     >
-      <ul className={"flex h-20 items-center justify-between px-spacing"}>
+      <div className={"flex h-20 items-center justify-between px-spacing"}>
         <ScrollLink
           href={"#home"}
           to={"home"}
@@ -27,7 +27,7 @@ export default function MobileHeader() {
           openDropdown={openDropdown}
           setOpenDropdown={setOpenDropdown}
         />
-      </ul>
+      </div>
 
       <MobileNav openDropdown={openDropdown} />
     </header>

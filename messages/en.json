@@ -10,7 +10,7 @@
     "text2": "I have a strong passion for programming and software development, with a dedicated focus on improving my skills in C#/C++ and Next.js. Additionally, I am learning Nest.js for back-end web development."
   },
   "projects": {
-    "title": "What can i do?",
+    "title": "What can I do?",
     "text": "I enjoy working with C#, C++ and web tools and technologies like Next.js and Nest.js. I have collaborated on projects, improving teamwork and communication skills. I use Git/GitHub for version control and Trello for project management. Here are some notable projects showcasing my skills.",
     "projects": {
       "title": "Projects",
@@ -90,7 +90,8 @@
   "header": {
     "about": "About me",
     "projects": "My work",
-    "contact": "Contact"
+    "contact": "Contact",
+    "menu": "Menu"
   },
   "metadata": {
     "title": "Rutger Pronk - Software Developer",
