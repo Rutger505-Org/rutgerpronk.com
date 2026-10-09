@@ -24,11 +24,6 @@ const PROJECTS: {
     tags: ["K3s", "OpenTofu", "Helm", "Traefik", "GitHub Actions"],
   },
   {
-    key: "relay",
-    link: "https://github.com/Rutger505-Org/relay",
-    tags: ["Next.js", "TypeScript", "LiveKit", "Better Auth", "Drizzle"],
-  },
-  {
     key: "motorizedBlinds",
     link: "https://github.com/Rutger505/motorized-blinds",
     tags: ["Rust", "Embassy", "ESP32", "nRF52840", "3D printing"],

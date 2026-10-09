@@ -23,10 +23,6 @@
         "title": "Self-hosted Kubernetes-platform",
         "text": "Het K3s-cluster in mijn homelab waar mijn websites op draaien. Een herbruikbare GitHub Actions-workflow rolt elke app uit met OpenTofu: elke pull request krijgt een eigen preview-URL met TLS-certificaat en elke merge gaat direct naar productie."
       },
-      "relay": {
-        "title": "Relay",
-        "text": "Een chatapp met vrienden, realtime privéberichten en spraakgesprekken. Spraak draait op een self-hosted LiveKit-server in mijn Kubernetes-cluster."
-      },
       "motorizedBlinds": {
         "title": "Gemotoriseerde rolgordijnen",
         "text": "Rust-firmware die mijn rolgordijnen motoriseert: ESP32-modules sturen de motoren aan en een zelfgemaakte nRF52840-afstandsbediening bedient ze via radio, allemaal in een 3D-geprinte behuizing."
