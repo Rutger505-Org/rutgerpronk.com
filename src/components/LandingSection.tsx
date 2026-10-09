@@ -1,25 +1,13 @@
-"use client";
-
-import React, { useRef } from "react";
 import ScrollDownHint from "@/components/ScrollDownHint";
+import ParallaxSection from "@/components/ParallaxSection";
 import { useTranslations } from "next-intl";
-import { motion, useScroll, useTransform } from "framer-motion";
 import { SKILLS } from "@/lib/site";
 
 export default function LandingSection() {
   const t = useTranslations("landingSection");
 
-  const ref = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-
   return (
-    <section
-      ref={ref}
+    <ParallaxSection
       id={"home"}
       className={
         "relative flex min-h-screen flex-col items-start justify-between overflow-hidden"
@@ -27,7 +15,11 @@ export default function LandingSection() {
     >
       <div></div>
 
-      <motion.div style={{ y: textY }} className={"max-w-full"}>
+      <div
+        className={
+          "max-w-full translate-y-[calc(var(--scroll-progress,0)*100%)]"
+        }
+      >
         <p
           className={
             "font-mono text-base tracking-[0.32em] text-accent sm:text-lg"
@@ -70,11 +62,11 @@ export default function LandingSection() {
             </span>
           ))}
         </div>
-      </motion.div>
+      </div>
 
       <div className={"flex w-full flex-col items-center justify-center"}>
         <ScrollDownHint />
       </div>
-    </section>
+    </ParallaxSection>
   );
 }
