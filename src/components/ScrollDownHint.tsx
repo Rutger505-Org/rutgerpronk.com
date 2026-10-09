@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import ArrowDownIcon from "@/components/icons/ArrowDownIcon";
-import { AnimatePresence, motion } from "framer-motion";
 import ScrollLink from "@/components/ScrollLink";
 import { useTranslations } from "next-intl";
 
@@ -29,23 +28,17 @@ export default function ScrollDownHint() {
 
   return (
     <div className={"w-14"}>
-      <AnimatePresence>
-        {show && (
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
-            transition={{ duration: 0.35 }}
-            className="absolute bottom-0 mb-6"
-          >
-            <ScrollLink href={"#about"} to={"about"} ariaLabel={t("about")}>
-              <ArrowDownIcon
-                className={"h-14 w-14 animate-bounce text-accent"}
-              />
-            </ScrollLink>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div
+        className={`absolute bottom-0 mb-6 transition-[opacity,transform,visibility] ease-out [transition-duration:350ms] ${
+          show
+            ? "visible translate-y-0 opacity-100"
+            : "invisible translate-y-2 opacity-0"
+        }`}
+      >
+        <ScrollLink href={"#about"} to={"about"} ariaLabel={t("about")}>
+          <ArrowDownIcon className={"h-14 w-14 animate-bounce text-accent"} />
+        </ScrollLink>
+      </div>
     </div>
   );
 }
