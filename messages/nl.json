@@ -2,22 +2,22 @@
   "landingSection": {
     "softwareDev": "{symbol} Software-dev",
     "greeting": "Hallo, ik ben <span>Rutger</span> uit Nederland",
-    "subtitle": "Software-development student die webdingen bouwt met Next.js, TypeScript & een self-hosted Kubernetes-pipeline."
+    "subtitle": "ICT-student die webdingen bouwt met Next.js, TypeScript & een self-hosted Kubernetes-pipeline."
   },
   "about": {
     "title": "Wie ben ik?",
-    "text1": "Mijn naam is Rutger Pronk en ik studeer Software Developer op ROC Nijmegen. Ik zit momenteel in mijn tweede studiejaar.",
-    "text2": "Ik heb een grote passie voor programmeren en softwareontwikkeling, met een specifieke focus op het uitbreiden van mijn kennis C#/C++ en Next.js. Daarnaast leer ik Nest.js voor backend web ontwikkeling."
+    "text1": "Mijn naam is Rutger Pronk, software developer uit Nederland. Ik ben afgestudeerd als Software Developer aan ROC Nijmegen en ben in 2026 begonnen aan mijn ICT-bachelor bij Fontys Hogeschool in Eindhoven.",
+    "text2": "Ik bouw graag dingen van begin tot eind: webapps met Next.js en TypeScript, het self-hosted Kubernetes-cluster waar ze op draaien en Rust-firmware voor ESP32-microcontrollers."
   },
   "projects": {
     "title": "Wat kan ik doen?",
-    "text": "Ik vind het leuk om te werken met C#, C++ en web tools en technologiën zoals Next.js en Nest.js. Ik heb samengewerkt met projecten, waarbij ik mijn teamwerk en communicatie skills heb verbeterd. Ik maak gebruik van Git/GitHub voor versiebeheer en Trello voor projectmanagement. Hier zijn enkele projecten die mijn vaardigheden laten zien.",
+    "text": "Ik werk vooral met TypeScript, Next.js en Tailwind CSS en draai mijn projecten op mijn eigen Kubernetes-cluster, beheerd met Terraform en uitgerold via GitHub Actions. Door schoolprojecten, een stage en gamejams heb ik geleerd goed samen te werken in een team. Hier zijn enkele projecten die laten zien wat ik kan.",
     "projects": {
       "title": "Projecten",
-      "githubLinkText": "Bezoek op Github",
+      "githubLinkText": "Bekijk op GitHub",
       "usefulAutoclicker": {
         "title": "Useful Autoclicker",
-        "text": "Een GUI-project in development. Oorspronkelijk gemaakt in Java, wordt het nu herschreven in C#. Deze autoclicker-tool is een hobby project waar ik een half jaar aan heb gewerkt"
+        "text": "Een desktop-autoclicker met een grafische interface, geschreven in Java. Een hobbyproject waar ik al lange tijd aan werk en dat ik blijf verbeteren."
       },
       "travelAgency": {
         "title": "Reisbureau",
@@ -25,7 +25,7 @@
       },
       "noTimeToDie": {
         "title": "No Time To Die",
-        "text": "Een gamejam-project, dit is een survivalgame met rondes. dit project is in slechts 16 uur is gemaakt met Gamemaker. Ik heb samengewerkt met een team van 5 mensen om dit spel te ontwikkelen."
+        "text": "Een gamejam-project: een survivalgame met rondes, in slechts 16 uur gemaakt met GameMaker. Ik heb dit spel samen met een team van 5 mensen ontwikkeld."
       }
     },
     "experiences": {
@@ -95,7 +95,7 @@
   },
   "metadata": {
     "title": "Rutger Pronk - Software Developer",
-    "description": "Hallo! Mijn naam is Rutger Pronk en ik studeer Software Developer op ROC Nijmegen."
+    "description": "Rutger Pronk is software developer en ICT-student aan Fontys, en bouwt webapps met Next.js, TypeScript en Kubernetes."
   },
   "notFound": {
     "title": "Pagina niet gevonden",
