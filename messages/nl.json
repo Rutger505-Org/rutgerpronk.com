@@ -15,17 +15,21 @@
     "projects": {
       "title": "Projecten",
       "githubLinkText": "Bekijk op GitHub",
-      "usefulAutoclicker": {
-        "title": "Useful Autoclicker",
-        "text": "Een desktop-autoclicker met een grafische interface, geschreven in Java. Een hobbyproject waar ik al lange tijd aan werk en dat ik blijf verbeteren."
+      "dijkerWebsite": {
+        "title": "Dijker-website",
+        "text": "Tweetalige website voor de dijker, een voertuig met een unieke spiraalriemaandrijving. Gebouwd met Next.js en uitgerold naar een VM met Docker Compose en Caddy, met een preview-omgeving voor elke pull request."
       },
-      "travelAgency": {
-        "title": "Reisbureau",
-        "text": "Een project waarbij gebruik wordt gemaakt van HTML, CSS, Tailwind CSS, PHP, MySQL en API-integratie. Ik heb drie maanden samengewerkt met een andere ontwikkelaar om deze reisbureau-website te ontwikkelen."
+      "kubernetesPlatform": {
+        "title": "Self-hosted Kubernetes-platform",
+        "text": "Het K3s-cluster in mijn homelab waar mijn websites op draaien. Een herbruikbare GitHub Actions-workflow rolt elke app uit met OpenTofu: elke pull request krijgt een eigen preview-URL met TLS-certificaat en elke merge gaat direct naar productie."
       },
-      "noTimeToDie": {
-        "title": "No Time To Die",
-        "text": "Een gamejam-project: een survivalgame met rondes, in slechts 16 uur gemaakt met GameMaker. Ik heb dit spel samen met een team van 5 mensen ontwikkeld."
+      "motorizedBlinds": {
+        "title": "Gemotoriseerde rolgordijnen",
+        "text": "Rust-firmware die mijn rolgordijnen motoriseert: ESP32-modules sturen de motoren aan en een zelfgemaakte nRF52840-afstandsbediening bedient ze via radio, allemaal in een 3D-geprinte behuizing."
+      },
+      "realLifeSoundboard": {
+        "title": "Real-life soundboard",
+        "text": "Negen fysieke knoppen op een ESP32 die via Bluetooth LE geluiden afspelen op een Android-telefoon. Rust-firmware op de ESP32 en een Kotlin-app die op de achtergrond blijft werken."
       }
     },
     "experiences": {
@@ -45,7 +49,7 @@
         }
       },
       "2024": {
-        "title": "2024",
+        "title": "2024 - 2026",
         "experience1": {
           "title": "Part-time werknemer bij CheapCargo",
           "place": "CheapCargo.com - Nijmegen"

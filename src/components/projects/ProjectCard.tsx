@@ -6,13 +6,15 @@ import { useTranslations } from "next-intl";
 interface ProjectCardProps {
   title: string;
   description: string;
-  image: StaticImageData;
+  tags: string[];
+  image?: StaticImageData;
   link: string;
 }
 
 export default function ProjectCard({
   title,
   description,
+  tags,
   image,
   link,
 }: Readonly<ProjectCardProps>) {
@@ -27,6 +29,18 @@ export default function ProjectCard({
       <div className={"flex max-w-md flex-col items-start"}>
         <h4 className={"text-2xl text-textPrimary"}>{title}</h4>
         <p className={"mt-5 text-textSecondary"}>{description}</p>
+        <ul className={"mt-5 flex flex-wrap gap-2"}>
+          {tags.map((tag) => (
+            <li
+              key={tag}
+              className={
+                "rounded-full border border-white/10 px-3 py-1 text-sm text-textSecondary"
+              }
+            >
+              {tag}
+            </li>
+          ))}
+        </ul>
 
         <div className={"flex-1"} />
 
@@ -40,12 +54,14 @@ export default function ProjectCard({
           <AnimatedButton text={t("githubLinkText")} />
         </Link>
       </div>
-      <Image
-        className={"max-h-80 w-auto"}
-        src={image}
-        alt={title}
-        sizes="(max-width: 672px) 100vw, 42rem"
-      />
+      {image && (
+        <Image
+          className={"max-h-80 w-auto rounded"}
+          src={image}
+          alt={title}
+          sizes="(max-width: 672px) 100vw, 42rem"
+        />
+      )}
     </div>
   );
 }
