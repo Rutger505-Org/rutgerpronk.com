@@ -15,14 +15,6 @@ const config: Config = {
           DEFAULT: "#12151A",
           raised: "#15181D",
         },
-        key: {
-          DEFAULT: "#20252C",
-          modifier: "#1B1F25",
-          edge: "#2B3038",
-          "modifier-edge": "#262B33",
-          pressed: "#232A1F",
-          shadow: "#0A0C0F",
-        },
         border: {
           DEFAULT: "#1E2228",
           card: "#242830",
@@ -41,6 +33,11 @@ const config: Config = {
           foreground: "#0E1013",
         },
         warm: "#F0B35A",
+        syntax: {
+          key: "#66D9EF",
+          string: "#E6DB74",
+          gutter: "#5C6370",
+        },
         danger: "#F87171",
       },
       fontFamily: {

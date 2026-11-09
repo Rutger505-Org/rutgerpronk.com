@@ -21,7 +21,8 @@ export default function ProjectList() {
             aria-pressed={selected}
             className={cn(
               "flex w-full items-start gap-4 border-b border-border px-4 py-5 text-left text-text transition-colors duration-150 hover:bg-surface-raised",
-              selected && "bg-surface-raised shadow-[inset_2px_0_0_theme(colors.accent.DEFAULT)]",
+              selected &&
+                "bg-surface-raised shadow-[inset_2px_0_0_theme(colors.accent.DEFAULT)]",
             )}
           >
             <span
@@ -41,7 +42,7 @@ export default function ProjectList() {
               </span>
             </span>
             <span className="pt-1 font-mono text-xs text-text-muted">
-              {t("imageCount", { count: project.images.length })}
+              {t("imageCount", { count: project.slides.length })}
             </span>
           </button>
         );

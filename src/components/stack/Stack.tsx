@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import Keyboard from "@/components/stack/Keyboard";
+import StackJson from "@/components/stack/StackJson";
 import ToolPanel from "@/components/stack/ToolPanel";
 
 export default function Stack() {
@@ -18,7 +18,7 @@ export default function Stack() {
       </div>
 
       <div className="mt-12 flex flex-wrap items-stretch gap-6">
-        <Keyboard />
+        <StackJson />
         <ToolPanel />
       </div>
     </section>

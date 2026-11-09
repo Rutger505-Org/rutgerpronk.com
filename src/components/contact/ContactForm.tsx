@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/form";
 import { sendEmail as sendEmailAction } from "@/app/[locale]/actions";
 import SubmitButton from "@/components/contact/SubmitButton";
-import { useToast } from "@/components/ui/use-toast";
+import { cn } from "@/lib/utils";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -28,7 +28,6 @@ interface ContactFormValues {
 
 export default function ContactForm() {
   const t = useTranslations("contact.form");
-  const { toast } = useToast();
 
   const form = useForm<ContactFormValues>({
     defaultValues: {
@@ -39,23 +38,17 @@ export default function ContactForm() {
   });
 
   const [isPending, startTransition] = useTransition();
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [result, setResult] = useState<"sent" | "failed" | null>(null);
 
   function onSubmit(data: ContactFormValues) {
-    setIsSuccess(false);
+    setResult(null);
     startTransition(async () => {
       try {
         await sendEmailAction(data);
-        setIsSuccess(true);
-        toast({
-          title: t("toast.success"),
-        });
+        setResult("sent");
         form.reset();
       } catch {
-        toast({
-          title: t("toast.error"),
-          variant: "destructive",
-        });
+        setResult("failed");
       }
     });
   }
@@ -68,12 +61,17 @@ export default function ContactForm() {
         className="flex min-w-0 flex-[1_1_420px] flex-col gap-4 self-start rounded-2xl border border-border-card bg-surface p-[clamp(20px,3vw,28px)]"
       >
         <h3 className="sr-only">{t("title")}</h3>
-        {isSuccess && (
+        {result && (
           <p
-            role="status"
-            className="animate-fade rounded-[10px] border border-accent px-3.5 py-3 font-mono text-[13px] text-accent"
+            role={result === "sent" ? "status" : "alert"}
+            className={cn(
+              "animate-fade rounded-[10px] border px-3.5 py-3 font-mono text-[13px]",
+              result === "sent"
+                ? "border-accent text-accent"
+                : "border-danger text-danger",
+            )}
           >
-            {t("sent")}
+            {t(result)}
           </p>
         )}
         <div className="flex flex-wrap gap-4">

@@ -10,7 +10,9 @@ export default function ToolPanel() {
   const { toolId, selectTool, selectProject } = usePortfolio();
   const tool = TOOLS.find((item) => item.id === toolId) ?? TOOLS[0];
   const pairs = relatedTools(tool);
-  const usedIn = PROJECTS.filter((project) => tool.projects.includes(project.key));
+  const usedIn = PROJECTS.filter((project) =>
+    tool.projects.includes(project.key),
+  );
 
   return (
     <div
@@ -44,19 +46,23 @@ export default function ToolPanel() {
             >
               {t(`work.projects.${project.key}.title`)}
               <span className="font-mono text-xs text-accent">
-                {t("stack.photoCount", { count: project.images.length })} →
+                {t("stack.photoCount", { count: project.slides.length })} →
               </span>
             </a>
           ))}
           {usedIn.length === 0 && (
-            <p className="text-sm text-text-secondary">{t("stack.noProjects")}</p>
+            <p className="text-sm text-text-secondary">
+              {t("stack.noProjects")}
+            </p>
           )}
         </div>
       </div>
 
       {pairs.length > 0 && (
         <div>
-          <p className="font-mono text-xs text-text-muted">{t("stack.pairsWith")}</p>
+          <p className="font-mono text-xs text-text-muted">
+            {t("stack.pairsWith")}
+          </p>
           <div className="mt-2 flex flex-wrap gap-1.5">
             {pairs.map((pair) => (
               <button

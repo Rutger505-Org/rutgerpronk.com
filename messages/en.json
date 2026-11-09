@@ -32,7 +32,6 @@
     "title": "Things I've shipped",
     "photoTotal": "{photos, plural, one {# photo} other {# photos}} across {projects} projects",
     "imageCount": "{count} img",
-    "noPhotos": "photos coming soon",
     "previous": "Previous photo",
     "next": "Next photo",
     "showPhoto": "Show photo {number}: {caption}",
@@ -42,30 +41,48 @@
         "title": "Dijker Website",
         "text": "Bilingual website for the dijker, a vehicle with a one-of-a-kind spiral belt drive. Built with Next.js and deployed to a VM with Docker Compose and Caddy, with a preview environment for every pull request.",
         "captions": {
-          "homeDesktop": "Homepage on desktop"
+          "homeDesktop": "Homepage on desktop",
+          "homeMobile": "Homepage on a phone",
+          "languageSwitch": "Dutch / English language switch",
+          "previewEnvironment": "Preview environment on a pull request"
         }
       },
       "kubernetes-platform": {
         "title": "Self-hosted Kubernetes Platform",
-        "text": "The K3s cluster in my homelab that runs my websites. A reusable GitHub Actions workflow deploys every app with OpenTofu: each pull request gets its own preview URL with a TLS certificate, and every merge goes straight to production."
+        "text": "The K3s cluster in my homelab that runs my websites. A reusable GitHub Actions workflow deploys every app with OpenTofu: each pull request gets its own preview URL with a TLS certificate, and every merge goes straight to production.",
+        "captions": {
+          "hardware": "Homelab hardware running K3s",
+          "deployRun": "GitHub Actions deploy run",
+          "previewUrl": "Pull request with its own preview URL"
+        }
       },
       "motorized-blinds": {
         "title": "Motorized Blinds",
-        "text": "Rust firmware that motorizes my blinds: ESP32 modules drive the motors, and a custom nRF52840 remote controls them over radio, all in a 3D-printed case."
+        "text": "Rust firmware that motorizes my blinds: ESP32 modules drive the motors, and a custom nRF52840 remote controls them over radio, all in a 3D-printed case.",
+        "captions": {
+          "motorModule": "Motor module in its 3D-printed case",
+          "remote": "The custom nRF52840 remote",
+          "mounted": "Mounted on the window",
+          "board": "ESP32 board close-up"
+        }
       },
       "real-life-soundboard": {
         "title": "Real-life Soundboard",
-        "text": "Nine physical buttons on an ESP32 that trigger sounds on an Android phone over Bluetooth LE. Rust firmware on the ESP32, and a Kotlin app that keeps working in the background."
+        "text": "Nine physical buttons on an ESP32 that trigger sounds on an Android phone over Bluetooth LE. Rust firmware on the ESP32, and a Kotlin app that keeps working in the background.",
+        "captions": {
+          "buttons": "The nine-button board",
+          "app": "Kotlin companion app",
+          "wiring": "ESP32 wiring inside the case"
+        }
       }
-    }
+    },
+    "placeholder": "[ PHOTO {number} — COMING SOON ]"
   },
   "stack": {
-    "label": "// my stack, as a keyboard",
-    "title": "Press a key",
-    "text": "Each key is a tool I use. Press one to see where it shows up in my projects and what it pairs with. The modifier keys filter by layer. Keys with a light are daily drivers.",
+    "label": "// my stack",
+    "title": "cat stack.json",
+    "text": "Every tool I use, grouped by layer. Click a tool to see which projects use it and what it pairs with, or click a layer name to filter.",
     "filterLayer": "Filter layer {layer}",
-    "spaceAll": "{keys} keys · {layers} layers",
-    "spaceFiltered": "{count} keys on layer {layer} · press {modifier} again to clear",
     "usedIn": "used in",
     "pairsWith": "pairs with",
     "noProjects": "The infrastructure behind this very website.",
@@ -90,7 +107,9 @@
       "3d-printing": "Custom cases for my hardware projects.",
       "kotlin": "The Android app that plays soundboard sounds, even in the background.",
       "android": "Target platform for the soundboard companion app."
-    }
+    },
+    "summary": "{tools} tools · {layers} layers",
+    "filtered": "filter: {layer} ({count}) · click \"{layer}\" again to clear"
   },
   "experience": {
     "label": "// experience",
@@ -139,17 +158,14 @@
       "messagePlaceholder": "Hi Rutger, …",
       "submit": "Send message",
       "sending": "Sending…",
-      "sent": "200 OK · message sent. I'll get back to you soon.",
+      "sent": "200 OK — message sent. I'll get back to you soon.",
       "validation": {
         "name": "Name is required",
         "email": "Email is required",
         "emailInvalid": "Email is invalid",
         "message": "Message is required"
       },
-      "toast": {
-        "success": "Message sent successfully!",
-        "error": "Something went wrong! Please try again later."
-      }
+      "failed": "ERR — message not sent. Try again later, or mail me directly."
     }
   },
   "footer": {

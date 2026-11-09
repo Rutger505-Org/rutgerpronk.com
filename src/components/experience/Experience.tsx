@@ -9,7 +9,7 @@ export default function Experience() {
     <section id="log" className="border-t border-border">
       <div className="page-container py-24">
         <p className="eyebrow">{t("label")}</p>
-        <h2 className="section-title mt-2.5">git log --career</h2>
+        <h2 className="section-title mt-2.5">git log career.txt</h2>
 
         <ol className="mt-10 font-mono text-sm">
           {CAREER_LOG.map((entry) => (
@@ -17,7 +17,10 @@ export default function Experience() {
               key={entry.key}
               className="flex items-stretch gap-[18px] rounded-[10px] px-3 transition-colors duration-150 hover:bg-surface-raised"
             >
-              <div className="relative flex w-[18px] flex-none justify-center" aria-hidden>
+              <div
+                className="relative flex w-[18px] flex-none justify-center"
+                aria-hidden
+              >
                 <span className="absolute inset-y-0 w-0.5 bg-border-card" />
                 <span
                   className={cn(

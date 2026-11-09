@@ -5,7 +5,6 @@ import React from "react";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { Toaster } from "@/components/ui/toaster";
 import { routing } from "@/i18n/routing";
 import { localeAlternates, OPEN_GRAPH_LOCALES, SITE_URL } from "@/lib/site";
 
@@ -78,7 +77,6 @@ export default async function RootLayout({ children, params }: LayoutProps) {
     >
       <body>
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
-        <Toaster />
       </body>
     </html>
   );

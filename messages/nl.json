@@ -32,7 +32,6 @@
     "title": "Wat ik heb gebouwd",
     "photoTotal": "{photos, plural, one {# foto} other {# foto's}} verdeeld over {projects} projecten",
     "imageCount": "{count} img",
-    "noPhotos": "foto's volgen nog",
     "previous": "Vorige foto",
     "next": "Volgende foto",
     "showPhoto": "Toon foto {number}: {caption}",
@@ -42,30 +41,48 @@
         "title": "Dijker-website",
         "text": "Tweetalige website voor de dijker, een voertuig met een unieke spiraalriemaandrijving. Gebouwd met Next.js en uitgerold naar een VM met Docker Compose en Caddy, met een preview-omgeving voor elke pull request.",
         "captions": {
-          "homeDesktop": "Homepage op desktop"
+          "homeDesktop": "Homepage op desktop",
+          "homeMobile": "Homepage op een telefoon",
+          "languageSwitch": "Taalwissel Nederlands / Engels",
+          "previewEnvironment": "Preview-omgeving bij een pull request"
         }
       },
       "kubernetes-platform": {
         "title": "Self-hosted Kubernetes-platform",
-        "text": "Het K3s-cluster in mijn homelab waar mijn websites op draaien. Een herbruikbare GitHub Actions-workflow rolt elke app uit met OpenTofu: elke pull request krijgt een eigen preview-URL met TLS-certificaat en elke merge gaat direct naar productie."
+        "text": "Het K3s-cluster in mijn homelab waar mijn websites op draaien. Een herbruikbare GitHub Actions-workflow rolt elke app uit met OpenTofu: elke pull request krijgt een eigen preview-URL met TLS-certificaat en elke merge gaat direct naar productie.",
+        "captions": {
+          "hardware": "Homelab-hardware waar K3s op draait",
+          "deployRun": "Deploy-run in GitHub Actions",
+          "previewUrl": "Pull request met een eigen preview-URL"
+        }
       },
       "motorized-blinds": {
         "title": "Gemotoriseerde rolgordijnen",
-        "text": "Rust-firmware die mijn rolgordijnen motoriseert: ESP32-modules sturen de motoren aan en een zelfgemaakte nRF52840-afstandsbediening bedient ze via radio, allemaal in een 3D-geprinte behuizing."
+        "text": "Rust-firmware die mijn rolgordijnen motoriseert: ESP32-modules sturen de motoren aan en een zelfgemaakte nRF52840-afstandsbediening bedient ze via radio, allemaal in een 3D-geprinte behuizing.",
+        "captions": {
+          "motorModule": "Motormodule in zijn 3D-geprinte behuizing",
+          "remote": "De zelfgemaakte nRF52840-afstandsbediening",
+          "mounted": "Gemonteerd aan het raam",
+          "board": "Close-up van het ESP32-bord"
+        }
       },
       "real-life-soundboard": {
         "title": "Real-life soundboard",
-        "text": "Negen fysieke knoppen op een ESP32 die via Bluetooth LE geluiden afspelen op een Android-telefoon. Rust-firmware op de ESP32 en een Kotlin-app die op de achtergrond blijft werken."
+        "text": "Negen fysieke knoppen op een ESP32 die via Bluetooth LE geluiden afspelen op een Android-telefoon. Rust-firmware op de ESP32 en een Kotlin-app die op de achtergrond blijft werken.",
+        "captions": {
+          "buttons": "Het bord met negen knoppen",
+          "app": "De Kotlin-app",
+          "wiring": "ESP32-bedrading in de behuizing"
+        }
       }
-    }
+    },
+    "placeholder": "[ FOTO {number} — VOLGT NOG ]"
   },
   "stack": {
-    "label": "// mijn stack, als toetsenbord",
-    "title": "Druk op een toets",
-    "text": "Elke toets is een tool die ik gebruik. Druk erop om te zien in welke projecten hij zit en waar hij mee samengaat. De modifier-toetsen filteren per laag. Toetsen met een lampje gebruik ik dagelijks.",
+    "label": "// mijn stack",
+    "title": "cat stack.json",
+    "text": "Elke tool die ik gebruik, gegroepeerd per laag. Klik op een tool om te zien in welke projecten hij zit en waar hij mee samengaat, of klik op een laagnaam om te filteren.",
     "filterLayer": "Filter laag {layer}",
-    "spaceAll": "{keys} toetsen · {layers} lagen",
-    "spaceFiltered": "{count} toetsen op laag {layer} · druk nog eens op {modifier} om te wissen",
     "usedIn": "gebruikt in",
     "pairsWith": "gaat samen met",
     "noProjects": "De infrastructuur achter deze website.",
@@ -90,7 +107,9 @@
       "3d-printing": "Zelfontworpen behuizingen voor mijn hardwareprojecten.",
       "kotlin": "De Android-app die soundboardgeluiden afspeelt, ook op de achtergrond.",
       "android": "Doelplatform voor de soundboard-app."
-    }
+    },
+    "summary": "{tools} tools · {layers} lagen",
+    "filtered": "filter: {layer} ({count}) · klik nog eens op \"{layer}\" om te wissen"
   },
   "experience": {
     "label": "// ervaring",
@@ -139,17 +158,14 @@
       "messagePlaceholder": "Hoi Rutger, …",
       "submit": "Verstuur bericht",
       "sending": "Versturen…",
-      "sent": "200 OK · bericht verstuurd. Ik kom snel bij je terug.",
+      "sent": "200 OK — bericht verstuurd. Ik kom snel bij je terug.",
       "validation": {
         "name": "Naam is verplicht",
         "email": "E-mail is verplicht",
         "emailInvalid": "E-mail is ongeldig",
         "message": "Bericht is verplicht"
       },
-      "toast": {
-        "success": "Bericht succesvol verzonden!",
-        "error": "Er is iets misgegaan! Probeer het later opnieuw."
-      }
+      "failed": "ERR — bericht niet verstuurd. Probeer het later opnieuw, of mail me direct."
     }
   },
   "footer": {

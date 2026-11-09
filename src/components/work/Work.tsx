@@ -1,16 +1,13 @@
 import { useTranslations } from "next-intl";
 import ProjectList from "@/components/work/ProjectList";
 import Gallery from "@/components/work/Gallery";
-import { PROJECTS, TOTAL_PHOTOS } from "@/lib/projects";
+import { PROJECTS, TOTAL_SLIDES } from "@/lib/projects";
 
 export default function Work() {
   const t = useTranslations("work");
 
   return (
-    <section
-      id="work"
-      className="border-y border-border bg-background-alt"
-    >
+    <section id="work" className="border-y border-border bg-background-alt">
       <div className="page-container py-24">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -19,7 +16,7 @@ export default function Work() {
           </div>
           <p className="font-mono text-[13px] text-text-muted">
             {t("photoTotal", {
-              photos: TOTAL_PHOTOS,
+              photos: TOTAL_SLIDES,
               projects: PROJECTS.length,
             })}
           </p>
