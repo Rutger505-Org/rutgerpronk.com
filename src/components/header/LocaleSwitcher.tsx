@@ -1,33 +1,25 @@
-import LanguageIcon from "@/components/icons/LanguageIcon";
-import React from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
-
-interface LocaleSwitcherProps {
-  className?: string;
-  underline: boolean;
-}
+import LanguageIcon from "@/components/icons/LanguageIcon";
+import { cn } from "@/lib/utils";
 
 export default function LocaleSwitcher({
   className,
-  underline,
-}: Readonly<LocaleSwitcherProps>) {
+}: Readonly<{ className?: string }>) {
+  const t = useTranslations("header");
   const locale = useLocale();
-  const otherLocale = locale == "en" ? "nl" : "en";
+  const otherLocale = locale === "en" ? "nl" : "en";
 
   return (
-    <Link href={`/${otherLocale}`} className={`${className}`} scroll={false}>
-      <div className={"flex items-center"}>
-        <LanguageIcon className={"h-5"} />
-        <p className={`ml-2`}>{otherLocale.toUpperCase()}</p>
-      </div>
-      {underline && (
-        <span
-          className={
-            "block h-1 w-0 rounded-full bg-accent duration-300 ease-in-out group-hover:w-1/2"
-          }
-        ></span>
-      )}
+    <Link
+      href={`/${otherLocale}`}
+      hrefLang={otherLocale}
+      scroll={false}
+      aria-label={t("switchLocale")}
+      className={cn("inline-flex items-center gap-2", className)}
+    >
+      <LanguageIcon className="h-4 w-4" />
+      {otherLocale.toUpperCase()}
     </Link>
   );
 }

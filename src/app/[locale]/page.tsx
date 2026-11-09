@@ -1,12 +1,14 @@
-import Footer from "@/components/Footer";
-import About from "@/components/About";
-import LandingSection from "@/components/LandingSection";
-import Projects from "@/components/projects";
-import Contact from "@/components/contact";
-import MobileHeader from "@/components/header/MobileHeader";
-import DesktopHeader from "@/components/header/DesktopHeader";
-import PersonJsonLd from "@/components/PersonJsonLd";
 import { setRequestLocale } from "next-intl/server";
+import Header from "@/components/header/Header";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Work from "@/components/work/Work";
+import Stack from "@/components/stack/Stack";
+import Experience from "@/components/experience/Experience";
+import Contact from "@/components/contact";
+import Footer from "@/components/Footer";
+import PersonJsonLd from "@/components/PersonJsonLd";
+import { PortfolioProvider } from "@/components/PortfolioContext";
 
 export default async function Home({
   params,
@@ -17,26 +19,16 @@ export default async function Home({
   return (
     <>
       <PersonJsonLd locale={locale} />
-      <DesktopHeader />
-      <MobileHeader />
+      <Header />
       <main>
-        <div className="mx-spacing-mobile max-w-[2300px] sm:mx-spacing too-big:mx-auto">
-          <LandingSection />
-        </div>
-
-        <div className="relative z-10 bg-primary">
-          <div className="mx-spacing-mobile max-w-[2300px] sm:mx-spacing too-big:mx-auto">
-            <About />
-          </div>
-
-          <div className="mx-spacing-mobile max-w-[2300px] sm:mx-spacing too-big:mx-auto">
-            <Projects />
-          </div>
-
-          <div className="mx-spacing-mobile max-w-[2300px] sm:mx-spacing too-big:mx-auto">
-            <Contact />
-          </div>
-        </div>
+        <Hero />
+        <About />
+        <PortfolioProvider>
+          <Work />
+          <Stack />
+        </PortfolioProvider>
+        <Experience />
+        <Contact />
       </main>
       <Footer />
     </>
