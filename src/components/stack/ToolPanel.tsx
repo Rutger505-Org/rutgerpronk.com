@@ -44,8 +44,10 @@ export default function ToolPanel() {
               onClick={() => selectProject(project.key)}
               className="interactive flex min-h-11 items-center justify-between gap-2 rounded-[10px] border border-border-control px-3.5 text-sm"
             >
-              {t(`work.projects.${project.key}.title`)}
-              <span className="font-mono text-xs text-accent">
+              <span className="min-w-0 py-2">
+                {t(`work.projects.${project.key}.title`)}
+              </span>
+              <span className="shrink-0 whitespace-nowrap font-mono text-xs text-accent">
                 {t("stack.photoCount", { count: project.slides.length })} →
               </span>
             </a>
