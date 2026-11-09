@@ -127,16 +127,40 @@ resource "kubernetes_service" "app" {
   }
 }
 
+# Redirect http to https (Traefik serves both entrypoints otherwise)
+resource "kubernetes_manifest" "https_redirect" {
+  depends_on = [kubernetes_namespace.app]
+
+  manifest = {
+    apiVersion = "traefik.io/v1alpha1"
+    kind       = "Middleware"
+    metadata = {
+      name      = "https-redirect"
+      namespace = kubernetes_namespace.app.metadata[0].name
+    }
+    spec = {
+      redirectScheme = {
+        scheme    = "https"
+        permanent = true
+      }
+    }
+  }
+}
+
 # Ingress
 resource "kubernetes_ingress_v1" "app" {
   depends_on = [
     kubernetes_namespace.app,
     kubernetes_service.app,
+    kubernetes_manifest.https_redirect,
   ]
 
   metadata {
     name      = "${var.application_name}-ingress"
     namespace = kubernetes_namespace.app.metadata[0].name
+    annotations = {
+      "traefik.ingress.kubernetes.io/router.middlewares" = "${kubernetes_namespace.app.metadata[0].name}-https-redirect@kubernetescrd"
+    }
   }
 
   spec {
