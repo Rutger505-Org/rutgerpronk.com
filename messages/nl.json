@@ -19,7 +19,7 @@
   },
   "about": {
     "label": "// wie ben ik",
-    "statement": "Ik bouw graag dingen van begin tot eind: webapps met Next.js en TypeScript, het self-hosted Kubernetes-cluster waar ze op draaien en Rust-firmware voor ESP32-microcontrollers.",
+    "statement": "Ik bouw graag dingen van begin tot eind: webapps met Next.js en TypeScript, het self-hosted Kubernetes-cluster waar ze op draaien en Rust-firmware voor ESP32- & nRF52-microcontrollers.",
     "text": "Afgestudeerd als Software Developer aan ROC Nijmegen, en in 2026 ben ik begonnen aan mijn ICT-bachelor bij Fontys Hogeschool in Eindhoven.",
     "facts": {
       "based_in": "Nederland",

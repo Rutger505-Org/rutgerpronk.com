@@ -19,7 +19,7 @@
   },
   "about": {
     "label": "// who am i",
-    "statement": "I like building things end to end: web apps with Next.js and TypeScript, the self-hosted Kubernetes cluster they run on, and Rust firmware for ESP32 microcontrollers.",
+    "statement": "I like building things end to end: web apps with Next.js and TypeScript, the self-hosted Kubernetes cluster they run on, and Rust firmware for ESP32 & nRF52 microcontrollers.",
     "text": "Graduated as a Software Developer at ROC Nijmegen, and in 2026 I started my ICT bachelor's at Fontys University of Applied Sciences in Eindhoven.",
     "facts": {
       "based_in": "Netherlands",
