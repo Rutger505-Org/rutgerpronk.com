@@ -3,109 +3,66 @@ import { fontFamily } from "tailwindcss/defaultTheme";
 import tailwindcssAnimate from "tailwindcss-animate";
 
 const config: Config = {
-  darkMode: ["class"],
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "app/**/*.{ts,tsx}",
-    "components/**/*.{ts,tsx}",
-  ],
+  content: ["./src/**/*.{ts,tsx}"],
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
       colors: {
-        primary: {
-          DEFAULT: "#121125",
-          foreground: "hsl(var(--primary-foreground))",
+        background: {
+          DEFAULT: "#0E1013",
+          alt: "#0B0D10",
         },
-        secondary: {
-          DEFAULT: "#0E0E21",
-          foreground: "hsl(var(--secondary-foreground))",
+        surface: {
+          DEFAULT: "#12151A",
+          raised: "#15181D",
         },
-        landing: {
-          DEFAULT: "#000e28",
+        key: {
+          DEFAULT: "#20252C",
+          modifier: "#1B1F25",
+          edge: "#2B3038",
+          "modifier-edge": "#262B33",
+          pressed: "#232A1F",
+          shadow: "#0A0C0F",
+        },
+        border: {
+          DEFAULT: "#1E2228",
+          card: "#242830",
+          control: "#2E333C",
+          strong: "#3A4250",
+          node: "#4A515C",
+        },
+        text: {
+          DEFAULT: "#E8EAED",
+          secondary: "#B4BAC4",
+          muted: "#8A919C",
+          faint: "#6B7380",
         },
         accent: {
-          DEFAULT: "#FF365A",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "#A6E36E",
+          foreground: "#0E1013",
         },
-        textPrimary: "#EDEDED",
-        textSecondary: "#CAC8DC",
-        transparent: "transparent",
-        red: "#FF0000",
-        green: "#00FF00",
-        blue: "#0000FF",
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-      },
-      screens: {
-        xs: "400px",
-        sm: "640px",
-        md: "768px",
-        mdlg: "850px",
-        lg: "1024px",
-        xl: "1280px",
-        "2xl": "1536px",
-        "too-big": "2800px",
-        aboutMe: "520px",
-      },
-
-      padding: {
-        spacing: "10%",
-      },
-      margin: {
-        spacing: "10%",
-        "spacing-mobile": "5%",
-      },
-      borderRadius: {
-        lg: `var(--radius)`,
-        md: `calc(var(--radius) - 2px)`,
-        sm: "calc(var(--radius) - 4px)",
+        warm: "#F0B35A",
+        danger: "#F87171",
       },
       fontFamily: {
+        display: ["var(--font-display)", ...fontFamily.sans],
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        mono: ["var(--font-mono)", ...fontFamily.mono],
+      },
+      maxWidth: {
+        page: "1200px",
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+        blink: {
+          "50%": { opacity: "0" },
         },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+        fade: {
+          from: { opacity: "0", transform: "scale(1.015)" },
+          to: { opacity: "1", transform: "none" },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        blink: "blink 1.1s steps(1) infinite",
+        fade: "fade 0.35s ease",
       },
     },
   },

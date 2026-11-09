@@ -1,84 +1,145 @@
 {
-  "landingSection": {
-    "softwareDev": "{symbol} Software-dev",
-    "greeting": "Hi, I'm <span>Rutger</span> from the Netherlands",
-    "subtitle": "ICT student building web things with Next.js, TypeScript & a self-hosted Kubernetes pipeline."
+  "header": {
+    "navigation": "Main",
+    "work": "./work",
+    "stack": "./stack",
+    "log": "./log",
+    "contact": "./contact",
+    "menu": "Menu",
+    "switchLocale": "Bekijk in het Nederlands"
+  },
+  "hero": {
+    "status": "software developer · the netherlands",
+    "heading": "Hi, I'm Rutger.<br></br><muted>I build things</muted><br></br>end to end",
+    "subtitle": "ICT student building web things with Next.js, TypeScript and a self-hosted Kubernetes pipeline. And Rust firmware for ESP32s, when the web is not enough.",
+    "seeWork": "See my work",
+    "portraitAlt": "Portrait of Rutger Pronk",
+    "currentlyLabel": "currently",
+    "currently": "ICT student @ Fontys, Eindhoven"
   },
   "about": {
-    "title": "Who am I?",
-    "text1": "My name is Rutger Pronk, a software developer from the Netherlands. I graduated as a Software Developer at ROC Nijmegen and in 2026 started my ICT bachelor's degree at Fontys University of Applied Sciences in Eindhoven.",
-    "text2": "I like building things end to end: web apps with Next.js and TypeScript, the self-hosted Kubernetes cluster they run on, and Rust firmware for ESP32 microcontrollers."
+    "label": "// who am i",
+    "statement": "I like building things end to end: web apps with Next.js and TypeScript, the self-hosted Kubernetes cluster they run on, and Rust firmware for ESP32 microcontrollers.",
+    "text": "Graduated as a Software Developer at ROC Nijmegen, and in 2026 I started my ICT bachelor's at Fontys University of Applied Sciences in Eindhoven.",
+    "facts": {
+      "based_in": "Netherlands",
+      "studying": "ICT · Fontys Eindhoven",
+      "running": "K3s in my homelab"
+    }
   },
-  "projects": {
-    "title": "What can I do?",
-    "text": "I mostly work with TypeScript, Next.js and Tailwind CSS, and run my projects on my own Kubernetes cluster, managed with Terraform and deployed through GitHub Actions. Through school projects, an internship and game jams I've learned to work well in a team. Here are some projects that show what I can do.",
+  "work": {
+    "label": "// selected work",
+    "title": "Things I've shipped",
+    "photoTotal": "{photos, plural, one {# photo} other {# photos}} across {projects} projects",
+    "imageCount": "{count} img",
+    "noPhotos": "photos coming soon",
+    "previous": "Previous photo",
+    "next": "Next photo",
+    "showPhoto": "Show photo {number}: {caption}",
+    "viewOnGithub": "View on GitHub",
     "projects": {
-      "title": "Projects",
-      "githubLinkText": "Visit on GitHub",
-      "dijkerWebsite": {
+      "dijker-website": {
         "title": "Dijker Website",
-        "text": "Bilingual website for the dijker, a vehicle with a one-of-a-kind spiral belt drive. Built with Next.js and deployed to a VM with Docker Compose and Caddy, with a preview environment for every pull request."
+        "text": "Bilingual website for the dijker, a vehicle with a one-of-a-kind spiral belt drive. Built with Next.js and deployed to a VM with Docker Compose and Caddy, with a preview environment for every pull request.",
+        "captions": {
+          "homeDesktop": "Homepage on desktop"
+        }
       },
-      "kubernetesPlatform": {
+      "kubernetes-platform": {
         "title": "Self-hosted Kubernetes Platform",
         "text": "The K3s cluster in my homelab that runs my websites. A reusable GitHub Actions workflow deploys every app with OpenTofu: each pull request gets its own preview URL with a TLS certificate, and every merge goes straight to production."
       },
-      "motorizedBlinds": {
+      "motorized-blinds": {
         "title": "Motorized Blinds",
         "text": "Rust firmware that motorizes my blinds: ESP32 modules drive the motors, and a custom nRF52840 remote controls them over radio, all in a 3D-printed case."
       },
-      "realLifeSoundboard": {
+      "real-life-soundboard": {
         "title": "Real-life Soundboard",
         "text": "Nine physical buttons on an ESP32 that trigger sounds on an Android phone over Bluetooth LE. Rust firmware on the ESP32, and a Kotlin app that keeps working in the background."
       }
-    },
-    "experiences": {
-      "title": "Experiences",
-      "2022": {
-        "title": "2022",
-        "experience1": {
-          "title": "Start studying Software Developer",
-          "place": "ROC Nijmegen Heyendaalseweg - MBO"
-        }
+    }
+  },
+  "stack": {
+    "label": "// my stack, as a keyboard",
+    "title": "Press a key",
+    "text": "Each key is a tool I use. Press one to see where it shows up in my projects and what it pairs with. The modifier keys filter by layer. Keys with a light are daily drivers.",
+    "filterLayer": "Filter layer {layer}",
+    "spaceAll": "{keys} keys · {layers} layers",
+    "spaceFiltered": "{count} keys on layer {layer} · press {modifier} again to clear",
+    "usedIn": "used in",
+    "pairsWith": "pairs with",
+    "noProjects": "The infrastructure behind this very website.",
+    "photoCount": "{count, plural, =0 {view} one {# photo} other {# photos}}",
+    "tools": {
+      "typescript": "My main language for anything web. Typed end to end, from components to API routes.",
+      "nextjs": "The framework behind my websites, including the Dijker site and this portfolio.",
+      "tailwind-css": "How I style every web project.",
+      "docker": "Containers for my apps; the Dijker site runs with Docker Compose on a VM.",
+      "caddy": "Reverse proxy and automatic TLS in front of the Dijker website.",
+      "k3s": "Lightweight Kubernetes running in my homelab. It hosts my websites.",
+      "helm": "Packages the apps that get deployed to my cluster.",
+      "traefik": "Ingress for the cluster: routes preview and production URLs.",
+      "opentofu": "Infrastructure as code that deploys every app from one reusable workflow.",
+      "terraform": "Infrastructure as code for deploying this portfolio.",
+      "github-actions": "CI/CD: a preview URL for every pull request, production on every merge.",
+      "rust": "Firmware language for my ESP32 and nRF52840 projects.",
+      "embassy": "Async Rust framework for embedded firmware.",
+      "esp32": "Microcontroller that drives the blind motors and reads the soundboard buttons.",
+      "nrf52840": "Radio chip inside the custom remote for my blinds.",
+      "bluetooth-le": "Connects the soundboard buttons to an Android phone.",
+      "3d-printing": "Custom cases for my hardware projects.",
+      "kotlin": "The Android app that plays soundboard sounds, even in the background.",
+      "android": "Target platform for the soundboard companion app."
+    }
+  },
+  "experience": {
+    "label": "// experience",
+    "entries": {
+      "fontys": {
+        "title": "Started ICT Bachelor's degree",
+        "place": "Fontys University of Applied Sciences, Eindhoven · HBO",
+        "date": "2026"
       },
-      "2023": {
-        "title": "2023",
-        "experience1": {
-          "title": "Intern at CheapCargo",
-          "place": "CheapCargo.com - Nijmegen"
-        }
+      "graduated": {
+        "title": "Graduated Software Developer",
+        "place": "ROC Nijmegen Heyendaalseweg · MBO",
+        "date": "2026"
       },
-      "2024": {
-        "title": "2024 - 2026",
-        "experience1": {
-          "title": "Part-time employee at CheapCargo",
-          "place": "CheapCargo.com - Nijmegen"
-        }
+      "cheapcargoJob": {
+        "title": "Part-time employee at CheapCargo",
+        "place": "CheapCargo.com, Nijmegen",
+        "date": "2024 – 2026"
       },
-      "2026": {
-        "title": "2026",
-        "experience1": {
-          "title": "Started ICT Bachelor's degree",
-          "place": "Fontys University of Applied Sciences - Eindhoven - HBO"
-        },
-        "experience2": {
-          "title": "Graduated Software Developer",
-          "place": "ROC Nijmegen Heyendaalseweg - MBO"
-        }
+      "cheapcargoIntern": {
+        "title": "Intern at CheapCargo",
+        "place": "CheapCargo.com, Nijmegen",
+        "date": "2023"
+      },
+      "rocStart": {
+        "title": "Started studying Software Developer",
+        "place": "ROC Nijmegen Heyendaalseweg · MBO",
+        "date": "2022"
       }
     }
   },
   "contact": {
-    "title": "Talk to me",
-    "text": "Do not hesitate to contact me through the form here or by direct email on <button>rutger.pronk19@gmail.com</button>.",
-    "clickToCopy": "Click to copy",
-    "copied": "Copied!",
+    "label": "// contact",
+    "title": "Let's build<br></br>together.",
+    "text": "Send me a message through the form, or mail me directly. One click copies the address.",
+    "copyEmail": "Copy email address {email}",
+    "copy": "copy",
+    "copied": "copied!",
     "form": {
       "title": "Send me a message",
-      "name": "Name",
-      "email": "Email",
-      "message": "Message",
-      "submit": "Send email",
+      "name": "name",
+      "email": "email",
+      "message": "message",
+      "namePlaceholder": "Ada Lovelace",
+      "emailPlaceholder": "ada@example.com",
+      "messagePlaceholder": "Hi Rutger, …",
+      "submit": "Send message",
+      "sending": "Sending…",
+      "sent": "200 OK · message sent. I'll get back to you soon.",
       "validation": {
         "name": "Name is required",
         "email": "Email is required",
@@ -91,11 +152,8 @@
       }
     }
   },
-  "header": {
-    "about": "About me",
-    "projects": "My work",
-    "contact": "Contact",
-    "menu": "Menu"
+  "footer": {
+    "builtWith": "built with next.js · deployed to my own k3s cluster"
   },
   "metadata": {
     "title": "Rutger Pronk - Software Developer",

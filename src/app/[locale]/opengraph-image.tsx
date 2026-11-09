@@ -17,7 +17,7 @@ export default async function OpengraphImage({
   params,
 }: Readonly<{ params: Promise<{ locale: string }> }>) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "landingSection" });
+  const t = await getTranslations({ locale, namespace: "hero" });
   const photo = await readFile(join(process.cwd(), "src/assets/og-photo.png"));
   const photoSrc = `data:image/png;base64,${photo.toString("base64")}`;
 
@@ -30,12 +30,12 @@ export default async function OpengraphImage({
         alignItems: "center",
         justifyContent: "space-between",
         padding: "0 80px",
-        background: "#121125",
-        borderBottom: "12px solid #FF365A",
+        background: "#0E1013",
+        borderBottom: "12px solid #A6E36E",
       }}
     >
       <div style={{ display: "flex", flexDirection: "column", width: 640 }}>
-        <div style={{ fontSize: 28, letterSpacing: 8, color: "#FF365A" }}>
+        <div style={{ fontSize: 28, letterSpacing: 8, color: "#A6E36E" }}>
           {"</> SOFTWARE DEVELOPER"}
         </div>
         <div
@@ -44,7 +44,7 @@ export default async function OpengraphImage({
             fontSize: 96,
             fontWeight: 700,
             lineHeight: 1,
-            color: "#EDEDED",
+            color: "#E8EAED",
           }}
         >
           Rutger Pronk
@@ -54,7 +54,7 @@ export default async function OpengraphImage({
             marginTop: 28,
             fontSize: 32,
             lineHeight: 1.35,
-            color: "#CAC8DC",
+            color: "#B4BAC4",
           }}
         >
           {t("subtitle")}
@@ -70,7 +70,7 @@ export default async function OpengraphImage({
                 borderRadius: 999,
                 border: "2px solid rgba(255,255,255,0.15)",
                 fontSize: 22,
-                color: "#EDEDED",
+                color: "#E8EAED",
               }}
             >
               {skill}
@@ -83,7 +83,7 @@ export default async function OpengraphImage({
         width={380}
         height={380}
         alt=""
-        style={{ borderRadius: 999, border: "8px solid #FF365A" }}
+        style={{ borderRadius: 999, border: "8px solid #A6E36E" }}
       />
     </div>,
     size,

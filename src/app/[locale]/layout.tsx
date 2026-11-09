@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import { notFound } from "next/navigation";
@@ -9,7 +9,21 @@ import { Toaster } from "@/components/ui/toaster";
 import { routing } from "@/i18n/routing";
 import { localeAlternates, OPEN_GRAPH_LOCALES, SITE_URL } from "@/lib/site";
 
-const inter = Inter({ subsets: ["latin"] });
+const display = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-display",
+});
+const sans = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-sans",
+});
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-mono",
+});
 
 type LayoutProps = Readonly<{
   children: React.ReactNode;
@@ -58,8 +72,11 @@ export default async function RootLayout({ children, params }: LayoutProps) {
   setRequestLocale(locale);
 
   return (
-    <html lang={locale}>
-      <body className={`${inter.className} bg-primary`}>
+    <html
+      lang={locale}
+      className={`${display.variable} ${sans.variable} ${mono.variable}`}
+    >
+      <body>
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
         <Toaster />
       </body>

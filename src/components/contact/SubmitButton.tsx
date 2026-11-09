@@ -1,57 +1,19 @@
-import { useEffect, useRef, useState } from "react";
-import ArrowOutRightIcon from "@/components/icons/ArrowOutRightIcon";
 import { useTranslations } from "next-intl";
-import CheckMarkIcon from "@/components/icons/CheckMarkIcon";
 import LoadingCircle from "@/components/icons/LoadingCircle";
-
-interface SubmitButtonProps {
-  sending: boolean;
-  sent: boolean;
-}
 
 export default function SubmitButton({
   sending,
-  sent,
-}: Readonly<SubmitButtonProps>) {
+}: Readonly<{ sending: boolean }>) {
   const t = useTranslations("contact.form");
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const [buttonWidth, setButtonWidth] = useState<number | null>(null);
-
-  useEffect(() => {
-    if (buttonRef.current) {
-      setButtonWidth(buttonRef.current.offsetWidth);
-    }
-  }, []);
-
-  let buttonContent;
-
-  if (sending) {
-    buttonContent = <LoadingCircle className={"m-auto"} />;
-  } else if (sent) {
-    buttonContent = <CheckMarkIcon className={"m-auto"} />;
-  } else {
-    buttonContent = (
-      <>
-        {t("submit")}
-        <ArrowOutRightIcon
-          className={
-            "ml-2 h-4 -rotate-45 duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-          }
-        />
-      </>
-    );
-  }
 
   return (
     <button
-      ref={buttonRef}
-      className={
-        "group relative z-10 flex w-fit items-center overflow-hidden rounded border border-accent bg-none px-3 py-1 text-textSecondary before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-0 before:bg-accent before:duration-200 hover:text-textPrimary before:hover:w-full"
-      }
-      style={{ minWidth: buttonWidth ? `${buttonWidth}px` : "auto" }}
-      disabled={sending || sent}
+      type="submit"
+      disabled={sending}
+      className="interactive lift inline-flex min-h-12 items-center gap-2.5 self-start rounded-[10px] bg-accent px-[22px] text-[15px] font-semibold text-accent-foreground disabled:cursor-wait disabled:opacity-70"
     >
-      {buttonContent}
+      {sending && <LoadingCircle className="h-4 w-4" />}
+      {sending ? t("sending") : t("submit")}
     </button>
   );
 }
