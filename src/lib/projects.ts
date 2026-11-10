@@ -59,7 +59,6 @@ export const PROJECTS: Project[] = [
       { captionKey: "motorModule" },
       { captionKey: "remote", src: blindsRemote },
       { captionKey: "mounted" },
-      { captionKey: "board" },
     ],
   },
   {
