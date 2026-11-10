@@ -70,8 +70,7 @@
           "prototype": "Loose prototype for testing the remote and saving the top and bottom positions",
           "motorModule": "Motor module in its 3D-printed case",
           "remote": "The custom nRF52840 remote",
-          "mounted": "Mounted on the window",
-          "board": "ESP32 board close-up"
+          "mounted": "Mounted on the window"
         }
       },
       "real-life-soundboard": {
