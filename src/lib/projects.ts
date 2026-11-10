@@ -3,6 +3,7 @@ import dijkerHome from "../../public/projects/dijker-website/01.png";
 import dijkerHomeMobile from "../../public/projects/dijker-website/02.png";
 import dijkerLanguageSwitch from "../../public/projects/dijker-website/03.png";
 import dijkerPreview from "../../public/projects/dijker-website/04.png";
+import k8sHardware from "../../public/projects/kubernetes-platform/01.jpg";
 import k8sDeployRun from "../../public/projects/kubernetes-platform/02.png";
 import k8sPreviewUrl from "../../public/projects/kubernetes-platform/03.png";
 import blindsPrototype from "../../public/projects/motorized-blinds/01.jpg";
@@ -42,7 +43,7 @@ export const PROJECTS: Project[] = [
     linkKind: "github",
     tags: ["K3s", "OpenTofu", "Helm", "Traefik", "GitHub Actions"],
     slides: [
-      { captionKey: "hardware" },
+      { captionKey: "hardware", src: k8sHardware },
       { captionKey: "deployRun", src: k8sDeployRun },
       { captionKey: "previewUrl", src: k8sPreviewUrl },
     ],
