@@ -79,7 +79,7 @@
         "captions": {
           "buttons": "The nine-button board",
           "app": "Kotlin companion app",
-          "wiring": "ESP32 wiring inside the case"
+          "wiring": "Soldering the ESP32 wiring, just before the case"
         }
       }
     },

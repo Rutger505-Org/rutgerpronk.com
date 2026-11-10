@@ -5,7 +5,9 @@ import dijkerLanguageSwitch from "../../public/projects/dijker-website/03.png";
 import dijkerPreview from "../../public/projects/dijker-website/04.png";
 import k8sDeployRun from "../../public/projects/kubernetes-platform/02.png";
 import k8sPreviewUrl from "../../public/projects/kubernetes-platform/03.png";
+import soundboardButtons from "../../public/projects/real-life-soundboard/01.jpg";
 import soundboardApp from "../../public/projects/real-life-soundboard/02.png";
+import soundboardWiring from "../../public/projects/real-life-soundboard/03.jpg";
 
 export interface ProjectSlide {
   captionKey: string;
@@ -62,9 +64,9 @@ export const PROJECTS: Project[] = [
     linkKind: "github",
     tags: ["Rust", "ESP32", "Bluetooth LE", "Kotlin", "Android"],
     slides: [
-      { captionKey: "buttons" },
+      { captionKey: "buttons", src: soundboardButtons },
       { captionKey: "app", src: soundboardApp },
-      { captionKey: "wiring" },
+      { captionKey: "wiring", src: soundboardWiring },
     ],
   },
 ];

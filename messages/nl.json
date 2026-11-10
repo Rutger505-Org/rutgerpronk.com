@@ -79,7 +79,7 @@
         "captions": {
           "buttons": "Het bord met negen knoppen",
           "app": "De Kotlin-app",
-          "wiring": "ESP32-bedrading in de behuizing"
+          "wiring": "ESP32-bedrading solderen, net voor de behuizing"
         }
       }
     },
