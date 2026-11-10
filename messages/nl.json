@@ -70,8 +70,7 @@
           "prototype": "Los prototype om de afstandsbediening en het opslaan van boven- en onderpositie te testen",
           "motorModule": "Motormodule in zijn 3D-geprinte behuizing",
           "remote": "De zelfgemaakte nRF52840-afstandsbediening",
-          "mounted": "Gemonteerd aan het raam",
-          "board": "Close-up van het ESP32-bord"
+          "mounted": "Gemonteerd aan het raam"
         }
       },
       "real-life-soundboard": {
