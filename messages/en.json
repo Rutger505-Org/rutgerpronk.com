@@ -13,9 +13,15 @@
     "heading": "Hi, I'm Rutger.<br></br><muted>I build things</muted><br></br>end to end",
     "subtitle": "ICT student building web things with Next.js, TypeScript and a self-hosted Kubernetes pipeline. And Rust firmware for ESP32s, when the web is not enough.",
     "seeWork": "See my work",
-    "portraitAlt": "Portrait of Rutger Pronk",
     "currentlyLabel": "currently",
-    "currently": "ICT student @ Fontys, Eindhoven"
+    "currently": "ICT student @ Fontys, Eindhoven",
+    "card": {
+      "label": "Terminal summary of Rutger Pronk",
+      "role": "software dev",
+      "study": "ICT · Fontys",
+      "shipped": "{count} projects",
+      "host": "this site, on my own cluster"
+    }
   },
   "about": {
     "label": "// who am i",
