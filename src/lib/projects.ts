@@ -1,16 +1,16 @@
 import type { StaticImageData } from "next/image";
-import dijkerHome from "../../public/projects/dijker-website/01.png";
-import dijkerHomeMobile from "../../public/projects/dijker-website/02.png";
-import dijkerLanguageSwitch from "../../public/projects/dijker-website/03.png";
-import dijkerPreview from "../../public/projects/dijker-website/04.png";
-import k8sHardware from "../../public/projects/kubernetes-platform/01.jpg";
-import k8sDeployRun from "../../public/projects/kubernetes-platform/02.png";
-import k8sPreviewUrl from "../../public/projects/kubernetes-platform/03.png";
-import blindsPrototype from "../../public/projects/motorized-blinds/01.jpg";
-import blindsRemote from "../../public/projects/motorized-blinds/02.jpg";
-import soundboardButtons from "../../public/projects/real-life-soundboard/01.jpg";
-import soundboardApp from "../../public/projects/real-life-soundboard/02.png";
-import soundboardWiring from "../../public/projects/real-life-soundboard/03.jpg";
+import dijkerHome from "../../public/projects/dijker-website/01.webp";
+import dijkerHomeMobile from "../../public/projects/dijker-website/02.webp";
+import dijkerLanguageSwitch from "../../public/projects/dijker-website/03.webp";
+import dijkerPreview from "../../public/projects/dijker-website/04.webp";
+import k8sHardware from "../../public/projects/kubernetes-platform/01.webp";
+import k8sDeployRun from "../../public/projects/kubernetes-platform/02.webp";
+import k8sPreviewUrl from "../../public/projects/kubernetes-platform/03.webp";
+import blindsPrototype from "../../public/projects/motorized-blinds/01.webp";
+import blindsRemote from "../../public/projects/motorized-blinds/02.webp";
+import soundboardButtons from "../../public/projects/real-life-soundboard/01.webp";
+import soundboardApp from "../../public/projects/real-life-soundboard/02.webp";
+import soundboardWiring from "../../public/projects/real-life-soundboard/03.webp";
 
 export interface ProjectSlide {
   captionKey: string;
