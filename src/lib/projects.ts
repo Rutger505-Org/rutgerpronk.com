@@ -1,5 +1,11 @@
 import type { StaticImageData } from "next/image";
 import dijkerHome from "../../public/projects/dijker-website/01.webp";
+import dijkerHomeMobile from "../../public/projects/dijker-website/02.png";
+import dijkerLanguageSwitch from "../../public/projects/dijker-website/03.png";
+import dijkerPreview from "../../public/projects/dijker-website/04.png";
+import k8sDeployRun from "../../public/projects/kubernetes-platform/02.png";
+import k8sPreviewUrl from "../../public/projects/kubernetes-platform/03.png";
+import soundboardApp from "../../public/projects/real-life-soundboard/02.png";
 
 export interface ProjectSlide {
   captionKey: string;
@@ -22,9 +28,9 @@ export const PROJECTS: Project[] = [
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Docker", "Caddy"],
     slides: [
       { captionKey: "homeDesktop", src: dijkerHome },
-      { captionKey: "homeMobile" },
-      { captionKey: "languageSwitch" },
-      { captionKey: "previewEnvironment" },
+      { captionKey: "homeMobile", src: dijkerHomeMobile },
+      { captionKey: "languageSwitch", src: dijkerLanguageSwitch },
+      { captionKey: "previewEnvironment", src: dijkerPreview },
     ],
   },
   {
@@ -34,8 +40,8 @@ export const PROJECTS: Project[] = [
     tags: ["K3s", "OpenTofu", "Helm", "Traefik", "GitHub Actions"],
     slides: [
       { captionKey: "hardware" },
-      { captionKey: "deployRun" },
-      { captionKey: "previewUrl" },
+      { captionKey: "deployRun", src: k8sDeployRun },
+      { captionKey: "previewUrl", src: k8sPreviewUrl },
     ],
   },
   {
@@ -57,7 +63,7 @@ export const PROJECTS: Project[] = [
     tags: ["Rust", "ESP32", "Bluetooth LE", "Kotlin", "Android"],
     slides: [
       { captionKey: "buttons" },
-      { captionKey: "app" },
+      { captionKey: "app", src: soundboardApp },
       { captionKey: "wiring" },
     ],
   },
