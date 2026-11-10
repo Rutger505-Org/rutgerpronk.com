@@ -1,5 +1,16 @@
 import type { StaticImageData } from "next/image";
 import dijkerHome from "../../public/projects/dijker-website/01.webp";
+import dijkerHomeMobile from "../../public/projects/dijker-website/02.webp";
+import dijkerLanguageSwitch from "../../public/projects/dijker-website/03.webp";
+import dijkerPreview from "../../public/projects/dijker-website/04.webp";
+import k8sHardware from "../../public/projects/kubernetes-platform/01.webp";
+import k8sDeployRun from "../../public/projects/kubernetes-platform/02.webp";
+import k8sPreviewUrl from "../../public/projects/kubernetes-platform/03.webp";
+import blindsPrototype from "../../public/projects/motorized-blinds/01.webp";
+import blindsRemote from "../../public/projects/motorized-blinds/02.webp";
+import soundboardButtons from "../../public/projects/real-life-soundboard/01.webp";
+import soundboardApp from "../../public/projects/real-life-soundboard/02.webp";
+import soundboardWiring from "../../public/projects/real-life-soundboard/03.webp";
 
 export interface ProjectSlide {
   captionKey: string;
@@ -22,9 +33,9 @@ export const PROJECTS: Project[] = [
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Docker", "Caddy"],
     slides: [
       { captionKey: "homeDesktop", src: dijkerHome },
-      { captionKey: "homeMobile" },
-      { captionKey: "languageSwitch" },
-      { captionKey: "previewEnvironment" },
+      { captionKey: "homeMobile", src: dijkerHomeMobile },
+      { captionKey: "languageSwitch", src: dijkerLanguageSwitch },
+      { captionKey: "previewEnvironment", src: dijkerPreview },
     ],
   },
   {
@@ -33,9 +44,9 @@ export const PROJECTS: Project[] = [
     linkKind: "github",
     tags: ["K3s", "OpenTofu", "Helm", "Traefik", "GitHub Actions"],
     slides: [
-      { captionKey: "hardware" },
-      { captionKey: "deployRun" },
-      { captionKey: "previewUrl" },
+      { captionKey: "hardware", src: k8sHardware },
+      { captionKey: "deployRun", src: k8sDeployRun },
+      { captionKey: "previewUrl", src: k8sPreviewUrl },
     ],
   },
   {
@@ -44,8 +55,9 @@ export const PROJECTS: Project[] = [
     linkKind: "github",
     tags: ["Rust", "Embassy", "ESP32", "nRF52840", "3D printing"],
     slides: [
+      { captionKey: "prototype", src: blindsPrototype },
       { captionKey: "motorModule" },
-      { captionKey: "remote" },
+      { captionKey: "remote", src: blindsRemote },
       { captionKey: "mounted" },
       { captionKey: "board" },
     ],
@@ -56,9 +68,9 @@ export const PROJECTS: Project[] = [
     linkKind: "github",
     tags: ["Rust", "ESP32", "Bluetooth LE", "Kotlin", "Android"],
     slides: [
-      { captionKey: "buttons" },
-      { captionKey: "app" },
-      { captionKey: "wiring" },
+      { captionKey: "buttons", src: soundboardButtons },
+      { captionKey: "app", src: soundboardApp },
+      { captionKey: "wiring", src: soundboardWiring },
     ],
   },
 ];

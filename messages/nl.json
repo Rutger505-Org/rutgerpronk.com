@@ -67,6 +67,7 @@
         "title": "Gemotoriseerde rolgordijnen",
         "text": "Rust-firmware die mijn rolgordijnen motoriseert: ESP32-modules sturen de motoren aan en een zelfgemaakte nRF52840-afstandsbediening bedient ze via radio, allemaal in een 3D-geprinte behuizing.",
         "captions": {
+          "prototype": "Los prototype om de afstandsbediening en het opslaan van boven- en onderpositie te testen",
           "motorModule": "Motormodule in zijn 3D-geprinte behuizing",
           "remote": "De zelfgemaakte nRF52840-afstandsbediening",
           "mounted": "Gemonteerd aan het raam",
@@ -79,7 +80,7 @@
         "captions": {
           "buttons": "Het bord met negen knoppen",
           "app": "De Kotlin-app",
-          "wiring": "ESP32-bedrading in de behuizing"
+          "wiring": "ESP32-bedrading solderen, net voor de behuizing"
         }
       }
     },
