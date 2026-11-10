@@ -1,5 +1,5 @@
 import type { StaticImageData } from "next/image";
-import dijkerHome from "../../public/projects/dijker-website/01.webp";
+import dijkerHome from "../../public/projects/dijker-website/01.png";
 import dijkerHomeMobile from "../../public/projects/dijker-website/02.png";
 import dijkerLanguageSwitch from "../../public/projects/dijker-website/03.png";
 import dijkerPreview from "../../public/projects/dijker-website/04.png";
