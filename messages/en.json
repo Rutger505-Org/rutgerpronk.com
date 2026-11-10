@@ -67,6 +67,7 @@
         "title": "Motorized Blinds",
         "text": "Rust firmware that motorizes my blinds: ESP32 modules drive the motors, and a custom nRF52840 remote controls them over radio, all in a 3D-printed case.",
         "captions": {
+          "prototype": "Loose prototype for testing the remote and saving the top and bottom positions",
           "motorModule": "Motor module in its 3D-printed case",
           "remote": "The custom nRF52840 remote",
           "mounted": "Mounted on the window",
