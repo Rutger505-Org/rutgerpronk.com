@@ -98,14 +98,6 @@ function TerminalCard() {
             <span key={color} className={`h-3 w-[22px] rounded-sm ${color}`} />
           ))}
         </div>
-
-        <div className="mt-[18px]">
-          <Prompt />{" "}
-          <span
-            className="inline-block h-[15px] w-2 animate-blink bg-text align-[-3px]"
-            aria-hidden
-          />
-        </div>
       </div>
     </div>
   );
