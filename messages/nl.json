@@ -42,6 +42,7 @@
     "next": "Volgende foto",
     "showPhoto": "Toon foto {number}: {caption}",
     "viewOnGithub": "Bekijk op GitHub",
+    "openWebsite": "Open website",
     "projects": {
       "dijker-website": {
         "title": "Dijker-website",

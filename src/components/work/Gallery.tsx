@@ -148,7 +148,7 @@ export default function Gallery() {
           rel="noopener"
           className="interactive lift inline-flex min-h-11 items-center gap-2 rounded-[10px] border border-border-control px-4 text-sm font-medium"
         >
-          {t("viewOnGithub")}
+          {t(project.linkKind === "website" ? "openWebsite" : "viewOnGithub")}
           <ArrowUpRight className="h-[15px] w-[15px]" aria-hidden />
         </a>
       </div>

@@ -42,6 +42,7 @@
     "next": "Next photo",
     "showPhoto": "Show photo {number}: {caption}",
     "viewOnGithub": "View on GitHub",
+    "openWebsite": "Open website",
     "projects": {
       "dijker-website": {
         "title": "Dijker Website",
