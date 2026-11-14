@@ -1,6 +1,4 @@
 import { ImageResponse } from "next/og";
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
 import { getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { SKILLS } from "@/lib/site";
@@ -18,8 +16,6 @@ export default async function OpengraphImage({
 }: Readonly<{ params: Promise<{ locale: string }> }>) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "hero" });
-  const photo = await readFile(join(process.cwd(), "src/assets/og-photo.png"));
-  const photoSrc = `data:image/png;base64,${photo.toString("base64")}`;
 
   return new ImageResponse(
     <div
@@ -78,13 +74,24 @@ export default async function OpengraphImage({
           ))}
         </div>
       </div>
-      <img
-        src={photoSrc}
-        width={380}
-        height={380}
-        alt=""
-        style={{ borderRadius: 999, border: "8px solid #A6E36E" }}
-      />
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: 380,
+          height: 380,
+          borderRadius: 32,
+          border: "8px solid #A6E36E",
+          background: "#16191E",
+          fontSize: 176,
+          fontWeight: 700,
+          letterSpacing: -4,
+          color: "#A6E36E",
+        }}
+      >
+        RP
+      </div>
     </div>,
     size,
   );

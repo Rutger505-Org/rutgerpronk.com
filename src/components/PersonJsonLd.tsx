@@ -16,7 +16,7 @@ export default async function PersonJsonLd({
       "@id": `${SITE_URL}/#person`,
       name: "Rutger Pronk",
       url: SITE_URL,
-      image: `${SITE_URL}/me.webp`,
+      image: `${SITE_URL}/${locale}/opengraph-image`,
       jobTitle: "Software Developer",
       description: t("description"),
       knowsAbout: SKILLS,
