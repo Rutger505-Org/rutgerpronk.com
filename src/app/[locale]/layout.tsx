@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import React from "react";
 import { notFound } from "next/navigation";
@@ -8,19 +8,21 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { localeAlternates, OPEN_GRAPH_LOCALES, SITE_URL } from "@/lib/site";
 
-const display = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+// Self-hosted (Fontsource variable, latin) so the Docker build needs no
+// network access to Google Fonts, which fails intermittently on CI runners.
+const display = localFont({
+  src: "../../fonts/space-grotesk-latin-variable.woff2",
+  weight: "300 700",
   variable: "--font-display",
 });
-const sans = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+const sans = localFont({
+  src: "../../fonts/inter-latin-variable.woff2",
+  weight: "100 900",
   variable: "--font-sans",
 });
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+const mono = localFont({
+  src: "../../fonts/jetbrains-mono-latin-variable.woff2",
+  weight: "100 800",
   variable: "--font-mono",
 });
 
