@@ -26,6 +26,6 @@ export const OPEN_GRAPH_LOCALES: Record<string, string> = {
 export function localeAlternates() {
   return {
     ...Object.fromEntries(routing.locales.map((l) => [l, `/${l}`])),
-    "x-default": "/",
+    "x-default": `/${routing.defaultLocale}`,
   };
 }
