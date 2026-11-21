@@ -1,15 +1,10 @@
 import type { MetadataRoute } from "next";
-import { headers } from "next/headers";
-import { SITE_HOST, SITE_URL } from "@/lib/site";
+import { SITE_URL } from "@/lib/site";
 
-export default async function robots(): Promise<MetadataRoute.Robots> {
-  const host = (await headers()).get("host");
-
-  // PR previews (pr-<N>.rutgerpronk.com) must not compete with production in search results.
-  if (host !== SITE_HOST) {
-    return { rules: { userAgent: "*", disallow: "/" } };
-  }
-
+// Previews (pr-<N>) are kept out of search results by an X-Robots-Tag: noindex
+// header set in deploy/main.tf. Don't Disallow them here: Google has to crawl a
+// page to see its noindex.
+export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: "*", allow: "/" },
     sitemap: `${SITE_URL}/sitemap.xml`,
