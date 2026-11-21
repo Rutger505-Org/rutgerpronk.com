@@ -7,9 +7,11 @@ const nextConfig: NextConfig = {
   // send those to the matching section instead of a 404.
   async redirects() {
     return [
+      // Permanent so Google treats /en as canonical, not /.
+      { source: "/", destination: "/en", permanent: true },
       {
         source: "/:section(work|log|contact)",
-        destination: "/#:section",
+        destination: "/en#:section",
         permanent: true,
       },
       {
